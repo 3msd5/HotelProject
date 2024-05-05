@@ -47,6 +47,14 @@ def giris_tiklandi():
     rezervasyon_ekrani()
 
 def rezervasyon_ekrani():
+    def geri_git():
+        rezervasyon_pencere.destroy()
+        root.deiconify()
+
+    def cikis_yap():
+        rezervasyon_pencere.destroy()
+        root.destroy()
+
     global secilen_sehir  # global değişkenleri tanımlayalım
 
     rezervasyon_pencere = tk.Toplevel()
@@ -107,7 +115,7 @@ def rezervasyon_ekrani():
     c_tarih_sec_button.pack(pady=10)
 
     # Ödeme Şekli Seçimi
-    tk.Label(rezervasyon_pencere, text="Ödeme Şekli Seçiniz:", font=("Helvetica", 14, "bold")).pack()
+    tk.Label(rezervasyon_pencere, text="Ödeme Şekli Seçiniz*:", font=("Helvetica", 14, "bold")).pack()
     odeme_sekli = tk.StringVar()
     odeme_sekli.set("Euro")
     odeme_sekli_radio1 = tk.Radiobutton(rezervasyon_pencere, text="Euro", variable=odeme_sekli, value="Euro", font=("Helvetica", 12))
@@ -116,7 +124,7 @@ def rezervasyon_ekrani():
     odeme_sekli_radio2.pack()
 
     # 1 Euro = 30 TL bilgisini ekleyelim
-    tl_bilgisi_label = tk.Label(rezervasyon_pencere, text="1 Euro = 30 TL", font=("Helvetica", 10))
+    tl_bilgisi_label = tk.Label(rezervasyon_pencere, text="*1 Euro = 30 TL", font=("Helvetica", 10))
     tl_bilgisi_label.pack()
 
     def onayla():
@@ -136,6 +144,12 @@ def rezervasyon_ekrani():
     onay_butonu = tk.Button(rezervasyon_pencere, text="Onayla", command=onayla, font=("Helvetica", 12))
     onay_butonu.pack(pady=10)
 
+    cikis_butonu = tk.Button(rezervasyon_pencere, text="Çıkış", command=cikis_yap, font=("Helvetica", 12))
+    cikis_butonu.pack(side="bottom", pady=10)
+
+    geri_butonu = tk.Button(rezervasyon_pencere, text="Geri", command=geri_git, font=("Helvetica", 12))
+    geri_butonu.pack(side="bottom", pady=10)
+
 # Ana uygulama penceresini oluştur
 root = tk.Tk()
 root.title("Otel Bulma")
@@ -145,7 +159,7 @@ root.geometry("800x900")
 
 hosgeldiniz_metni = tk.Label(root, text="Otel Bulma Programına Hoşgeldiniz",
                              font=("Helvetica", 25, "bold"),
-                             fg="blue",justify="center")
+                             fg="Black",justify="center")
 hosgeldiniz_metni.pack(pady=50)
 
 giris_butonu = tk.Button(root, text="Giriş", command=giris_tiklandi,
@@ -158,6 +172,12 @@ giris_butonu = tk.Button(root, text="Giriş", command=giris_tiklandi,
                          padx=10, pady=10  # Düğme içindeki boşluk xy ekseni
                          )
 giris_butonu.pack(pady=75)
+
+# Çıkış butonu ekleyelim
+cikis_butonu = tk.Button(root, text="Çıkış", command=root.destroy,
+                         font=("Helvetica", 12),
+                         fg="black")
+cikis_butonu.pack(side="bottom", pady=10)
 
 # Karanlık mod özelliğini ana pencereye de ekleyelim
 karanlik_mod = KaranlikMod(root)
