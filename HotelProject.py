@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import messagebox, ttk
 from tkcalendar import Calendar  # Takvim için
 
 class KaranlikMod:
@@ -8,33 +8,33 @@ class KaranlikMod:
         self.karanlik_mod = False
 
         # Karanlık modu aktif etme düğmesi
-        self.karanlik_mod_dugme = tk.Button(root, text="Karanlık Mod", command=self.toggle_karanlik_mod, font=("Helvetica", 12))
+        self.karanlik_mod_dugme = ttk.Button(root, text="Karanlık Mod", command=self.toggle_karanlik_mod)
         self.karanlik_mod_dugme.pack(side="bottom", pady=10)
 
     def toggle_karanlik_mod(self):
         # Karanlık modu açma veya kapatma işlemleri
         if not self.karanlik_mod:
             self.karanlik_mod = True
-            self.root.config(bg="gray10")  # Arka plan rengini koyu gri yap
-            self.karanlik_mod_dugme.config(bg="gray30", fg="white")  # Düğmenin arka plan ve yazı rengini değiştir
+            self.root.tk_setPalette(background='gray20', foreground='white')
+            self.karanlik_mod_dugme.state(['pressed'])
             self.apply_karanlik_mod(self.root)
         else:
             self.karanlik_mod = False
-            self.root.config(bg="SystemButtonFace")  # Arka plan rengini varsayılan olarak geri getir
-            self.karanlik_mod_dugme.config(bg="SystemButtonFace", fg="black")  # Düğmenin arka plan ve yazı rengini geri getir
+            self.root.tk_setPalette(background='SystemButtonFace', foreground='black')
+            self.karanlik_mod_dugme.state(['!pressed'])
             self.apply_normal_mod(self.root)
 
     def apply_karanlik_mod(self, widget):
         # Karanlık moda geçtiğimizde tüm widgetlarda renklerin değiştirilmesi
         if isinstance(widget, tk.Widget):
-            widget.config(bg="gray20", fg="white")  # Arka plan rengini koyu gri, yazı rengini beyaz yap
+            widget.tk_setPalette(background='gray20', foreground='white')
         for child in widget.winfo_children():
             self.apply_karanlik_mod(child)
 
     def apply_normal_mod(self, widget):
         # Normal moda geçtiğimizde tüm widgetlarda renklerin geri getirilmesi
         if isinstance(widget, tk.Widget):
-            widget.config(bg="SystemButtonFace", fg="black")  # Arka plan rengini varsayılana, yazı rengini siyaha geri getir
+            widget.tk_setPalette(background='SystemButtonFace', foreground='black')
         for child in widget.winfo_children():
             self.apply_normal_mod(child)
 
@@ -55,7 +55,7 @@ def rezervasyon_ekrani():
         rezervasyon_pencere.destroy()
         root.destroy()
 
-    global secilen_sehir  # global değişkenleri tanımlayalım
+    global secilen_sehir, giris_tarihi, cikis_tarihi
 
     rezervasyon_pencere = tk.Toplevel()
     rezervasyon_pencere.title("Rezervasyon Ekranı")
@@ -68,8 +68,7 @@ def rezervasyon_ekrani():
     sehirler = ["Amsterdam", "Barcelona", "Berlin", "Lizbon", "Paris", "Prag", "Roma", "Venedik", "Viyana", "Zürih"]
     secilen_sehir = tk.StringVar(rezervasyon_pencere)
     secilen_sehir.set(sehirler[0])  # Başlangıçta ilk şehir seçili olacak
-    sehirler_dropdown = tk.OptionMenu(rezervasyon_pencere, secilen_sehir, *sehirler)
-    sehirler_dropdown.config(font=("Helvetica", 14))  # Font ayarlarını yap
+    sehirler_dropdown = ttk.Combobox(rezervasyon_pencere, textvariable=secilen_sehir, values=sehirler, font=("Helvetica", 14))
     sehirler_dropdown.pack(pady=10)
 
     # Giriş Tarihi Seçimi
@@ -88,7 +87,7 @@ def rezervasyon_ekrani():
             g_tarih_win.destroy()
         g_tarih_onay_button = tk.Button(g_tarih_win, text="Onayla", command=g_tarih_onay, font=("Helvetica", 12))
         g_tarih_onay_button.pack(pady=10)
-    g_tarih_sec_button = tk.Button(rezervasyon_pencere, text='Giriş Tarihi Seç', command=g_tarih_sec, font=("Helvetica", 12))
+    g_tarih_sec_button = ttk.Button(rezervasyon_pencere, text='Giriş Tarihi Seç', command=g_tarih_sec, style='TButton')
     g_tarih_sec_button.pack(pady=10)
 
     # Çıkış Tarihi Seçimi
@@ -111,16 +110,16 @@ def rezervasyon_ekrani():
             c_tarih_win.destroy()
         c_tarih_onay_button = tk.Button(c_tarih_win, text="Onayla", command=c_tarih_onay, font=("Helvetica", 12))
         c_tarih_onay_button.pack(pady=10)
-    c_tarih_sec_button = tk.Button(rezervasyon_pencere, text='Çıkış Tarihi Seç', command=c_tarih_sec, font=("Helvetica", 12))
+    c_tarih_sec_button = ttk.Button(rezervasyon_pencere, text='Çıkış Tarihi Seç', command=c_tarih_sec, style='TButton')
     c_tarih_sec_button.pack(pady=10)
 
     # Ödeme Şekli Seçimi
     tk.Label(rezervasyon_pencere, text="Ödeme Şekli Seçiniz*:", font=("Helvetica", 14, "bold")).pack()
     odeme_sekli = tk.StringVar()
     odeme_sekli.set("Euro")
-    odeme_sekli_radio1 = tk.Radiobutton(rezervasyon_pencere, text="Euro", variable=odeme_sekli, value="Euro", font=("Helvetica", 12))
+    odeme_sekli_radio1 = ttk.Radiobutton(rezervasyon_pencere, text="€ - EURO", variable=odeme_sekli, value="Euro", style='TButton')
     odeme_sekli_radio1.pack()
-    odeme_sekli_radio2 = tk.Radiobutton(rezervasyon_pencere, text="TL", variable=odeme_sekli, value="TL", font=("Helvetica", 12))
+    odeme_sekli_radio2 = ttk.Radiobutton(rezervasyon_pencere, text="₺ - TL", variable=odeme_sekli, value="TL", style='TButton')
     odeme_sekli_radio2.pack()
 
     # 1 Euro = 30 TL bilgisini ekleyelim
@@ -128,7 +127,7 @@ def rezervasyon_ekrani():
     tl_bilgisi_label.pack()
 
     def onayla():
-        global secilen_sehir, giris_tarihi, cikis_tarihi  # onayla fonksiyonu içinde global değişkenleri kullanacağımızı belirtelim
+        global secilen_sehir, giris_tarihi, cikis_tarihi
         secilen_sehir = secilen_sehir.get()
         giris_tarihi_str = giris_tarihi
         cikis_tarihi_str = cikis_tarihi
@@ -141,13 +140,13 @@ def rezervasyon_ekrani():
                             f"Ödeme Şekli: {secilen_odeme_sekli}\n\n"
                             f"{fiyat_mesaji}")
 
-    onay_butonu = tk.Button(rezervasyon_pencere, text="Onayla", command=onayla, font=("Helvetica", 12))
+    onay_butonu = ttk.Button(rezervasyon_pencere, text="Onayla", command=onayla)
     onay_butonu.pack(pady=10)
 
-    cikis_butonu = tk.Button(rezervasyon_pencere, text="Çıkış", command=cikis_yap, font=("Helvetica", 12))
+    cikis_butonu = ttk.Button(rezervasyon_pencere, text="Çıkış", command=cikis_yap)
     cikis_butonu.pack(side="bottom", pady=10)
 
-    geri_butonu = tk.Button(rezervasyon_pencere, text="Geri", command=geri_git, font=("Helvetica", 12))
+    geri_butonu = ttk.Button(rezervasyon_pencere, text="Geri", command=geri_git)
     geri_butonu.pack(side="bottom", pady=10)
 
 # Ana uygulama penceresini oluştur
@@ -162,21 +161,11 @@ hosgeldiniz_metni = tk.Label(root, text="Otel Bulma Programına Hoşgeldiniz",
                              fg="Black",justify="center")
 hosgeldiniz_metni.pack(pady=50)
 
-giris_butonu = tk.Button(root, text="Giriş", command=giris_tiklandi,
-                         font=("Helvetica", 20, "bold"),
-                         fg="Black",  # font rengi
-                         width=10,
-                         height=2,
-                         relief="raised",  # flat=düz, raised=yukarı, sunken=aşağı
-                         borderwidth=10,  # Kenar kalınlığı
-                         padx=10, pady=10  # Düğme içindeki boşluk xy ekseni
-                         )
+giris_butonu = ttk.Button(root, text="Giriş", command=giris_tiklandi)
 giris_butonu.pack(pady=75)
 
 # Çıkış butonu ekleyelim
-cikis_butonu = tk.Button(root, text="Çıkış", command=root.destroy,
-                         font=("Helvetica", 12),
-                         fg="black")
+cikis_butonu = ttk.Button(root, text="Çıkış", command=root.destroy)
 cikis_butonu.pack(side="bottom", pady=10)
 
 # Karanlık mod özelliğini ana pencereye de ekleyelim
