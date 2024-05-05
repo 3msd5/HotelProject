@@ -2,6 +2,42 @@ import tkinter as tk
 from tkinter import messagebox
 from tkcalendar import Calendar  # Takvim için
 
+class KaranlikMod:
+    def __init__(self, root):
+        self.root = root
+        self.karanlik_mod = False
+
+        # Karanlık modu aktif etme düğmesi
+        self.karanlik_mod_dugme = tk.Button(root, text="Karanlık Mod", command=self.toggle_karanlik_mod, font=("Helvetica", 12))
+        self.karanlik_mod_dugme.pack(side="bottom", pady=10)
+
+    def toggle_karanlik_mod(self):
+        # Karanlık modu açma veya kapatma işlemleri
+        if not self.karanlik_mod:
+            self.karanlik_mod = True
+            self.root.config(bg="gray10")  # Arka plan rengini koyu gri yap
+            self.karanlik_mod_dugme.config(bg="gray30", fg="white")  # Düğmenin arka plan ve yazı rengini değiştir
+            self.apply_karanlik_mod(self.root)
+        else:
+            self.karanlik_mod = False
+            self.root.config(bg="SystemButtonFace")  # Arka plan rengini varsayılan olarak geri getir
+            self.karanlik_mod_dugme.config(bg="SystemButtonFace", fg="black")  # Düğmenin arka plan ve yazı rengini geri getir
+            self.apply_normal_mod(self.root)
+
+    def apply_karanlik_mod(self, widget):
+        # Karanlık moda geçtiğimizde tüm widgetlarda renklerin değiştirilmesi
+        if isinstance(widget, tk.Widget):
+            widget.config(bg="gray20", fg="white")  # Arka plan rengini koyu gri, yazı rengini beyaz yap
+        for child in widget.winfo_children():
+            self.apply_karanlik_mod(child)
+
+    def apply_normal_mod(self, widget):
+        # Normal moda geçtiğimizde tüm widgetlarda renklerin geri getirilmesi
+        if isinstance(widget, tk.Widget):
+            widget.config(bg="SystemButtonFace", fg="black")  # Arka plan rengini varsayılana, yazı rengini siyaha geri getir
+        for child in widget.winfo_children():
+            self.apply_normal_mod(child)
+
 secilen_sehir = ""  # secilen_sehir değişkenini global olarak tanımlayalım
 giris_tarihi = ""
 cikis_tarihi = ""
@@ -16,6 +52,9 @@ def rezervasyon_ekrani():
     rezervasyon_pencere = tk.Toplevel()
     rezervasyon_pencere.title("Rezervasyon Ekranı")
     rezervasyon_pencere.geometry("800x900")  # Pencere boyutunu ayarla
+
+    # Karanlık mod özelliğini ekleyelim
+    karanlik_mod = KaranlikMod(rezervasyon_pencere)
 
     # Şehir Seçimi
     sehirler = ["Amsterdam", "Barcelona", "Berlin", "Lizbon", "Paris", "Prag", "Roma", "Venedik", "Viyana", "Zürih"]
@@ -120,6 +159,8 @@ giris_butonu = tk.Button(root, text="Giriş", command=giris_tiklandi,
                          )
 giris_butonu.pack(pady=75)
 
+# Karanlık mod özelliğini ana pencereye de ekleyelim
+karanlik_mod = KaranlikMod(root)
+
 # Pencereyi göster
 root.mainloop()
-
