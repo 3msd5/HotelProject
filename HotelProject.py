@@ -56,13 +56,16 @@ def giris_tiklandi():
     root.withdraw()  # Mevcut pencereyi gizle
     rezervasyon_ekrani()
 
+def cikis_yap():
+    root.destroy()
+
 def rezervasyon_ekrani():
     # Rezervasyon ekranını oluştur
     def geri_git():
         rezervasyon_pencere.destroy()
         root.deiconify()
 
-    def cikis_yap():
+    def cikis_yap_rezervasyon():
         rezervasyon_pencere.destroy()
         root.destroy()
 
@@ -159,7 +162,7 @@ def rezervasyon_ekrani():
     onay_butonu = ttk.Button(rezervasyon_pencere, text="Onayla", command=onayla)
     onay_butonu.pack(pady=10)
 
-    cikis_butonu = ttk.Button(rezervasyon_pencere, text="Çıkış", command=cikis_yap)
+    cikis_butonu = ttk.Button(rezervasyon_pencere, text="Çıkış", command=cikis_yap_rezervasyon)
     cikis_butonu.pack(side="bottom", pady=10)
 
     geri_butonu = ttk.Button(rezervasyon_pencere, text="Geri", command=geri_git)
@@ -232,8 +235,10 @@ hosgeldiniz_metni.pack()
 karanlik_mod = KaranlikMod(root)
 
 # Giriş Butonu
-giris_butonu = tk.Button(root, text="Rezervasyon Yapmak için Tıklayınız", font=("Helvetica", 14), command=giris_tiklandi)
+giris_butonu = ttk.Button(root, text="Rezervasyon Yapmak için Tıklayınız", command=giris_tiklandi)
 giris_butonu.pack(pady=20)
+
+
 
 # Top 5 Otelleri Gösterme Alanı
 top_hotels_frame = tk.Frame(root)
@@ -244,5 +249,9 @@ top_hotels_label.pack()
 
 top_hotels_text = tk.Text(top_hotels_frame, height=20, width=70)
 top_hotels_text.pack()
+
+# Çıkış Butonu
+cikis_butonu = ttk.Button(root, text="Çıkış", command=cikis_yap)
+cikis_butonu.pack(pady=20)
 
 root.mainloop()
