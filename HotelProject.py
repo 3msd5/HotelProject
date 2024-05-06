@@ -1,54 +1,63 @@
 import tkinter as tk
-from tkinter import messagebox, ttk
-from tkcalendar import Calendar
+from tkinter import ttk, messagebox
+from tkcalendar import Calendar  # Tarih seçimi için
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
 import csv
 
-class KaranlikMod:
-    def __init__(self, root):
-        self.root = root
-        self.karanlik_mod = False
+# Ana uygulama penceresini oluştur
+root = tk.Tk()
+root.title("Otel Bulma")
 
-        self.karanlik_mod_dugme = ttk.Button(root, text="Karanlık Mod", command=self.toggle_karanlik_mod)
-        self.karanlik_mod_dugme.pack(side="bottom", pady=10)
+# Pencere boyutunu ayarla
+root.geometry("800x900")
 
-    def toggle_karanlik_mod(self):
-        if not self.karanlik_mod:
-            self.karanlik_mod = True
-            self.root.tk_setPalette(background='gray20', foreground='white')
-            self.karanlik_mod_dugme.state(['pressed'])
-            self.apply_karanlik_mod(self.root)
-        else:
-            self.karanlik_mod = False
-            self.root.tk_setPalette(background='SystemButtonFace', foreground='black')
-            self.karanlik_mod_dugme.state(['!pressed'])
-            self.apply_normal_mod(self.root)
-
-    def apply_karanlik_mod(self, widget):
-        if isinstance(widget, tk.Widget):
-            widget.tk_setPalette(background='gray20', foreground='white')
-        for child in widget.winfo_children():
-            self.apply_karanlik_mod(child)
-
-    def apply_normal_mod(self, widget):
-        if isinstance(widget, tk.Widget):
-            widget.tk_setPalette(background='SystemButtonFace', foreground='black')
-        for child in widget.winfo_children():
-            self.apply_normal_mod(child)
-
-secilen_sehir = None  # StringVar olarak tanımlayalım
+# Gerekli değişkenleri tanımla
+secilen_sehir = ""  # Seçilen şehri global olarak tanımlayın
 giris_tarihi = ""
 cikis_tarihi = ""
 
+# Karanlık modu yönetmek için sınıf
+class KaranlikMod:
+    def __init__(self, root):
+        self.root = root
+        self.karanlik_modu = False
+
+        # Karanlık modu açma / kapama düğmesi
+        self.karanlik_modu_dugme = ttk.Button(root, text="Karanlık Modu", command=self.karanlik_modunu_degistir)
+        self.karanlik_modu_dugme.pack(side="bottom", pady=10)
+
+    def karanlik_modunu_degistir(self):
+        if not self.karanlik_modu:
+            self.karanlik_modu = True
+            self.root.tk_setPalette(background='gray20', foreground='white')
+            self.karanlik_modu_dugme.state(['pressed'])
+            self.karanlik_modunu_uygula(self.root)
+        else:
+            self.karanlik_modu = False
+            self.root.tk_setPalette(background='SystemButtonFace', foreground='black')
+            self.karanlik_modu_dugme.state(['!pressed'])
+            self.normal_modu_uygula(self.root)
+
+    def karanlik_modunu_uygula(self, widget):
+        if isinstance(widget, tk.Widget):
+            widget.tk_setPalette(background='gray20', foreground='white')
+        for child in widget.winfo_children():
+            self.karanlik_modunu_uygula(child)
+
+    def normal_modu_uygula(self, widget):
+        if isinstance(widget, tk.Widget):
+            widget.tk_setPalette(background='SystemButtonFace', foreground='black')
+        for child in widget.winfo_children():
+            self.normal_modu_uygula(child)
+
 def giris_tiklandi():
-    global secilen_sehir
-    secilen_sehir = tk.StringVar()  # StringVar'ı burada oluşturun
-    root.withdraw()
+    root.withdraw()  # Mevcut pencereyi gizle
     rezervasyon_ekrani()
 
 def rezervasyon_ekrani():
+    # Rezervasyon ekranını oluştur
     def geri_git():
         rezervasyon_pencere.destroy()
         root.deiconify()
@@ -61,18 +70,22 @@ def rezervasyon_ekrani():
 
     rezervasyon_pencere = tk.Toplevel()
     rezervasyon_pencere.title("Rezervasyon Ekranı")
-    rezervasyon_pencere.geometry("800x900")
+    rezervasyon_pencere.geometry("800x900")  # Pencere boyutunu ayarla
 
+    # Karanlık modu özelliğini ekleyin
     karanlik_mod = KaranlikMod(rezervasyon_pencere)
 
+    # Şehir Seçimi
     tk.Label(rezervasyon_pencere, text="Şehir Seçiniz:", font=("Helvetica", 14, "bold")).pack()
-    sehirler = ["Amsterdam", "Barcelona", "Berlin","Braga","Lizbon","Madrid","Manchester","Milano","Paris", "Prag", "Roma", "Venedik", "Viyana", "Zürih"]
-    secilen_sehir.set(sehirler[0])
+    sehirler = ["Amsterdam", "Barselona", "Berlin","Braga","Lizbon","Madrid","Manchester","Milano","Paris", "Prag", "Roma", "Venedik", "Viyana", "Zürih"]
+    secilen_sehir = tk.StringVar(rezervasyon_pencere)
+    secilen_sehir.set(sehirler[0])  # Başlangıçta ilk şehir seçili olacak
     sehirler_dropdown = ttk.Combobox(rezervasyon_pencere, textvariable=secilen_sehir, values=sehirler, font=("Helvetica", 14))
     sehirler_dropdown.pack(pady=10)
-    if karanlik_mod.karanlik_mod:
+    if karanlik_mod.karanlik_modu:  # Karanlık mod aktifse, şehir seçimi metnini beyaz yap
         sehirler_dropdown.config(foreground='grey')
 
+    # Giriş Tarihi Seçimi
     tk.Label(rezervasyon_pencere, text="Giriş Tarihi Seçiniz:", font=("Helvetica", 14, "bold")).pack()
     g_tarih = tk.StringVar()
     g_tarih_label = tk.Label(rezervasyon_pencere, textvariable=g_tarih, font=("Helvetica", 12))
@@ -91,6 +104,7 @@ def rezervasyon_ekrani():
     g_tarih_sec_button = ttk.Button(rezervasyon_pencere, text='Giriş Tarihi Seç', command=g_tarih_sec, style='TButton')
     g_tarih_sec_button.pack(pady=10)
 
+    # Çıkış Tarihi Seçimi
     tk.Label(rezervasyon_pencere, text="Çıkış Tarihi Seçiniz:", font=("Helvetica", 14, "bold")).pack()
     c_tarih = tk.StringVar()
     c_tarih_label = tk.Label(rezervasyon_pencere, textvariable=c_tarih, font=("Helvetica", 12))
@@ -104,7 +118,7 @@ def rezervasyon_ekrani():
             cikis_tarihi = cal.get_date()
             c_tarih.set(cikis_tarihi)
             if giris_tarihi and cikis_tarihi:
-                if cikis_tarihi <= giris_tarihi:
+                if cikis_tarihi <= giris_tarihi:  # Çıkış tarihi giriş tarihinden önce olmamalı
                     messagebox.showerror("Hata", "Çıkış tarihi giriş tarihinden önce olamaz!")
                     return
             c_tarih_win.destroy()
@@ -113,6 +127,7 @@ def rezervasyon_ekrani():
     c_tarih_sec_button = ttk.Button(rezervasyon_pencere, text='Çıkış Tarihi Seç', command=c_tarih_sec, style='TButton')
     c_tarih_sec_button.pack(pady=10)
 
+    # Ödeme Şekli Seçimi
     tk.Label(rezervasyon_pencere, text="Ödeme Şekli Seçiniz*:", font=("Helvetica", 14, "bold")).pack()
     odeme_sekli = tk.StringVar()
     odeme_sekli.set("Euro")
@@ -121,22 +136,24 @@ def rezervasyon_ekrani():
     odeme_sekli_radio2 = ttk.Radiobutton(rezervasyon_pencere, text="₺ - TL", variable=odeme_sekli, value="TL", style='TButton')
     odeme_sekli_radio2.pack()
 
+    # 1 Euro = 30 TL bilgisini ekleyelim
     tl_bilgisi_label = tk.Label(rezervasyon_pencere, text="*1 Euro = 30 TL", font=("Helvetica", 10))
     tl_bilgisi_label.pack()
 
     def onayla():
         global secilen_sehir, giris_tarihi, cikis_tarihi
-        secilen_sehir = secilen_sehir.get()  # Burada .get() kullanarak değeri alıyoruz
+        secilen_sehir = secilen_sehir.get
         giris_tarihi_str = giris_tarihi
         cikis_tarihi_str = cikis_tarihi
         secilen_odeme_sekli = odeme_sekli.get()
-        fiyat_mesaji = f"Fiyatlar: {'Euro' if secilen_odeme_sekli == 'Euro' else 'TL'}"
+        fiyat_mesaji = f"Fiyatlar: {'Euro' if secilen_odeme_sekli == 'Euro' else 'TL'}"  # Ödeme şekline göre fiyat mesajını belirle
         messagebox.showinfo("Rezervasyon Bilgileri",
                             f"Seçilen Şehir: {secilen_sehir}\n"
                             f"Giriş Tarihi: {giris_tarihi_str}\n"
                             f"Çıkış Tarihi: {cikis_tarihi_str}\n"
                             f"Ödeme Şekli: {secilen_odeme_sekli}\n\n"
                             f"{fiyat_mesaji}")
+        # Otel verilerini göster
         show_hotels()
 
     onay_butonu = ttk.Button(rezervasyon_pencere, text="Onayla", command=onayla)
@@ -169,42 +186,63 @@ def scrape_hotels(city, checkin, checkout):
         distance = distance_element.text.strip() if distance_element else "NOT GIVEN"
         rating = rating_element.text.strip() if rating_element else "NOT GIVEN"
         price = price_element.text.strip() if price_element else "NOT GIVEN"
-        hotels_data.append({
-            'name': name,
-            'address': address,
-            'distance': distance,
-            'rating': rating,
-            'price': price
-        })
-    return hotels_data
+        if price != "NOT GIVEN":
+            hotels_data.append({
+                'name': name,
+                'address': address,
+                'distance': distance,
+                'rating': rating,
+                'price': price
+            })
+    # Otelleri fiyata göre sırala
+    hotels_data.sort(key=lambda x: float(x['price'].replace('EUR', '').replace('TL', '').strip()), reverse=False)
+    return hotels_data[:5]  # İlk 5 oteli döndür
 
 def show_hotels():
     city = secilen_sehir
     checkin = giris_tarihi
     checkout = cikis_tarihi
     hotels_data = scrape_hotels(city, checkin, checkout)
-    with open('myhotels.csv', 'w', newline='', encoding='utf-8') as csvfile:
-        fieldnames = ['name', 'address', 'distance', 'rating', 'price']
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        writer.writeheader()
+    # Otelleri TXT dosyasına kaydet
+    with open('myhotels.txt', 'w', encoding='utf-8') as txtfile:
         for hotel in hotels_data:
-            writer.writerow(hotel)
+            txtfile.write(f"Otel Adı: {hotel['name']}\n")
+            txtfile.write(f"Adres: {hotel['address']}\n")
+            txtfile.write(f"Mesafe: {hotel['distance']}\n")
+            txtfile.write(f"Puan: {hotel['rating']}\n")
+            txtfile.write(f"Fiyat: {hotel['price']}\n\n")
+    # Top 5 otelleri GUI'de göster
+    display_top_hotels(hotels_data)
 
-root = tk.Tk()
-root.title("Otel Bulma")
-root.geometry("800x900")
 
-hosgeldiniz_metni = tk.Label(root, text="Otel Bulma Programına Hoşgeldiniz",
-                             font=("Helvetica", 25, "bold"),
-                             fg="Black",justify="center")
-hosgeldiniz_metni.pack(pady=50)
+def display_top_hotels(top_hotels):
+    top_hotels_text.delete('1.0', tk.END)  # Önceki içeriği temizle
+    for hotel in top_hotels:
+        top_hotels_text.insert(tk.END, f"Otel Adı: {hotel['name']}\n")
+        top_hotels_text.insert(tk.END, f"Adres: {hotel['address']}\n")
+        top_hotels_text.insert(tk.END, f"Mesafe: {hotel['distance']}\n")
+        top_hotels_text.insert(tk.END, f"Puan: {hotel['rating']}\n")
+        top_hotels_text.insert(tk.END, f"Fiyat: {hotel['price']}\n\n")
 
-giris_butonu = ttk.Button(root, text="Giriş", command=giris_tiklandi)
-giris_butonu.pack(pady=75)
+# Hoşgeldiniz metnini oluştur
+hosgeldiniz_metni = tk.Label(root, text="Otel Bulma Programına Hoşgeldiniz", font=("Helvetica", 20, "bold"), pady=20)
+hosgeldiniz_metni.pack()
 
-cikis_butonu = ttk.Button(root, text="Çıkış", command=root.destroy)
-cikis_butonu.pack(side="bottom", pady=10)
-
+# Karanlık modu özelliğini ekleyin
 karanlik_mod = KaranlikMod(root)
+
+# Giriş Butonu
+giris_butonu = tk.Button(root, text="Rezervasyon Yapmak için Tıklayınız", font=("Helvetica", 14), command=giris_tiklandi)
+giris_butonu.pack(pady=20)
+
+# Top 5 Otelleri Gösterme Alanı
+top_hotels_frame = tk.Frame(root)
+top_hotels_frame.pack(pady=20)
+
+top_hotels_label = tk.Label(top_hotels_frame, text="En İyi 5 Otel:", font=("Helvetica", 16, "bold"))
+top_hotels_label.pack()
+
+top_hotels_text = tk.Text(top_hotels_frame, height=20, width=70)
+top_hotels_text.pack()
 
 root.mainloop()
