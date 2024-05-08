@@ -4,7 +4,8 @@ from tkcalendar import Calendar  # Tarih seçimi için
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
-import txt
+import csv
+from datetime import datetime
 
 # Ana uygulama penceresini oluştur
 root = tk.Tk()
@@ -12,6 +13,7 @@ root.title("Otel Bulma")
 
 # Pencere boyutunu ayarla
 root.geometry("800x900")
+
 
 # Gerekli değişkenleri tanımla
 secilen_sehir = ""  # Seçilen şehri global olarak tanımlayın
@@ -61,16 +63,6 @@ def cikis_yap():
 
 def rezervasyon_ekrani():
     # Rezervasyon ekranını oluştur
-
-
-    def geri_git():
-        rezervasyon_pencere.destroy()
-        root.deiconify()
-
-    def cikis_yap_rezervasyon():
-        rezervasyon_pencere.destroy()
-        root.destroy()
-
     global secilen_sehir, giris_tarihi, cikis_tarihi
 
     rezervasyon_pencere = tk.Toplevel()
@@ -80,6 +72,18 @@ def rezervasyon_ekrani():
     # Karanlık modu özelliğini ekleyin
     karanlik_mod = KaranlikMod(rezervasyon_pencere)
 
+    # Tarih ve saat gösterimi
+    def update_clock():
+        now = datetime.now()
+        current_time = now.strftime("%H:%M:%S")
+        current_date = now.strftime("%d/%m/%Y")
+        clock_label.config(text=f"Tarih: {current_date}     Saat: {current_time}")
+        rezervasyon_pencere.after(1000, update_clock)
+
+    clock_label = tk.Label(rezervasyon_pencere, font=("Helvetica", 12))
+    clock_label.pack()
+    update_clock()
+
     # Şehir Seçimi
     tk.Label(rezervasyon_pencere, text="Şehir Seçiniz:", font=("Helvetica", 14, "bold")).pack()
     sehirler = ["Amsterdam", "Barselona", "Berlin","Braga","Lizbon","Madrid","Manchester","Milano","Paris", "Prag", "Roma", "Venedik", "Viyana", "Zürih"]
@@ -87,25 +91,27 @@ def rezervasyon_ekrani():
     secilen_sehir.set(sehirler[0])  # Başlangıçta ilk şehir seçili olacak
     sehirler_dropdown = ttk.Combobox(rezervasyon_pencere, textvariable=secilen_sehir, values=sehirler, font=("Helvetica", 14))
     sehirler_dropdown.pack(pady=10)
-    if karanlik_mod.karanlik_modu:  # Karanlık mod aktifse, şehir seçimi metnini beyaz yap
-        sehirler_dropdown.config(foreground='grey')
 
     # Giriş Tarihi Seçimi
     tk.Label(rezervasyon_pencere, text="Giriş Tarihi Seçiniz:", font=("Helvetica", 14, "bold")).pack()
     g_tarih = tk.StringVar()
     g_tarih_label = tk.Label(rezervasyon_pencere, textvariable=g_tarih, font=("Helvetica", 12))
     g_tarih_label.pack()
+
     def g_tarih_sec():
         g_tarih_win = tk.Toplevel()
         cal = Calendar(g_tarih_win, selectmode='day', date_pattern='dd/mm/yyyy')
         cal.pack(padx=20, pady=20)
+
         def g_tarih_onay():
             global giris_tarihi
             giris_tarihi = cal.get_date()
             g_tarih.set(giris_tarihi)
             g_tarih_win.destroy()
+
         g_tarih_onay_button = tk.Button(g_tarih_win, text="Onayla", command=g_tarih_onay, font=("Helvetica", 12))
         g_tarih_onay_button.pack(pady=10)
+
     g_tarih_sec_button = ttk.Button(rezervasyon_pencere, text='Giriş Tarihi Seç', command=g_tarih_sec, style='TButton')
     g_tarih_sec_button.pack(pady=10)
 
@@ -114,21 +120,25 @@ def rezervasyon_ekrani():
     c_tarih = tk.StringVar()
     c_tarih_label = tk.Label(rezervasyon_pencere, textvariable=c_tarih, font=("Helvetica", 12))
     c_tarih_label.pack()
+
     def c_tarih_sec():
         c_tarih_win = tk.Toplevel()
         cal = Calendar(c_tarih_win, selectmode='day', date_pattern='dd/mm/yyyy')
         cal.pack(padx=20, pady=20)
+
         def c_tarih_onay():
             global cikis_tarihi
             cikis_tarihi = cal.get_date()
             c_tarih.set(cikis_tarihi)
             if giris_tarihi and cikis_tarihi:
                 if cikis_tarihi <= giris_tarihi:  # Çıkış tarihi giriş tarihinden önce olmamalı
-                    messagebox.showerror("Hata", "Çıkış tarihi giriş tarihinden önce olamaz!")
+                    messagebox.showerror("Hata", "Çıkış tarihi giriş tarihinden önce veya aynı olamaz!")
                     return
             c_tarih_win.destroy()
+
         c_tarih_onay_button = tk.Button(c_tarih_win, text="Onayla", command=c_tarih_onay, font=("Helvetica", 12))
         c_tarih_onay_button.pack(pady=10)
+
     c_tarih_sec_button = ttk.Button(rezervasyon_pencere, text='Çıkış Tarihi Seç', command=c_tarih_sec, style='TButton')
     c_tarih_sec_button.pack(pady=10)
 
@@ -172,6 +182,8 @@ def rezervasyon_ekrani():
         # Otel verilerini göster
         show_hotels()
 
+    onay_butonu = ttk.Button(rezervasyon_pencere, text="Onayla", command=onayla)
+    onay_butonu.pack(pady=10)
     def scrape_hotels(city, checkin, checkout):
         url = f'https://www.booking.com/searchresults.html?ss={city}&checkin={checkin}&checkout={checkout}&group_adults=2&no_rooms=1&group_children=0'
         headers = {
@@ -232,24 +244,22 @@ def rezervasyon_ekrani():
 
 
     # Top 5 Otelleri Gösterme Alanı
-    top_hotels_frame = tk.Frame(root)
+    top_hotels_frame = tk.Frame(rezervasyon_pencere)
     top_hotels_frame.pack(pady=20)
 
     top_hotels_label = tk.Label(top_hotels_frame, text="En İyi 5 Otel:", font=("Helvetica", 16, "bold"))
     top_hotels_label.pack()
 
-    top_hotels_text = tk.Text(top_hotels_frame, height=20, width=70)
+    top_hotels_text = tk.Text(top_hotels_frame, height=12, width=70)
     top_hotels_text.pack()
 
-    onay_butonu = ttk.Button(rezervasyon_pencere, text="Onayla", command=onayla)
-    onay_butonu.pack(pady=10)
 
-    cikis_butonu = ttk.Button(rezervasyon_pencere, text="Çıkış", command=cikis_yap_rezervasyon)
+
+    cikis_butonu = ttk.Button(rezervasyon_pencere, text="Çıkış", command=rezervasyon_pencere.destroy)
     cikis_butonu.pack(side="bottom", pady=10)
 
-    geri_butonu = ttk.Button(rezervasyon_pencere, text="Geri", command=geri_git)
+    geri_butonu = ttk.Button(rezervasyon_pencere, text="Geri", command=root.deiconify)
     geri_butonu.pack(side="bottom", pady=10)
-
 
 # Hoşgeldiniz metnini oluştur
 hosgeldiniz_metni = tk.Label(root, text="Otel Bulma Programına Hoşgeldiniz", font=("Helvetica", 20, "bold"), pady=20)
