@@ -4,7 +4,7 @@ from tkcalendar import Calendar  # Tarih seçimi için
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
-import csv
+import txt
 
 # Ana uygulama penceresini oluştur
 root = tk.Tk()
@@ -61,6 +61,8 @@ def cikis_yap():
 
 def rezervasyon_ekrani():
     # Rezervasyon ekranını oluştur
+
+
     def geri_git():
         rezervasyon_pencere.destroy()
         root.deiconify()
@@ -143,9 +145,20 @@ def rezervasyon_ekrani():
     tl_bilgisi_label = tk.Label(rezervasyon_pencere, text="*1 Euro = 30 TL", font=("Helvetica", 10))
     tl_bilgisi_label.pack()
 
+    def check_inputs():
+        if not giris_tarihi or not cikis_tarihi:
+            messagebox.showerror("Hata", "Lütfen giriş ve çıkış tarihlerini seçin!")
+            return False
+        elif not odeme_sekli.get():
+            messagebox.showerror("Hata", "Lütfen ödeme şeklini seçin!")
+            return False
+        else:
+            return True
+
     def onayla():
-        global secilen_sehir, giris_tarihi, cikis_tarihi
-        secilen_sehir = secilen_sehir.get
+        if not check_inputs():
+            return
+        global giris_tarihi, cikis_tarihi
         giris_tarihi_str = giris_tarihi
         cikis_tarihi_str = cikis_tarihi
         secilen_odeme_sekli = odeme_sekli.get()
@@ -159,6 +172,75 @@ def rezervasyon_ekrani():
         # Otel verilerini göster
         show_hotels()
 
+    def scrape_hotels(city, checkin, checkout):
+        url = f'https://www.booking.com/searchresults.html?ss={city}&checkin={checkin}&checkout={checkout}&group_adults=2&no_rooms=1&group_children=0'
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36',
+            'Accept-Language': 'en-US, en;q=0.5'
+        }
+        response = requests.get(url, headers=headers)
+        soup = BeautifulSoup(response.text, 'html.parser')
+        hotels = soup.findAll('div', {'data-testid': 'property-card'})
+        hotels_data = []
+        for hotel in hotels:
+            name_element = hotel.find('div', {'data-testid': 'title'})
+            address_element = hotel.find('a', {'data-testid': 'address'})
+            distance_element = hotel.find('span', {'data-testid': 'distance-time'})
+            rating_element = hotel.find('span', {'data-testid': 'content-hotel-rating'})
+            price_element = hotel.find('div', {'data-testid': 'price-excluding-x-price-strikeout'})
+            name = name_element.text.strip() if name_element else "NOT GIVEN"
+            address = address_element.text.strip() if address_element else "NOT GIVEN"
+            distance = distance_element.text.strip() if distance_element else "NOT GIVEN"
+            rating = rating_element.text.strip() if rating_element else "NOT GIVEN"
+            price = price_element.text.strip() if price_element else "NOT GIVEN"
+            if price != "NOT GIVEN":
+                hotels_data.append({
+                    'name': name,
+                    'address': address,
+                    'distance': distance,
+                    'rating': rating,
+                    'price': price
+                })
+        # Otelleri fiyata göre sırala
+        hotels_data.sort(key=lambda x: float(x['price'].replace('EUR', '').replace('TL', '').strip()), reverse=False)
+        return hotels_data[:5]  # İlk 5 oteli döndür
+
+    def show_hotels():
+        city = secilen_sehir
+        checkin = giris_tarihi
+        checkout = cikis_tarihi
+        hotels_data = scrape_hotels(city, checkin, checkout)
+        # Otelleri TXT dosyasına kaydet
+        with open('myhotels.txt', 'w', encoding='utf-8') as txtfile:
+            for hotel in hotels_data:
+                txtfile.write(f"Otel Adı: {hotel['name']}\n")
+                txtfile.write(f"Adres: {hotel['address']}\n")
+                txtfile.write(f"Mesafe: {hotel['distance']}\n")
+                txtfile.write(f"Puan: {hotel['rating']}\n")
+                txtfile.write(f"Fiyat: {hotel['price']}\n\n")
+        # Top 5 otelleri GUI'de göster
+        display_top_hotels(hotels_data)
+
+    def display_top_hotels(top_hotels):
+        top_hotels_text.delete('1.0', tk.END)  # Önceki içeriği temizle
+        for hotel in top_hotels:
+            top_hotels_text.insert(tk.END, f"Otel Adı: {hotel['name']}\n")
+            top_hotels_text.insert(tk.END, f"Adres: {hotel['address']}\n")
+            top_hotels_text.insert(tk.END, f"Mesafe: {hotel['distance']}\n")
+            top_hotels_text.insert(tk.END, f"Puan: {hotel['rating']}\n")
+            top_hotels_text.insert(tk.END, f"Fiyat: {hotel['price']}\n\n")
+
+
+    # Top 5 Otelleri Gösterme Alanı
+    top_hotels_frame = tk.Frame(root)
+    top_hotels_frame.pack(pady=20)
+
+    top_hotels_label = tk.Label(top_hotels_frame, text="En İyi 5 Otel:", font=("Helvetica", 16, "bold"))
+    top_hotels_label.pack()
+
+    top_hotels_text = tk.Text(top_hotels_frame, height=20, width=70)
+    top_hotels_text.pack()
+
     onay_butonu = ttk.Button(rezervasyon_pencere, text="Onayla", command=onayla)
     onay_butonu.pack(pady=10)
 
@@ -168,64 +250,6 @@ def rezervasyon_ekrani():
     geri_butonu = ttk.Button(rezervasyon_pencere, text="Geri", command=geri_git)
     geri_butonu.pack(side="bottom", pady=10)
 
-def scrape_hotels(city, checkin, checkout):
-    url = f'https://www.booking.com/searchresults.html?ss={city}&checkin={checkin}&checkout={checkout}&group_adults=2&no_rooms=1&group_children=0'
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36',
-        'Accept-Language': 'en-US, en;q=0.5'
-    }
-    response = requests.get(url, headers=headers)
-    soup = BeautifulSoup(response.text, 'html.parser')
-    hotels = soup.findAll('div', {'data-testid': 'property-card'})
-    hotels_data = []
-    for hotel in hotels:
-        name_element = hotel.find('div', {'data-testid': 'title'})
-        address_element = hotel.find('a', {'data-testid': 'address'})
-        distance_element = hotel.find('span', {'data-testid': 'distance-time'})
-        rating_element = hotel.find('span', {'data-testid': 'content-hotel-rating'})
-        price_element = hotel.find('div', {'data-testid': 'price-excluding-x-price-strikeout'})
-        name = name_element.text.strip() if name_element else "NOT GIVEN"
-        address = address_element.text.strip() if address_element else "NOT GIVEN"
-        distance = distance_element.text.strip() if distance_element else "NOT GIVEN"
-        rating = rating_element.text.strip() if rating_element else "NOT GIVEN"
-        price = price_element.text.strip() if price_element else "NOT GIVEN"
-        if price != "NOT GIVEN":
-            hotels_data.append({
-                'name': name,
-                'address': address,
-                'distance': distance,
-                'rating': rating,
-                'price': price
-            })
-    # Otelleri fiyata göre sırala
-    hotels_data.sort(key=lambda x: float(x['price'].replace('EUR', '').replace('TL', '').strip()), reverse=False)
-    return hotels_data[:5]  # İlk 5 oteli döndür
-
-def show_hotels():
-    city = secilen_sehir
-    checkin = giris_tarihi
-    checkout = cikis_tarihi
-    hotels_data = scrape_hotels(city, checkin, checkout)
-    # Otelleri TXT dosyasına kaydet
-    with open('myhotels.txt', 'w', encoding='utf-8') as txtfile:
-        for hotel in hotels_data:
-            txtfile.write(f"Otel Adı: {hotel['name']}\n")
-            txtfile.write(f"Adres: {hotel['address']}\n")
-            txtfile.write(f"Mesafe: {hotel['distance']}\n")
-            txtfile.write(f"Puan: {hotel['rating']}\n")
-            txtfile.write(f"Fiyat: {hotel['price']}\n\n")
-    # Top 5 otelleri GUI'de göster
-    display_top_hotels(hotels_data)
-
-
-def display_top_hotels(top_hotels):
-    top_hotels_text.delete('1.0', tk.END)  # Önceki içeriği temizle
-    for hotel in top_hotels:
-        top_hotels_text.insert(tk.END, f"Otel Adı: {hotel['name']}\n")
-        top_hotels_text.insert(tk.END, f"Adres: {hotel['address']}\n")
-        top_hotels_text.insert(tk.END, f"Mesafe: {hotel['distance']}\n")
-        top_hotels_text.insert(tk.END, f"Puan: {hotel['rating']}\n")
-        top_hotels_text.insert(tk.END, f"Fiyat: {hotel['price']}\n\n")
 
 # Hoşgeldiniz metnini oluştur
 hosgeldiniz_metni = tk.Label(root, text="Otel Bulma Programına Hoşgeldiniz", font=("Helvetica", 20, "bold"), pady=20)
@@ -238,20 +262,8 @@ karanlik_mod = KaranlikMod(root)
 giris_butonu = ttk.Button(root, text="Rezervasyon Yapmak için Tıklayınız", command=giris_tiklandi)
 giris_butonu.pack(pady=20)
 
-
-
-# Top 5 Otelleri Gösterme Alanı
-top_hotels_frame = tk.Frame(root)
-top_hotels_frame.pack(pady=20)
-
-top_hotels_label = tk.Label(top_hotels_frame, text="En İyi 5 Otel:", font=("Helvetica", 16, "bold"))
-top_hotels_label.pack()
-
-top_hotels_text = tk.Text(top_hotels_frame, height=20, width=70)
-top_hotels_text.pack()
-
 # Çıkış Butonu
 cikis_butonu = ttk.Button(root, text="Çıkış", command=cikis_yap)
-cikis_butonu.pack(pady=20)
+cikis_butonu.pack(side="bottom",pady=20)
 
 root.mainloop()
