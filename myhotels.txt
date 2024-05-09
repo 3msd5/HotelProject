@@ -1,0 +1,150 @@
+Otel Adı: Ruby Emma Hotel Amsterdam
+Adres: NOT GIVEN
+Mesafe: NOT GIVEN
+Puan: NOT GIVEN
+Fiyat: NOT GIVEN
+
+Otel Adı: Joy Hotel
+Adres: NOT GIVEN
+Mesafe: NOT GIVEN
+Puan: NOT GIVEN
+Fiyat: NOT GIVEN
+
+Otel Adı: Via Amsterdam
+Adres: NOT GIVEN
+Mesafe: NOT GIVEN
+Puan: NOT GIVEN
+Fiyat: NOT GIVEN
+
+Otel Adı: ClinkNOORD Hostel
+Adres: NOT GIVEN
+Mesafe: NOT GIVEN
+Puan: NOT GIVEN
+Fiyat: NOT GIVEN
+
+Otel Adı: Hotel Estheréa
+Adres: NOT GIVEN
+Mesafe: NOT GIVEN
+Puan: NOT GIVEN
+Fiyat: NOT GIVEN
+
+Otel Adı: Wittenberg by Cove
+Adres: NOT GIVEN
+Mesafe: NOT GIVEN
+Puan: NOT GIVEN
+Fiyat: NOT GIVEN
+
+Otel Adı: Park Inn by Radisson Amsterdam City West
+Adres: NOT GIVEN
+Mesafe: NOT GIVEN
+Puan: NOT GIVEN
+Fiyat: NOT GIVEN
+
+Otel Adı: Motel One Amsterdam
+Adres: NOT GIVEN
+Mesafe: NOT GIVEN
+Puan: NOT GIVEN
+Fiyat: NOT GIVEN
+
+Otel Adı: Mercure Hotel Amsterdam West
+Adres: NOT GIVEN
+Mesafe: NOT GIVEN
+Puan: NOT GIVEN
+Fiyat: NOT GIVEN
+
+Otel Adı: 2 Houseboat Suites Amsterdam Prinsengracht
+Adres: NOT GIVEN
+Mesafe: NOT GIVEN
+Puan: NOT GIVEN
+Fiyat: NOT GIVEN
+
+Otel Adı: YOTEL Amsterdam
+Adres: NOT GIVEN
+Mesafe: NOT GIVEN
+Puan: NOT GIVEN
+Fiyat: NOT GIVEN
+
+Otel Adı: Novotel Amsterdam City
+Adres: NOT GIVEN
+Mesafe: NOT GIVEN
+Puan: NOT GIVEN
+Fiyat: NOT GIVEN
+
+Otel Adı: nhow Amsterdam Rai
+Adres: NOT GIVEN
+Mesafe: NOT GIVEN
+Puan: NOT GIVEN
+Fiyat: NOT GIVEN
+
+Otel Adı: Jaz in the City Amsterdam
+Adres: NOT GIVEN
+Mesafe: NOT GIVEN
+Puan: NOT GIVEN
+Fiyat: NOT GIVEN
+
+Otel Adı: The Alfred Hotel
+Adres: NOT GIVEN
+Mesafe: NOT GIVEN
+Puan: NOT GIVEN
+Fiyat: NOT GIVEN
+
+Otel Adı: Hotel Jakarta Amsterdam
+Adres: NOT GIVEN
+Mesafe: NOT GIVEN
+Puan: NOT GIVEN
+Fiyat: NOT GIVEN
+
+Otel Adı: Hotel Jansen Amsterdam Bajeskwartier
+Adres: NOT GIVEN
+Mesafe: NOT GIVEN
+Puan: NOT GIVEN
+Fiyat: NOT GIVEN
+
+Otel Adı: Hyatt Regency Amsterdam
+Adres: NOT GIVEN
+Mesafe: NOT GIVEN
+Puan: NOT GIVEN
+Fiyat: NOT GIVEN
+
+Otel Adı: Holiday Inn Express Amsterdam - North Riverside, an IHG Hotel
+Adres: NOT GIVEN
+Mesafe: NOT GIVEN
+Puan: NOT GIVEN
+Fiyat: NOT GIVEN
+
+Otel Adı: NH Amsterdam Zuid
+Adres: NOT GIVEN
+Mesafe: NOT GIVEN
+Puan: NOT GIVEN
+Fiyat: NOT GIVEN
+
+Otel Adı: Holiday Inn Express Amsterdam - Sloterdijk Station, an IHG Hotel
+Adres: NOT GIVEN
+Mesafe: NOT GIVEN
+Puan: NOT GIVEN
+Fiyat: NOT GIVEN
+
+Otel Adı: citizenM Amstel Amsterdam
+Adres: NOT GIVEN
+Mesafe: NOT GIVEN
+Puan: NOT GIVEN
+Fiyat: NOT GIVEN
+
+Otel Adı: Holiday Inn Express Amsterdam Arena Towers, an IHG Hotel
+Adres: NOT GIVEN
+Mesafe: NOT GIVEN
+Puan: NOT GIVEN
+Fiyat: NOT GIVEN
+
+Otel Adı: Volkshotel
+Adres: NOT GIVEN
+Mesafe: NOT GIVEN
+Puan: NOT GIVEN
+Fiyat: NOT GIVEN
+
+Otel Adı: Hampton By Hilton Amsterdam Arena Boulevard
+Adres: NOT GIVEN
+Mesafe: NOT GIVEN
+Puan: NOT GIVEN
+Fiyat: NOT GIVEN
+
