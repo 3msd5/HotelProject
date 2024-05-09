@@ -3,17 +3,12 @@ from tkinter import ttk, messagebox
 from tkcalendar import Calendar  # Tarih seçimi için
 from bs4 import BeautifulSoup
 import requests
-import pandas as pd
-import csv
 from datetime import datetime
 
 # Ana uygulama penceresini oluştur
 root = tk.Tk()
 root.title("Otel Bulma")
-
-# Pencere boyutunu ayarla
 root.geometry("800x900")
-
 
 # Gerekli değişkenleri tanımla
 secilen_sehir = ""  # Seçilen şehri global olarak tanımlayın
@@ -179,7 +174,7 @@ def rezervasyon_ekrani():
                             f"Giriş Tarihi: {giris_tarihi_str}\n"
                             f"Çıkış Tarihi: {cikis_tarihi_str}\n"
                             f"Ödeme Şekli: {secilen_odeme_sekli}\n\n"
-                            f"{fiyat_mesaji}")
+                            )
         # Otel verilerini göster
         show_hotels()
 
@@ -243,31 +238,37 @@ def rezervasyon_ekrani():
         display_top_hotels(hotels_data)
 
     def display_top_hotels(top_hotels):
-        top_hotels_text.delete('1.0', tk.END)  # Önceki içeriği temizle
-        for hotel in top_hotels:
-            top_hotels_text.insert(tk.END, f"Otel Adı: {hotel['name']}\n")
-            top_hotels_text.insert(tk.END, f"Adres: {hotel['address']}\n")
-            top_hotels_text.insert(tk.END, f"Mesafe: {hotel['distance']}\n")
-            top_hotels_text.insert(tk.END, f"Puan: {hotel['rating']}\n")
-            top_hotels_text.insert(tk.END, f"Fiyat: {hotel['price']}\n\n")
+        top_hotels_frame = tk.Frame(rezervasyon_pencere)
+        top_hotels_frame.pack(pady=20)
 
+        top_hotels_label = tk.Label(top_hotels_frame, text="En İyi 5 Otel:", font=("Helvetica", 16, "bold"))
+        top_hotels_label.pack()
 
-    # Top 5 Otelleri Gösterme Alanı
-    top_hotels_frame = tk.Frame(rezervasyon_pencere)
-    top_hotels_frame.pack(pady=20)
+        top_hotels_listbox = tk.Listbox(top_hotels_frame, height=15, width=80)
+        top_hotels_listbox.pack()
 
-    top_hotels_label = tk.Label(top_hotels_frame, text="En İyi 5 Otel:", font=("Helvetica", 16, "bold"))
-    top_hotels_label.pack()
+        for hotel_index in range(5):  # Sadece ilk 5 oteli listele
 
-    top_hotels_text = tk.Text(top_hotels_frame, height=12, width=70)
-    top_hotels_text.pack()
+            if hotel_index < len(top_hotels):
+                hotel = top_hotels[hotel_index]
 
-
-
+                top_hotels_listbox.insert(tk.END, f"{hotel_index + 1}. Otel ")
+                top_hotels_listbox.insert(tk.END, f"Otel Adı: {hotel['name']}")
+                top_hotels_listbox.insert(tk.END, f"Adres: {hotel['address']}")
+                top_hotels_listbox.insert(tk.END, f"Mesafe: {hotel['distance']}")
+                top_hotels_listbox.insert(tk.END, f"Puan: {hotel['rating']}")
+                top_hotels_listbox.insert(tk.END, f"Fiyat: {hotel['price']}")
+                top_hotels_listbox.insert(tk.END, "")
+                top_hotels_listbox.insert(tk.END, "")
     cikis_butonu = ttk.Button(rezervasyon_pencere, text="Çıkış", command=rezervasyon_pencere.destroy)
     cikis_butonu.pack(side="bottom", pady=10)
 
-    geri_butonu = ttk.Button(rezervasyon_pencere, text="Geri", command=root.deiconify)
+    def geri_butonu_tiklandi():
+        rezervasyon_pencere.withdraw()
+        root.deiconify()
+
+    geri_butonu = ttk.Button(rezervasyon_pencere, text="Geri", command=geri_butonu_tiklandi)
+
     geri_butonu.pack(side="bottom", pady=10)
 
 # Hoşgeldiniz metnini oluştur

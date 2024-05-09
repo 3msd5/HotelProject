@@ -106,6 +106,18 @@ Mesafe: NOT GIVEN
 Puan: NOT GIVEN
 Fiyat: NOT GIVEN
 
+Otel Adı: Amsterdam Wiechmann Hotel
+Adres: NOT GIVEN
+Mesafe: NOT GIVEN
+Puan: NOT GIVEN
+Fiyat: NOT GIVEN
+
+Otel Adı: citizenM Amsterdam South
+Adres: NOT GIVEN
+Mesafe: NOT GIVEN
+Puan: NOT GIVEN
+Fiyat: NOT GIVEN
+
 Otel Adı: Holiday Inn Express Amsterdam - North Riverside, an IHG Hotel
 Adres: NOT GIVEN
 Mesafe: NOT GIVEN
@@ -131,18 +143,6 @@ Puan: NOT GIVEN
 Fiyat: NOT GIVEN
 
 Otel Adı: Holiday Inn Express Amsterdam Arena Towers, an IHG Hotel
-Adres: NOT GIVEN
-Mesafe: NOT GIVEN
-Puan: NOT GIVEN
-Fiyat: NOT GIVEN
-
-Otel Adı: Volkshotel
-Adres: NOT GIVEN
-Mesafe: NOT GIVEN
-Puan: NOT GIVEN
-Fiyat: NOT GIVEN
-
-Otel Adı: Hampton By Hilton Amsterdam Arena Boulevard
 Adres: NOT GIVEN
 Mesafe: NOT GIVEN
 Puan: NOT GIVEN
