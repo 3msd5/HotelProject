@@ -152,11 +152,15 @@ def rezervasyon_ekrani():
     tl_bilgisi_label.pack()
 
     def check_inputs():
+        global giris_tarihi, cikis_tarihi
         if not giris_tarihi or not cikis_tarihi:
             messagebox.showerror("Hata", "Lütfen giriş ve çıkış tarihlerini seçin!")
             return False
         elif not odeme_sekli.get():
             messagebox.showerror("Hata", "Lütfen ödeme şeklini seçin!")
+            return False
+        elif cikis_tarihi <= giris_tarihi:
+            messagebox.showerror("Hata", "Çıkış tarihi giriş tarihinden önce veya aynı olamaz!")
             return False
         else:
             return True
@@ -182,39 +186,56 @@ def rezervasyon_ekrani():
     onay_butonu.pack(pady=10)
 
     def scrape_hotels(city, checkin, checkout):
-        url = f'https://www.booking.com/searchresults.html?ss={city}&checkin={checkin}&checkout={checkout}&group_adults=2&no_rooms=1&group_children=0'
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36',
-            'Accept-Language': 'en-US, en;q=0.5'
+        print("Checkin:", checkin)
+        print("Checkout:", checkout)
+        # Function to scrape hotel data from Booking.com
+        base_url = "https://www.booking.com/searchresults.en-gb.html"
+        query_params = {
+            'label': 'gen173nr-1FCAEoggI46AdIM1gEaOQBiAEBmAEouAEHyAEM2AEB6AEB-AELiAIBqAIDuAKmksuxBsACAdICJDkwMzNiODdlLTdmYjYtNGMxMy1hYWZjLWI5NDM5NGI3MzdhN9gCBuACAQ',
+            'sid': '75e30209011abe1aa1c492edf1647de4',
+            'sb': '1',
+            'sb_lp': '1',
+            'src': 'index',
+            'src_elem': 'sb',
+            'error_url': 'https://www.booking.com/index.en-gb.html',
+            'ss': city,
+            'checkin_monthday': checkin.split('/')[2],
+            'checkin_month': checkin.split('/')[1],
+            'checkin_year': checkin.split('/')[0],
+            'checkout_monthday': checkout.split('/')[2],
+            'checkout_month': checkout.split('/')[1],
+            'checkout_year': checkout.split('/')[0],
+            'group_adults': '2',
+            'group_children': '0',
+            'no_rooms': '1'
         }
-        try:
-            response = requests.get(url, headers=headers)
-            response.raise_for_status()  # HTTP hata durumlarını kontrol et
-            soup = BeautifulSoup(response.text, 'html.parser')
-            hotels = soup.findAll('div', {'data-testid': 'property-card'})
-            hotels_data = []
-            for hotel in hotels:
-                name_element = hotel.find('div', {'data-testid': 'title'})
-                address_element = hotel.find('a', {'data-testid': 'address'})
-                distance_element = hotel.find('span', {'data-testid': 'distance-time'})
-                rating_element = hotel.find('span', {'data-testid': 'content-hotel-rating'})
-                price_element = hotel.find('div', {'data-testid': 'price-excluding-x-price-strikeout'})
-                name = name_element.text.strip() if name_element else "NOT GIVEN"
-                address = address_element.text.strip() if address_element else "NOT GIVEN"
-                distance = distance_element.text.strip() if distance_element else "NOT GIVEN"
-                rating = rating_element.text.strip() if rating_element else "NOT GIVEN"
-                price = price_element.text.strip() if price_element else "NOT GIVEN"
-                hotels_data.append({
-                    'name': name,
-                    'address': address,
-                    'distance': distance,
-                    'rating': rating,
-                    'price': price
-                })
-            return hotels_data
-        except requests.exceptions.RequestException as e:
-            print(f"İstek hatası: {e}")
-            return []
+        url = f"{base_url}?{'&'.join([f'{k}={v}' for k, v in query_params.items()])}"
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
+            'Accept-Language': 'en-US, en;q=0.9'
+        }
+        response = requests.get(url, headers=headers)
+        soup = BeautifulSoup(response.text, 'html.parser')
+        hotels_data = []
+
+        for hotel in soup.findAll('div', {'data-testid': 'property-card'}):
+            title_element = hotel.find('div', {'data-testid': 'title'})
+            address_element = hotel.find('span', {'data-testid': 'address'})
+            distance_element = hotel.find('span', {'data-testid': 'distance'})
+            rating_element = hotel.find('div', {'data-testid': 'review-score'})
+            price_element = hotel.find('span', {'data-testid': 'price-and-discounted-price',
+                                                'class': 'f6431b446c fbfd7c1165 e84eb96b1f'})
+
+            hotel_data = {
+                'Hotel Title': title_element.text.strip() if title_element else 'N/A',
+                'Hotel Address': address_element.text.strip() if address_element else 'N/A',
+                'Distance to City Center': distance_element.text.strip() if distance_element else 'N/A',
+                'Hotel Rating': rating_element.text.strip() if rating_element else 'N/A',
+                'Price': price_element.text.strip() if price_element else 'N/A'
+            }
+            hotels_data.append(hotel_data)
+
+        return hotels_data
 
     def show_hotels():
         city = secilen_sehir
@@ -228,11 +249,12 @@ def rezervasyon_ekrani():
         # Otelleri TXT dosyasına kaydet
         with open('myhotels.txt', 'w', encoding='utf-8') as txtfile:
             for hotel in hotels_data:
-                txtfile.write(f"Otel Adı: {hotel['name']}\n")
-                txtfile.write(f"Adres: {hotel['address']}\n")
-                txtfile.write(f"Mesafe: {hotel['distance']}\n")
-                txtfile.write(f"Puan: {hotel['rating']}\n")
-                txtfile.write(f"Fiyat: {hotel['price']}\n\n")
+                txtfile.write(f"Otel Adı: {hotel['Hotel Title']}\n")
+                txtfile.write(f"Adres: {hotel['Hotel Address']}\n")
+                txtfile.write(f"Mesafe: {hotel['Distance to City Center']}\n")
+                txtfile.write(f"Puan: {hotel['Hotel Rating']}\n")
+                txtfile.write(f"Fiyat: {hotel['Price']}\n\n")
+
             # En iyi 5 otelleri göstermek için yeni pencere oluştur
         display_top_hotels_window(hotels_data)
 
@@ -255,12 +277,12 @@ def rezervasyon_ekrani():
             if hotel_index < len(top_hotels):
                 hotel = top_hotels[hotel_index]
 
-                top_hotels_text.insert(tk.END, f"{hotel_index + 1}. Otel\n"
-                                               f"Otel Adı: {hotel['name']}\n"
-                                               f"Adres: {hotel['address']}\n"
-                                               f"Mesafe: {hotel['distance']}\n"
-                                               f"Puan: {hotel['rating']}\n"
-                                               f"Fiyat: {hotel['price']}\n\n")
+                top_hotels_text.insert(tk.END, f"************ {hotel_index + 1}. Otel ************\n"
+                                               f"Otel Adı: {hotel['Hotel Title']}\n"
+                                               f"Adres: {hotel['Hotel Address']}\n"
+                                               f"Mesafe: {hotel['Distance to City Center']}\n"
+                                               f"Puan: {hotel['Hotel Rating']}\n"
+                                               f"Fiyat: {hotel['Price']}\n\n")
 
         # Kapat, Çıkış ve Karanlık Mod düğmelerini ekleyin
         cikis_butonu = ttk.Button(top_hotels_window, text="Kapat", command=top_hotels_window.destroy)
