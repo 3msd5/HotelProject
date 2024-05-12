@@ -87,6 +87,7 @@ def rezervasyon_ekrani():
     sehirler_dropdown = ttk.Combobox(rezervasyon_pencere, values=sehirler, font=("Helvetica", 14))
     sehirler_dropdown.set(secilen_sehir)  # Başlangıçta seçilen şehri belirtin
     sehirler_dropdown.pack(pady=10)
+    sehirler_dropdown.bind("<<ComboboxSelected>>", update_selected_city)
 
     # Giriş Tarihi Seçimi
     tk.Label(rezervasyon_pencere, text="Giriş Tarihi Seçiniz:", font=("Helvetica", 14, "bold")).pack()
@@ -223,15 +224,20 @@ def rezervasyon_ekrani():
             address_element = hotel.find('span', {'data-testid': 'address'})
             distance_element = hotel.find('span', {'data-testid': 'distance'})
             rating_element = hotel.find('div', {'data-testid': 'review-score'})
-            price_element = hotel.find('span', {'data-testid': 'price-and-discounted-price',
-                                                'class': 'f6431b446c fbfd7c1165 e84eb96b1f'})
+            price_element = hotel.find('span', {'data-testid': 'price-and-discounted-price'})
+            price = 'N/A'
+
+            if price_element:
+                price = price_element.text.strip()
+                # TL işaretini ve boşlukları kaldır
+                price = price.replace('TL', '').replace('&nbsp;', '').strip()
 
             hotel_data = {
                 'Hotel Title': title_element.text.strip() if title_element else 'N/A',
                 'Hotel Address': address_element.text.strip() if address_element else 'N/A',
                 'Distance to City Center': distance_element.text.strip() if distance_element else 'N/A',
                 'Hotel Rating': rating_element.text.strip() if rating_element else 'N/A',
-                'Price': price_element.text.strip() if price_element else 'N/A'
+                'Price': price
             }
             hotels_data.append(hotel_data)
 
@@ -255,7 +261,7 @@ def rezervasyon_ekrani():
                 txtfile.write(f"Puan: {hotel['Hotel Rating']}\n")
                 txtfile.write(f"Fiyat: {hotel['Price']}\n\n")
 
-            # En iyi 5 otelleri göstermek için yeni pencere oluştur
+        # En iyi 5 otelleri göstermek için yeni pencere oluştur
         display_top_hotels_window(hotels_data)
 
     def display_top_hotels_window(top_hotels):
@@ -282,7 +288,7 @@ def rezervasyon_ekrani():
                                                f"Adres: {hotel['Hotel Address']}\n"
                                                f"Mesafe: {hotel['Distance to City Center']}\n"
                                                f"Puan: {hotel['Hotel Rating']}\n"
-                                               f"Fiyat: {hotel['Price']}\n\n")
+                                               f"Fiyat: {hotel['Price'] if hotel['Price'] else 'Bilgi Yok'}\n\n")
 
         # Kapat, Çıkış ve Karanlık Mod düğmelerini ekleyin
         cikis_butonu = ttk.Button(top_hotels_window, text="Kapat", command=top_hotels_window.destroy)
