@@ -233,35 +233,45 @@ def rezervasyon_ekrani():
                 txtfile.write(f"Mesafe: {hotel['distance']}\n")
                 txtfile.write(f"Puan: {hotel['rating']}\n")
                 txtfile.write(f"Fiyat: {hotel['price']}\n\n")
+            # En iyi 5 otelleri göstermek için yeni pencere oluştur
+        display_top_hotels_window(hotels_data)
 
-        # Top 5 otelleri GUI'de göster
-        display_top_hotels(hotels_data)
+    def display_top_hotels_window(top_hotels):
+        top_hotels_window = tk.Toplevel()
+        top_hotels_window.title("En İyi 5 Oteller")
+        top_hotels_window.geometry("800x900")
 
-    def display_top_hotels(top_hotels):
-        top_hotels_frame = tk.Frame(rezervasyon_pencere)
+        top_hotels_frame = tk.Frame(top_hotels_window)
         top_hotels_frame.pack(pady=20)
 
         top_hotels_label = tk.Label(top_hotels_frame, text="En İyi 5 Otel:", font=("Helvetica", 16, "bold"))
         top_hotels_label.pack()
 
-        top_hotels_listbox = tk.Listbox(top_hotels_frame, height=15, width=80)
-        top_hotels_listbox.pack()
+        # Metin alanı oluştur
+        top_hotels_text = tk.Text(top_hotels_frame, height=36, width=100, font=("Helvetica", 12))
+        top_hotels_text.pack(side="left", fill="both", expand=True)
 
         for hotel_index in range(5):  # Sadece ilk 5 oteli listele
-
             if hotel_index < len(top_hotels):
                 hotel = top_hotels[hotel_index]
 
-                top_hotels_listbox.insert(tk.END, f"{hotel_index + 1}. Otel ")
-                top_hotels_listbox.insert(tk.END, f"Otel Adı: {hotel['name']}")
-                top_hotels_listbox.insert(tk.END, f"Adres: {hotel['address']}")
-                top_hotels_listbox.insert(tk.END, f"Mesafe: {hotel['distance']}")
-                top_hotels_listbox.insert(tk.END, f"Puan: {hotel['rating']}")
-                top_hotels_listbox.insert(tk.END, f"Fiyat: {hotel['price']}")
-                top_hotels_listbox.insert(tk.END, "")
-                top_hotels_listbox.insert(tk.END, "")
-    cikis_butonu = ttk.Button(rezervasyon_pencere, text="Çıkış", command=rezervasyon_pencere.destroy)
-    cikis_butonu.pack(side="bottom", pady=10)
+                top_hotels_text.insert(tk.END, f"{hotel_index + 1}. Otel\n"
+                                               f"Otel Adı: {hotel['name']}\n"
+                                               f"Adres: {hotel['address']}\n"
+                                               f"Mesafe: {hotel['distance']}\n"
+                                               f"Puan: {hotel['rating']}\n"
+                                               f"Fiyat: {hotel['price']}\n\n")
+
+        # Kapat, Çıkış ve Karanlık Mod düğmelerini ekleyin
+        cikis_butonu = ttk.Button(top_hotels_window, text="Kapat", command=top_hotels_window.destroy)
+        cikis_butonu.pack(side="bottom", pady=10)
+
+        cikis_ana_butonu = ttk.Button(top_hotels_window, text="Çıkış", command=cikis_yap)
+        cikis_ana_butonu.pack(side="bottom", pady=10)
+
+        karanlik_mod_dugme = ttk.Button(top_hotels_window, text="Karanlık Mod",
+                                        command=karanlik_mod.karanlik_modunu_degistir)
+        karanlik_mod_dugme.pack(side="bottom", pady=10)
 
     def geri_butonu_tiklandi():
         rezervasyon_pencere.withdraw()
@@ -270,6 +280,9 @@ def rezervasyon_ekrani():
     geri_butonu = ttk.Button(rezervasyon_pencere, text="Geri", command=geri_butonu_tiklandi)
 
     geri_butonu.pack(side="bottom", pady=10)
+
+    cikis_butonu_rezervasyon = ttk.Button(rezervasyon_pencere, text="Çıkış",command=rezervasyon_pencere.destroy)
+    cikis_butonu_rezervasyon.pack(side="bottom", pady=10)
 
 # Hoşgeldiniz metnini oluştur
 hosgeldiniz_metni = tk.Label(root, text="Otel Bulma Programına Hoşgeldiniz", font=("Helvetica", 20, "bold"), pady=20)
