@@ -193,12 +193,13 @@ def rezervasyon_ekrani():
     onay_butonu.pack(pady=10)
 
     def scrape_hotels(city, checkin, checkout):
-        print("Checkin:", checkin)
-        print("Checkout:", checkout)
-        print("Payment Type:", odeme_sekli.get())
-        # Function to scrape hotel data from Booking.com
-        base_url = "https://www.booking.com/searchresults.en-gb.html"
-        query_params = {
+        try:
+            print("Checkin:", checkin)
+            print("Checkout:", checkout)
+            print("Payment Type:", odeme_sekli.get())
+            # Function to scrape hotel data from Booking.com
+            base_url = "https://www.booking.com/searchresults.en-gb.html"
+            query_params = {
             'label': 'gen173nr-1FCAEoggI46AdIM1gEaOQBiAEBmAEouAEHyAEM2AEB6AEB-AELiAIBqAIDuAKmksuxBsACAdICJDkwMzNiODdlLTdmYjYtNGMxMy1hYWZjLWI5NDM5NGI3MzdhN9gCBuACAQ',
             'sid': '75e30209011abe1aa1c492edf1647de4',
             'sb': '1',
@@ -216,40 +217,46 @@ def rezervasyon_ekrani():
             'group_adults': '2',
             'group_children': '0',
             'no_rooms': '1'
-        }
-        url2 = f"{base_url}?{'&'.join([f'{k}={v}' for k, v in query_params.items()])}"
-        url4 = f"https://www.booking.com/searchresults.en-gb.html?ss={city}&ssne={city}&ssne_untouched={city}&efdco=1&label=gen173nr-1FCAEoggI46AdIM1gEaOQBiAEBmAEouAEHyAEM2AEB6AEB-AELiAIBqAIDuAKmksuxBsACAdICJDkwMzNiODdlLTdmYjYtNGMxMy1hYWZjLWI5NDM5NGI3MzdhN9gCBuACAQ&sid=75e30209011abe1aa1c492edf1647de4&aid=304142&lang=en-gb&sb=1&src_elem=sb&src=searchresults&dest_id=-2140479&dest_type=city&checkin={checkin}&checkout={checkout}&group_adults=2&no_rooms=1&group_children=0"
-        url3 = f"https://www.booking.com/searchresults.en-gb.html?ss=Amsterdam&ssne=Amsterdam&ssne_untouched=Amsterdam&efdco=1&label=gen173nr-1FCAEoggI46AdIM1gEaOQBiAEBmAEouAEHyAEM2AEB6AEB-AELiAIBqAIDuAKmksuxBsACAdICJDkwMzNiODdlLTdmYjYtNGMxMy1hYWZjLWI5NDM5NGI3MzdhN9gCBuACAQ&sid=75e30209011abe1aa1c492edf1647de4&aid=304142&lang=en-gb&sb=1&src_elem=sb&src=searchresults&dest_id=-2140479&dest_type=city&checkin=2024-05-14&checkout=2024-05-16&group_adults=2&no_rooms=1&group_children=0"
-        url = f"https://www.booking.com/searchresults.en-gb.html?ss=Amsterdam&ssne=Amsterdam&ssne_untouched=Amsterdam&efdco=1&label=gen173nr-1FCAEoggI46AdIM1gEaOQBiAEBmAEouAEHyAEM2AEB6AEB-AELiAIBqAIDuAKmksuxBsACAdICJDkwMzNiODdlLTdmYjYtNGMxMy1hYWZjLWI5NDM5NGI3MzdhN9gCBuACAQ&sid=75e30209011abe1aa1c492edf1647de4&aid=304142&lang=en-gb&sb=1&src_elem=sb&src=searchresults&dest_id=-2140479&dest_type=city&checkin={checkin}&checkout={checkout}&group_adults=2&no_rooms=1&group_children=0&selected_currency={odeme_sekli.get()}"
-        print(checkout)
-        print(checkin)
-        print(url)
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
-            'Accept-Language': 'en-US, en;q=0.9'
-        }
-        response = requests.get(url, headers=headers)
-        soup = BeautifulSoup(response.text, 'html.parser')
-        hotels_data = []
-
-        for hotel in soup.findAll('div', {'data-testid': 'property-card'}):
-            title_element = hotel.find('div', {'data-testid': 'title'})
-            address_element = hotel.find('span', {'data-testid': 'address'})
-            distance_element = hotel.find('span', {'data-testid': 'distance'})
-            rating_element = hotel.find('div', {'data-testid': 'review-score'})
-            price_element = hotel.find('span', {'class': 'f6431b446c fbfd7c1165 e84eb96b1f'})
-
-            hotel_data = {
-                'Hotel Title': title_element.text.strip() if title_element else 'N/A',
-                'Hotel Address': address_element.text.strip() if address_element else 'N/A',
-                'Distance to City Center': distance_element.text.strip() if distance_element else 'N/A',
-                'Hotel Rating': rating_element.text.strip() if rating_element else 'N/A',
-                'Price': price_element.text.strip() if price_element else 'N/A'
             }
-            print(hotel_data)
-            hotels_data.append(hotel_data)
+            url2 = f"{base_url}?{'&'.join([f'{k}={v}' for k, v in query_params.items()])}"
+            url4 = f"https://www.booking.com/searchresults.en-gb.html?ss={city}&ssne={city}&ssne_untouched={city}&efdco=1&label=gen173nr-1FCAEoggI46AdIM1gEaOQBiAEBmAEouAEHyAEM2AEB6AEB-AELiAIBqAIDuAKmksuxBsACAdICJDkwMzNiODdlLTdmYjYtNGMxMy1hYWZjLWI5NDM5NGI3MzdhN9gCBuACAQ&sid=75e30209011abe1aa1c492edf1647de4&aid=304142&lang=en-gb&sb=1&src_elem=sb&src=searchresults&dest_id=-2140479&dest_type=city&checkin={checkin}&checkout={checkout}&group_adults=2&no_rooms=1&group_children=0"
+            url3 = f"https://www.booking.com/searchresults.en-gb.html?ss=Amsterdam&ssne=Amsterdam&ssne_untouched=Amsterdam&efdco=1&label=gen173nr-1FCAEoggI46AdIM1gEaOQBiAEBmAEouAEHyAEM2AEB6AEB-AELiAIBqAIDuAKmksuxBsACAdICJDkwMzNiODdlLTdmYjYtNGMxMy1hYWZjLWI5NDM5NGI3MzdhN9gCBuACAQ&sid=75e30209011abe1aa1c492edf1647de4&aid=304142&lang=en-gb&sb=1&src_elem=sb&src=searchresults&dest_id=-2140479&dest_type=city&checkin=2024-05-14&checkout=2024-05-16&group_adults=2&no_rooms=1&group_children=0"
+            url = f"https://www.booking.com/searchresults.en-gb.html?ss=Amsterdam&ssne=Amsterdam&ssne_untouched=Amsterdam&efdco=1&label=gen173nr-1FCAEoggI46AdIM1gEaOQBiAEBmAEouAEHyAEM2AEB6AEB-AELiAIBqAIDuAKmksuxBsACAdICJDkwMzNiODdlLTdmYjYtNGMxMy1hYWZjLWI5NDM5NGI3MzdhN9gCBuACAQ&sid=75e30209011abe1aa1c492edf1647de4&aid=304142&lang=en-gb&sb=1&src_elem=sb&src=searchresults&dest_id=-2140479&dest_type=city&checkin={checkin}&checkout={checkout}&group_adults=2&no_rooms=1&group_children=0&selected_currency={odeme_sekli.get()}"
+            print(checkout)
+            print(checkin)
+            print(url)
+            headers = {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
+                'Accept-Language': 'en-US, en;q=0.9'
+            }
+            response = requests.get(url, headers=headers)
 
-        return hotels_data
+            response.raise_for_status()  # Raises an exception for 4XX or 5XX status codes
+            soup = BeautifulSoup(response.text, 'html.parser')
+            hotels_data = []
+
+            for hotel in soup.findAll('div', {'data-testid': 'property-card'}):
+                title_element = hotel.find('div', {'data-testid': 'title'})
+                address_element = hotel.find('span', {'data-testid': 'address'})
+                distance_element = hotel.find('span', {'data-testid': 'distance'})
+                rating_element = hotel.find('div', {'data-testid': 'review-score'})
+                price_element = hotel.find('span', {'class': 'f6431b446c fbfd7c1165 e84eb96b1f'})
+
+                hotel_data = {
+                    'Hotel Title': title_element.text.strip() if title_element else 'N/A',
+                    'Hotel Address': address_element.text.strip() if address_element else 'N/A',
+                    'Distance to City Center': distance_element.text.strip() if distance_element else 'N/A',
+                    'Hotel Rating': rating_element.text.strip() if rating_element else 'N/A',
+                    'Price': price_element.text.strip() if price_element else 'N/A'
+                }
+                print(hotel_data)
+                hotels_data.append(hotel_data)
+
+            return hotels_data
+
+        except requests.RequestException as e:
+            messagebox.showerror("Hata", f"İnternet bağlantısında bir sorun oluştu: {str(e)}")
+            return []
 
     def show_hotels():
         city = secilen_sehir
@@ -258,7 +265,7 @@ def rezervasyon_ekrani():
 
         hotels_data = scrape_hotels(city, checkin, checkout)
         if not hotels_data:
-            messagebox.showerror("Hata", "Veri bulunamadı. Lütfen farklı bir tarih veya şehir seçin.")
+            messagebox.showerror("Hata", "Veri bulunamadı. Lütfen farklı bir tarih veya şehir seçin veya internet bağlantınızı kontrol edin.")
             return
 
         # Otelleri TXT dosyasına kaydet
