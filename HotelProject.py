@@ -71,7 +71,7 @@ def rezervasyon_ekrani():
     def update_clock():
         now = datetime.now()
         current_time = now.strftime("%H:%M:%S")
-        current_date = now.strftime("%d/%m/%Y")
+        current_date = now.strftime("%y-%m-%d")
         clock_label.config(text=f"Tarih: {current_date}     Saat: {current_time}")
         rezervasyon_pencere.after(1000, update_clock)
 
@@ -87,7 +87,13 @@ def rezervasyon_ekrani():
     sehirler_dropdown = ttk.Combobox(rezervasyon_pencere, values=sehirler, font=("Helvetica", 14))
     sehirler_dropdown.set(secilen_sehir)  # Başlangıçta seçilen şehri belirtin
     sehirler_dropdown.pack(pady=10)
-    sehirler_dropdown.bind("<<ComboboxSelected>>", update_selected_city)
+
+    def on_sehir_sec(*args):      # Şehir seçimi değiştiğinde çağrılacak işlev
+        global secilen_sehir
+        secilen_sehir = sehirler_dropdown.get()
+
+    # Şehir seçimi bileşenine işlevi bağlayın
+    sehirler_dropdown.bind("<<ComboboxSelected>>", on_sehir_sec)
 
     # Giriş Tarihi Seçimi
     tk.Label(rezervasyon_pencere, text="Giriş Tarihi Seçiniz:", font=("Helvetica", 14, "bold")).pack()
@@ -97,7 +103,7 @@ def rezervasyon_ekrani():
 
     def g_tarih_sec():
         g_tarih_win = tk.Toplevel()
-        cal = Calendar(g_tarih_win, selectmode='day', date_pattern='dd/mm/yyyy')
+        cal = Calendar(g_tarih_win, selectmode='day', date_pattern='yyyy-mm-dd')
         cal.pack(padx=20, pady=20)
 
         def g_tarih_onay():
@@ -120,7 +126,7 @@ def rezervasyon_ekrani():
 
     def c_tarih_sec():
         c_tarih_win = tk.Toplevel()
-        cal = Calendar(c_tarih_win, selectmode='day', date_pattern='dd/mm/yyyy')
+        cal = Calendar(c_tarih_win, selectmode='day', date_pattern='yyyy-mm-dd')
         cal.pack(padx=20, pady=20)
 
         def c_tarih_onay():
@@ -143,9 +149,9 @@ def rezervasyon_ekrani():
     tk.Label(rezervasyon_pencere, text="Ödeme Şekli Seçiniz*:", font=("Helvetica", 14, "bold")).pack()
     odeme_sekli = tk.StringVar()
     odeme_sekli.set("Euro")
-    odeme_sekli_radio1 = ttk.Radiobutton(rezervasyon_pencere, text="€ - EURO", variable=odeme_sekli, value="Euro", style='TButton')
+    odeme_sekli_radio1 = ttk.Radiobutton(rezervasyon_pencere, text="€ - EURO", variable=odeme_sekli, value="EUR", style='TButton')
     odeme_sekli_radio1.pack()
-    odeme_sekli_radio2 = ttk.Radiobutton(rezervasyon_pencere, text="₺ - TL", variable=odeme_sekli, value="TL", style='TButton')
+    odeme_sekli_radio2 = ttk.Radiobutton(rezervasyon_pencere, text="₺ - TL", variable=odeme_sekli, value="TRY", style='TButton')
     odeme_sekli_radio2.pack()
 
     # 1 Euro = 30 TL bilgisini ekleyelim
@@ -189,6 +195,7 @@ def rezervasyon_ekrani():
     def scrape_hotels(city, checkin, checkout):
         print("Checkin:", checkin)
         print("Checkout:", checkout)
+        print("Payment Type:", odeme_sekli.get())
         # Function to scrape hotel data from Booking.com
         base_url = "https://www.booking.com/searchresults.en-gb.html"
         query_params = {
@@ -200,17 +207,23 @@ def rezervasyon_ekrani():
             'src_elem': 'sb',
             'error_url': 'https://www.booking.com/index.en-gb.html',
             'ss': city,
-            'checkin_monthday': checkin.split('/')[2],
-            'checkin_month': checkin.split('/')[1],
-            'checkin_year': checkin.split('/')[0],
-            'checkout_monthday': checkout.split('/')[2],
-            'checkout_month': checkout.split('/')[1],
-            'checkout_year': checkout.split('/')[0],
+            'checkin_monthday': checkin.split('-')[2],
+            'checkin_month': checkin.split('-')[1],
+            'checkin_year': checkin.split('-')[0],
+            'checkout_monthday': checkout.split('-')[2],
+            'checkout_month': checkout.split('-')[1],
+            'checkout_year': checkout.split('-')[0],
             'group_adults': '2',
             'group_children': '0',
             'no_rooms': '1'
         }
-        url = f"{base_url}?{'&'.join([f'{k}={v}' for k, v in query_params.items()])}"
+        url2 = f"{base_url}?{'&'.join([f'{k}={v}' for k, v in query_params.items()])}"
+        url4 = f"https://www.booking.com/searchresults.en-gb.html?ss={city}&ssne={city}&ssne_untouched={city}&efdco=1&label=gen173nr-1FCAEoggI46AdIM1gEaOQBiAEBmAEouAEHyAEM2AEB6AEB-AELiAIBqAIDuAKmksuxBsACAdICJDkwMzNiODdlLTdmYjYtNGMxMy1hYWZjLWI5NDM5NGI3MzdhN9gCBuACAQ&sid=75e30209011abe1aa1c492edf1647de4&aid=304142&lang=en-gb&sb=1&src_elem=sb&src=searchresults&dest_id=-2140479&dest_type=city&checkin={checkin}&checkout={checkout}&group_adults=2&no_rooms=1&group_children=0"
+        url3 = f"https://www.booking.com/searchresults.en-gb.html?ss=Amsterdam&ssne=Amsterdam&ssne_untouched=Amsterdam&efdco=1&label=gen173nr-1FCAEoggI46AdIM1gEaOQBiAEBmAEouAEHyAEM2AEB6AEB-AELiAIBqAIDuAKmksuxBsACAdICJDkwMzNiODdlLTdmYjYtNGMxMy1hYWZjLWI5NDM5NGI3MzdhN9gCBuACAQ&sid=75e30209011abe1aa1c492edf1647de4&aid=304142&lang=en-gb&sb=1&src_elem=sb&src=searchresults&dest_id=-2140479&dest_type=city&checkin=2024-05-14&checkout=2024-05-16&group_adults=2&no_rooms=1&group_children=0"
+        url = f"https://www.booking.com/searchresults.en-gb.html?ss=Amsterdam&ssne=Amsterdam&ssne_untouched=Amsterdam&efdco=1&label=gen173nr-1FCAEoggI46AdIM1gEaOQBiAEBmAEouAEHyAEM2AEB6AEB-AELiAIBqAIDuAKmksuxBsACAdICJDkwMzNiODdlLTdmYjYtNGMxMy1hYWZjLWI5NDM5NGI3MzdhN9gCBuACAQ&sid=75e30209011abe1aa1c492edf1647de4&aid=304142&lang=en-gb&sb=1&src_elem=sb&src=searchresults&dest_id=-2140479&dest_type=city&checkin={checkin}&checkout={checkout}&group_adults=2&no_rooms=1&group_children=0&selected_currency={odeme_sekli.get()}"
+        print(checkout)
+        print(checkin)
+        print(url)
         headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
             'Accept-Language': 'en-US, en;q=0.9'
@@ -224,21 +237,16 @@ def rezervasyon_ekrani():
             address_element = hotel.find('span', {'data-testid': 'address'})
             distance_element = hotel.find('span', {'data-testid': 'distance'})
             rating_element = hotel.find('div', {'data-testid': 'review-score'})
-            price_element = hotel.find('span', {'data-testid': 'price-and-discounted-price'})
-            price = 'N/A'
-
-            if price_element:
-                price = price_element.text.strip()
-                # TL işaretini ve boşlukları kaldır
-                price = price.replace('TL', '').replace('&nbsp;', '').strip()
+            price_element = hotel.find('span', {'class': 'f6431b446c fbfd7c1165 e84eb96b1f'})
 
             hotel_data = {
                 'Hotel Title': title_element.text.strip() if title_element else 'N/A',
                 'Hotel Address': address_element.text.strip() if address_element else 'N/A',
                 'Distance to City Center': distance_element.text.strip() if distance_element else 'N/A',
                 'Hotel Rating': rating_element.text.strip() if rating_element else 'N/A',
-                'Price': price
+                'Price': price_element.text.strip() if price_element else 'N/A'
             }
+            print(hotel_data)
             hotels_data.append(hotel_data)
 
         return hotels_data
@@ -247,6 +255,7 @@ def rezervasyon_ekrani():
         city = secilen_sehir
         checkin = giris_tarihi
         checkout = cikis_tarihi
+
         hotels_data = scrape_hotels(city, checkin, checkout)
         if not hotels_data:
             messagebox.showerror("Hata", "Veri bulunamadı. Lütfen farklı bir tarih veya şehir seçin.")
@@ -261,7 +270,7 @@ def rezervasyon_ekrani():
                 txtfile.write(f"Puan: {hotel['Hotel Rating']}\n")
                 txtfile.write(f"Fiyat: {hotel['Price']}\n\n")
 
-        # En iyi 5 otelleri göstermek için yeni pencere oluştur
+            # En iyi 5 otelleri göstermek için yeni pencere oluştur
         display_top_hotels_window(hotels_data)
 
     def display_top_hotels_window(top_hotels):
@@ -283,15 +292,15 @@ def rezervasyon_ekrani():
             if hotel_index < len(top_hotels):
                 hotel = top_hotels[hotel_index]
 
-                top_hotels_text.insert(tk.END, f"************ {hotel_index + 1}. Otel ************\n"
+                top_hotels_text.insert(tk.END, f"************** {hotel_index + 1}. Otel **************\n"
                                                f"Otel Adı: {hotel['Hotel Title']}\n"
                                                f"Adres: {hotel['Hotel Address']}\n"
                                                f"Mesafe: {hotel['Distance to City Center']}\n"
                                                f"Puan: {hotel['Hotel Rating']}\n"
-                                               f"Fiyat: {hotel['Price'] if hotel['Price'] else 'Bilgi Yok'}\n\n")
+                                               f"Fiyat: {hotel['Price']}\n\n")
 
         # Kapat, Çıkış ve Karanlık Mod düğmelerini ekleyin
-        cikis_butonu = ttk.Button(top_hotels_window, text="Kapat", command=top_hotels_window.destroy)
+        cikis_butonu = ttk.Button(top_hotels_window, text="Pencereyi Kapat", command=top_hotels_window.destroy)
         cikis_butonu.pack(side="bottom", pady=10)
 
         cikis_ana_butonu = ttk.Button(top_hotels_window, text="Çıkış", command=cikis_yap)
