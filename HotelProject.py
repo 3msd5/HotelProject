@@ -9,6 +9,11 @@ from datetime import datetime
 root = tk.Tk()
 root.title("Otel Bulma")
 root.geometry("800x900")
+# Stil oluştur
+style = ttk.Style()
+#style.theme_use('clam')  # Mevcut temayı kullanabilirsiniz
+
+# Radyo butonlarının arka plan rengini değiştir
 
 # Gerekli değişkenleri tanımla
 secilen_sehir = ""  # Seçilen şehri global olarak tanımlayın
@@ -221,7 +226,7 @@ def rezervasyon_ekrani():
             url2 = f"{base_url}?{'&'.join([f'{k}={v}' for k, v in query_params.items()])}"
             url4 = f"https://www.booking.com/searchresults.en-gb.html?ss={city}&ssne={city}&ssne_untouched={city}&efdco=1&label=gen173nr-1FCAEoggI46AdIM1gEaOQBiAEBmAEouAEHyAEM2AEB6AEB-AELiAIBqAIDuAKmksuxBsACAdICJDkwMzNiODdlLTdmYjYtNGMxMy1hYWZjLWI5NDM5NGI3MzdhN9gCBuACAQ&sid=75e30209011abe1aa1c492edf1647de4&aid=304142&lang=en-gb&sb=1&src_elem=sb&src=searchresults&dest_id=-2140479&dest_type=city&checkin={checkin}&checkout={checkout}&group_adults=2&no_rooms=1&group_children=0"
             url3 = f"https://www.booking.com/searchresults.en-gb.html?ss=Amsterdam&ssne=Amsterdam&ssne_untouched=Amsterdam&efdco=1&label=gen173nr-1FCAEoggI46AdIM1gEaOQBiAEBmAEouAEHyAEM2AEB6AEB-AELiAIBqAIDuAKmksuxBsACAdICJDkwMzNiODdlLTdmYjYtNGMxMy1hYWZjLWI5NDM5NGI3MzdhN9gCBuACAQ&sid=75e30209011abe1aa1c492edf1647de4&aid=304142&lang=en-gb&sb=1&src_elem=sb&src=searchresults&dest_id=-2140479&dest_type=city&checkin=2024-05-14&checkout=2024-05-16&group_adults=2&no_rooms=1&group_children=0"
-            url = f"https://www.booking.com/searchresults.en-gb.html?ss=Amsterdam&ssne=Amsterdam&ssne_untouched=Amsterdam&efdco=1&label=gen173nr-1FCAEoggI46AdIM1gEaOQBiAEBmAEouAEHyAEM2AEB6AEB-AELiAIBqAIDuAKmksuxBsACAdICJDkwMzNiODdlLTdmYjYtNGMxMy1hYWZjLWI5NDM5NGI3MzdhN9gCBuACAQ&sid=75e30209011abe1aa1c492edf1647de4&aid=304142&lang=en-gb&sb=1&src_elem=sb&src=searchresults&dest_id=-2140479&dest_type=city&checkin={checkin}&checkout={checkout}&group_adults=2&no_rooms=1&group_children=0&selected_currency={odeme_sekli.get()}"
+            url = f"https://www.booking.com/searchresults.en-gb.html?ss=Amsterdam&ssne=Amsterdam&ssne_untouched=Amsterdam&efdco=1&label=gen173nr-1FCAEoggI46AdIM1gEaOQBiAEBmAEouAEHyAEM2AEB6AEB-AELiAIBqAIDuAKmksuxBsACAdICJDkwMzNiODdlLTdmYjYtNGMxMy1hYWZjLWI5NDM5NGI3MzdhN9gCBuACAQ&sid=75e30209011abe1aa1c492edf1647de4&aid=304142&lang=en-gb&sb=1&src_elem=sb&src=searchresults&dest_id=-2140479&dest_type=city&checkin={checkin}&checkout={checkout}&group_adults=2&no_rooms=1&group_children=0&selected_currency=EUR"
             print(checkout)
             print(checkin)
             print(url)
@@ -251,6 +256,14 @@ def rezervasyon_ekrani():
                 }
                 print(hotel_data)
                 hotels_data.append(hotel_data)
+
+
+                if odeme_sekli.get() == "TRY":
+                    for hotel_data in hotels_data:
+                        if hotel_data['Price'] != 'N/A' and '€' in hotel_data['Price']:
+                            euro_price = float(hotel_data['Price'].replace('€', '').replace(',', '').strip())
+                            tl_price = euro_price * 30  # 1 Euro = 30 TL dönüşümü
+                            hotel_data['Price'] = f'{tl_price:.2f} TL'
 
             return hotels_data
 
