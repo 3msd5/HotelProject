@@ -1,68 +1,20 @@
-Otel Adı: Ruby Emma Hotel Amsterdam
+Otel Adı: Volkshotel
 Adres: Oost, Amsterdam
-Mesafe: 4.3 km from centre
-Puan: 8.6Scored 8.6 Fabulous 6,282 reviews
-Fiyat: 6600.00 TL
-
-Otel Adı: Apollo Hotel Amsterdam, a Tribute Portfolio Hotel
-Adres: Oud Zuid, Amsterdam
-Mesafe: 2.8 km from centre
-Puan: 8.2Scored 8.2 Very good 1,574 reviews
-Fiyat: 8670.00 TL
-
-Otel Adı: Bens The Highdocks
-Adres: Amsterdam Noord, Amsterdam
-Mesafe: 2.7 km from centre
-Puan: 7.4Scored 7.4 Good 498 reviews
-Fiyat: 5040.00 TL
-
-Otel Adı: The Sixteen
-Adres: Amsterdam City Centre, Amsterdam
-Mesafe: 0.7 km from centre
-Puan: 7.7Scored 7.7 Good 866 reviews
-Fiyat: 6450.00 TL
-
-Otel Adı: Hotel The Neighbour's Magnolia
-Adres: Oud Zuid, Amsterdam
 Mesafe: 2.5 km from centre
-Puan: 7.7Scored 7.7 Good 1,380 reviews
-Fiyat: 2970.00 TL
+Puan: 8.6Scored 8.6 Fabulous 4,831 reviews
+Fiyat: 2580.00 TL
 
-Otel Adı: Hotel Estheréa
+Otel Adı: THIS HO(S)TEL
 Adres: Amsterdam City Centre, Amsterdam
-Mesafe: 400 m from centre
-Puan: 9.1Scored 9.1 Superb 4,867 reviews
-Fiyat: 9000.00 TL
-
-Otel Adı: YOTEL Amsterdam
-Adres: Amsterdam Noord, Amsterdam
-Mesafe: 2.2 km from centre
-Puan: 8.1Scored 8.1 Very good 8,715 reviews
-Fiyat: 5700.00 TL
-
-Otel Adı: Via Amsterdam
-Adres: Bijlmermeer, Amsterdam
-Mesafe: 6.6 km from centre
-Puan: 8.1Scored 8.1 Very good 16,839 reviews
-Fiyat: 3570.00 TL
-
-Otel Adı: Joy Hotel
-Adres: Zuidoost, Amsterdam
-Mesafe: 8.5 km from centre
-Puan: 7.4Scored 7.4 Good 7,734 reviews
-Fiyat: 3840.00 TL
-
-Otel Adı: ClinkNOORD Hostel
-Adres: Amsterdam Noord, Amsterdam
-Mesafe: 1.5 km from centre
-Puan: 8.0Scored 8.0 Very good 15,114 reviews
-Fiyat: 3630.00 TL
+Mesafe: 0.5 km from centre
+Puan: 8.3Scored 8.3 Very good 5,483 reviews
+Fiyat: 2940.00 TL
 
 Otel Adı: The Old Nickel Hotel
 Adres: Amsterdam City Centre, Amsterdam
 Mesafe: 0.6 km from centre
 Puan: 6.9Scored 6.9 Review score 3,449 reviews
-Fiyat: 3450.00 TL
+Fiyat: 3150.00 TL
 
 Otel Adı: Hotel Washington
 Adres: Oud Zuid, Amsterdam
@@ -70,93 +22,135 @@ Mesafe: 2.1 km from centre
 Puan: 7.3Scored 7.3 Good 2,554 reviews
 Fiyat: 3300.00 TL
 
-Otel Adı: Bunk Hotel Amsterdam
-Adres: Amsterdam Noord, Amsterdam
-Mesafe: 2.2 km from centre
-Puan: 8.6Scored 8.6 Fabulous 4,871 reviews
-Fiyat: 2040.00 TL
-
-Otel Adı: Belfort Hotel
-Adres: Oud Zuid, Amsterdam
-Mesafe: 3.3 km from centre
-Puan: 6.3Scored 6.3 Review score 3,637 reviews
-Fiyat: 2670.00 TL
-
-Otel Adı: Hotel Amsterdam Inn
-Adres: Amsterdam City Centre, Amsterdam
-Mesafe: 1.2 km from centre
-Puan: 6.8Scored 6.8 Review score 2,105 reviews
-Fiyat: 2700.00 TL
-
-Otel Adı: Quentin England Hotel
-Adres: Oud-West, Amsterdam
-Mesafe: 1.7 km from centre
-Puan: 6.3Scored 6.3 Review score 1,549 reviews
-Fiyat: 2700.00 TL
-
-Otel Adı: OZO Hotels Armada Amsterdam
-Adres: Amsterdam City Centre, Amsterdam
-Mesafe: 1.1 km from centre
-Puan: 6.9Scored 6.9 Review score 1,732 reviews
-Fiyat: 3330.00 TL
-
-Otel Adı: Hotel Damsquare
-Adres: Amsterdam City Centre, Amsterdam
-Mesafe: 150 m from centre
-Puan: 7.3Scored 7.3 Good 2,224 reviews
-Fiyat: 4200.00 TL
-
-Otel Adı: Urban Lodge Hotel
-Adres: Westpoort, Amsterdam
-Mesafe: 4.2 km from centre
-Puan: 8.0Scored 8.0 Very good 3,961 reviews
-Fiyat: 4170.00 TL
-
 Otel Adı: The Alfred Hotel
 Adres: Oud Zuid, Amsterdam
 Mesafe: 2.6 km from centre
 Puan: 7.3Scored 7.3 Good 5,706 reviews
 Fiyat: 3360.00 TL
 
-Otel Adı: Di-Ann City Centre Hotel
-Adres: Amsterdam City Centre, Amsterdam
-Mesafe: 450 m from centre
-Puan: 5.4Scored 5.4 Review score 2,289 reviews
-Fiyat: 3270.00 TL
-
-Otel Adı: Stanley Collection Hotel Hegra Amsterdam
-Adres: Amsterdam City Centre, Amsterdam
-Mesafe: 400 m from centre
-Puan: 8.0Scored 8.0 Very good 638 reviews
-Fiyat: 5550.00 TL
-
-Otel Adı: The Hendrick's Hotel
+Otel Adı: Hotel Library Amsterdam
 Adres: Amsterdam City Centre, Amsterdam
 Mesafe: 0.9 km from centre
-Puan: 9.1Scored 9.1 Superb 1,523 reviews
-Fiyat: 6990.00 TL
+Puan: 8.0Scored 8.0 Very good 3,272 reviews
+Fiyat: 3900.00 TL
 
-Otel Adı: Hotel Park Plantage
+Otel Adı: Hotel Damsquare
 Adres: Amsterdam City Centre, Amsterdam
+Mesafe: 150 m from centre
+Puan: 7.3Scored 7.3 Good 2,224 reviews
+Fiyat: 4050.00 TL
+
+Otel Adı: Melrose Hotel
+Adres: Amsterdam City Centre, Amsterdam
+Mesafe: 1 km from centre
+Puan: 7.7Scored 7.7 Good 2,466 reviews
+Fiyat: 4140.00 TL
+
+Otel Adı: Conscious Hotel Amsterdam City - The Tire Station
+Adres: Oud-West, Amsterdam
+Mesafe: 3.1 km from centre
+Puan: 8.3Scored 8.3 Very good 2,961 reviews
+Fiyat: 4170.00 TL
+
+Otel Adı: Mozart Hotel
+Adres: Amsterdam City Centre, Amsterdam
+Mesafe: 1.1 km from centre
+Puan: 7.3Scored 7.3 Good 5,130 reviews
+Fiyat: 4350.00 TL
+
+Otel Adı: Conscious Hotel Westerpark
+Adres: Westerpark, Amsterdam
+Mesafe: 1.9 km from centre
+Puan: 8.4Scored 8.4 Very good 3,121 reviews
+Fiyat: 4470.00 TL
+
+Otel Adı: The ED Amsterdam
+Adres: Oud-West, Amsterdam
 Mesafe: 1.4 km from centre
-Puan: 7.3Scored 7.3 Good 2,047 reviews
-Fiyat: 3750.00 TL
+Puan: 8.4Scored 8.4 Very good 1,890 reviews
+Fiyat: 4470.00 TL
 
-Otel Adı: Hotel Ben Centre
+Otel Adı: Multatuli Hotel
 Adres: Amsterdam City Centre, Amsterdam
-Mesafe: 350 m from centre
-Puan: 5.9Scored 5.9 Review score 5,983 reviews
-Fiyat: 2700.00 TL
+Mesafe: 0.7 km from centre
+Puan: 7.6Scored 7.6 Good 3,287 reviews
+Fiyat: 4800.00 TL
 
-Otel Adı: Facade Hotel Amsterdam
-Adres: Amsterdam City Centre, Amsterdam
-Mesafe: 500 m from centre
-Puan: 7.3Scored 7.3 Good 3,187 reviews
-Fiyat: 3960.00 TL
+Otel Adı: Bens The Highdocks
+Adres: Amsterdam Noord, Amsterdam
+Mesafe: 2.7 km from centre
+Puan: 7.4Scored 7.4 Good 498 reviews
+Fiyat: 5040.00 TL
 
-Otel Adı: Rho Hotel
+Otel Adı: Tribe Amsterdam City
+Adres: Amsterdam Noord, Amsterdam
+Mesafe: 4.2 km from centre
+Puan: 9.0Scored 9.0 Superb 6,354 reviews
+Fiyat: 5070.00 TL
+
+Otel Adı: Avenue Hotel
 Adres: Amsterdam City Centre, Amsterdam
-Mesafe: 100 m from centre
-Puan: 7.8Scored 7.8 Good 7,722 reviews
-Fiyat: 5100.00 TL
+Mesafe: 450 m from centre
+Puan: 7.3Scored 7.3 Good 4,683 reviews
+Fiyat: 5130.00 TL
+
+Otel Adı: Morgan & Mees Amsterdam
+Adres: Westerpark, Amsterdam
+Mesafe: 1.3 km from centre
+Puan: 8.8Scored 8.8 Fabulous 404 reviews
+Fiyat: 5160.00 TL
+
+Otel Adı: Amsterdam House Hotel
+Adres: Amsterdam City Centre, Amsterdam
+Mesafe: 0.6 km from centre
+Puan: 7.8Scored 7.8 Good 1,923 reviews
+Fiyat: 5250.00 TL
+
+Otel Adı: NH Amsterdam Noord
+Adres: Amsterdam Noord, Amsterdam
+Mesafe: 2.5 km from centre
+Puan: 8.3Scored 8.3 Very good 830 reviews
+Fiyat: 5820.00 TL
+
+Otel Adı: Hotel Mercier
+Adres: Amsterdam City Centre, Amsterdam
+Mesafe: 0.7 km from centre
+Puan: 8.5Scored 8.5 Very good 2,756 reviews
+Fiyat: 5910.00 TL
+
+Otel Adı: Van der Valk Hotel Amsterdam - Amstel
+Adres: Oost, Amsterdam
+Mesafe: 4.6 km from centre
+Puan: 8.7Scored 8.7 Fabulous 6,197 reviews
+Fiyat: 5940.00 TL
+
+Otel Adı: Hotel Mai Amsterdam
+Adres: Amsterdam City Centre, Amsterdam
+Mesafe: 0.6 km from centre
+Puan: 8.5Scored 8.5 Very good 5,688 reviews
+Fiyat: 6150.00 TL
+
+Otel Adı: The Highland House
+Adres: Amsterdam City Centre, Amsterdam
+Mesafe: 250 m from centre
+Puan: 8.4Scored 8.4 Very good 993 reviews
+Fiyat: 6270.00 TL
+
+Otel Adı: Mövenpick Hotel Amsterdam City Centre
+Adres: Zeeburg, Amsterdam
+Mesafe: 1.5 km from centre
+Puan: 8.3Scored 8.3 Very good 5,157 reviews
+Fiyat: 8070.00 TL
+
+Otel Adı: Pillows Grand Boutique Hotel Maurits at the Park - Small Luxury Hotels
+Adres: Oost, Amsterdam
+Mesafe: 2.2 km from centre
+Puan: 9.3Scored 9.3 Superb 336 reviews
+Fiyat: 13980.00 TL
+
+Otel Adı: Sofitel Legend The Grand Amsterdam
+Adres: Amsterdam City Centre, Amsterdam
+Mesafe: 250 m from centre
+Puan: 9.0Scored 9.0 Superb 940 reviews
+Fiyat: 16350.00 TL
 

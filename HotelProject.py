@@ -257,13 +257,20 @@ def rezervasyon_ekrani():
                 print(hotel_data)
                 hotels_data.append(hotel_data)
 
+                # Para birimi seçimine göre fiyatları dönüştürme
+            for hotel_data in hotels_data:
+                if odeme_sekli.get() == "TRY" and '€' in hotel_data['Price']:
+                    euro_price = float(hotel_data['Price'].replace('€', '').replace(',', '').strip())
+                    tl_price = euro_price * 30  # 1 Euro = 30 TL dönüşümü
+                    hotel_data['Price'] = f'{tl_price:.2f} TL'
+                elif odeme_sekli.get() == "EUR" and '€' in hotel_data['Price']:
+                    euro_price = float(hotel_data['Price'].replace('€', '').replace(',', '').strip())
+                    hotel_data['Price'] = f'{euro_price:.2f} Euro'
 
-                if odeme_sekli.get() == "TRY":
-                    for hotel_data in hotels_data:
-                        if hotel_data['Price'] != 'N/A' and '€' in hotel_data['Price']:
-                            euro_price = float(hotel_data['Price'].replace('€', '').replace(',', '').strip())
-                            tl_price = euro_price * 30  # 1 Euro = 30 TL dönüşümü
-                            hotel_data['Price'] = f'{tl_price:.2f} TL'
+            # Otel verilerini fiyatlarına göre sırala
+            hotels_data.sort(key=lambda x: float(
+                x['Price'].split()[0].replace('TL', '').replace('Euro', '').replace(',', '')) if 'TL' in x[
+                'Price'] or 'Euro' in x['Price'] else float('inf'))
 
             return hotels_data
 
@@ -357,3 +364,5 @@ cikis_butonu = ttk.Button(root, text="Çıkış", command=cikis_yap)
 cikis_butonu.pack(side="bottom",pady=20)
 
 root.mainloop()
+
+
