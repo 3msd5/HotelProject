@@ -1,14 +1,16 @@
-import tkinter as tk
-from tkinter import ttk, messagebox
+import tkinter as tk # gui
+from tkinter import ttk, messagebox #uyarı mesajları
 from tkcalendar import Calendar  # Tarih seçimi için
 from bs4 import BeautifulSoup
 import requests
 from datetime import datetime
+from PIL import Image, ImageTk  # resimler için
+import io
 
 # Ana uygulama penceresini oluştur
 root = tk.Tk()
 root.title("Otel Bulma")
-root.geometry("800x900")
+root.geometry("800x600")
 # Stil oluştur
 style = ttk.Style()
 #style.theme_use('clam')  # Mevcut temayı kullanabilirsiniz
@@ -246,13 +248,15 @@ def rezervasyon_ekrani():
                 distance_element = hotel.find('span', {'data-testid': 'distance'})
                 rating_element = hotel.find('div', {'data-testid': 'review-score'})
                 price_element = hotel.find('span', {'class': 'f6431b446c fbfd7c1165 e84eb96b1f'})
+                image_element = hotel.find('img', {'class': 'f9671d49b1'})  # Resim URL'lerini bul
 
                 hotel_data = {
-                    'Hotel Title': title_element.text.strip() if title_element else 'N/A',
-                    'Hotel Address': address_element.text.strip() if address_element else 'N/A',
-                    'Distance to City Center': distance_element.text.strip() if distance_element else 'N/A',
-                    'Hotel Rating': rating_element.text.strip() if rating_element else 'N/A',
-                    'Price': price_element.text.strip() if price_element else 'N/A'
+                    'Hotel Title': title_element.text.strip() if title_element else 'NOT GIVEN',
+                    'Hotel Address': address_element.text.strip() if address_element else 'NOT GIVEN',
+                    'Distance to City Center': distance_element.text.strip() if distance_element else 'NOT GIVEN',
+                    'Hotel Rating': rating_element.text.strip() if rating_element else 'NOT GIVEN',
+                    'Price': price_element.text.strip() if price_element else 'NOT GIVEN',
+                    'Image URL': image_element['src'] if image_element else 'NOT GIVEN'
                 }
                 print(hotel_data)
                 hotels_data.append(hotel_data)
@@ -302,29 +306,44 @@ def rezervasyon_ekrani():
 
     def display_top_hotels_window(top_hotels):
         top_hotels_window = tk.Toplevel()
-        top_hotels_window.title("En İyi 5 Oteller")
-        top_hotels_window.geometry("800x900")
+        top_hotels_window.title("En Ucuz 5 Otel:")
+        top_hotels_window.geometry("800x1000")
 
         top_hotels_frame = tk.Frame(top_hotels_window)
         top_hotels_frame.pack(pady=20)
 
-        top_hotels_label = tk.Label(top_hotels_frame, text="En İyi 5 Otel:", font=("Helvetica", 16, "bold"))
+        top_hotels_label = tk.Label(top_hotels_frame, text="En Ucuz 5 Otel:", font=("Helvetica", 16, "bold"))
         top_hotels_label.pack()
 
+        # Resim alanı oluştur
+        image_frame = tk.Frame(top_hotels_frame)
+        image_frame.pack(side="left", fill="both", expand=True)
         # Metin alanı oluştur
         top_hotels_text = tk.Text(top_hotels_frame, height=36, width=100, font=("Helvetica", 12))
         top_hotels_text.pack(side="left", fill="both", expand=True)
+
 
         for hotel_index in range(5):  # Sadece ilk 5 oteli listele
             if hotel_index < len(top_hotels):
                 hotel = top_hotels[hotel_index]
 
-                top_hotels_text.insert(tk.END, f"************** {hotel_index + 1}. Otel **************\n"
+                top_hotels_text.insert(tk.END, f"\n\n\n\n************** {hotel_index + 1}. Otel **************\n"
                                                f"Otel Adı: {hotel['Hotel Title']}\n"
                                                f"Adres: {hotel['Hotel Address']}\n"
                                                f"Mesafe: {hotel['Distance to City Center']}\n"
                                                f"Puan: {hotel['Hotel Rating']}\n"
-                                               f"Fiyat: {hotel['Price']}\n\n")
+                                               f"Fiyat: {hotel['Price']}\n\n\n")
+                # Otel resimlerini yükle ve göster
+                if hotel['Image URL']:
+                    response = requests.get(hotel['Image URL'])
+                    image_data = response.content
+                    image = Image.open(io.BytesIO(image_data))
+                    image = image.resize((200, 200),Image.Resampling.LANCZOS)  # ANTIALIAS yerine Image.Resampling.LANCZOS kullan
+                    photo = ImageTk.PhotoImage(image)
+
+                    image_label = tk.Label(image_frame, image=photo)
+                    image_label.image = photo  # Referansı saklayın
+                    image_label.pack(pady=10)
 
         # Kapat, Çıkış ve Karanlık Mod düğmelerini ekleyin
         cikis_butonu = ttk.Button(top_hotels_window, text="Pencereyi Kapat", command=top_hotels_window.destroy)
@@ -364,5 +383,4 @@ cikis_butonu = ttk.Button(root, text="Çıkış", command=cikis_yap)
 cikis_butonu.pack(side="bottom",pady=20)
 
 root.mainloop()
-
 
