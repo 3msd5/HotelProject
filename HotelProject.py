@@ -10,13 +10,12 @@ import webbrowser # şehir bilgileri url si için
 
 # Ana uygulama penceresini oluştur
 root = tk.Tk()
-root.title("Otel Bulma")
+root.title("Finding Cheapest Hotel")
 root.geometry("800x600")
 # Stil oluştur
 style = ttk.Style()
 #style.theme_use('clam')  # tkinter içindeki en modern tema
 
-# Radyo butonlarının arka plan rengini değiştir
 
 # Gerekli değişkenleri tanımla
 secilen_sehir = ""  # Seçilen şehri global olarak tanımlayın
@@ -30,7 +29,7 @@ class KaranlikMod:
         self.karanlik_modu = False
 
         # Karanlık modu açma / kapama düğmesi
-        self.karanlik_modu_dugme = ttk.Button(root, text="Karanlık Modu", command=self.karanlik_modunu_degistir)
+        self.karanlik_modu_dugme = ttk.Button(root, text="Dark Mode", command=self.karanlik_modunu_degistir)
         self.karanlik_modu_dugme.pack(side="bottom", pady=10)
 
 
@@ -80,7 +79,7 @@ def rezervasyon_ekrani():
     global secilen_sehir, giris_tarihi, cikis_tarihi
 
     rezervasyon_pencere = tk.Toplevel()
-    rezervasyon_pencere.title("Rezervasyon Ekranı")
+    rezervasyon_pencere.title("Reservation Screen")
     rezervasyon_pencere.geometry("800x900")  # Pencere boyutunu ayarla
 
     # Karanlık modu özelliğini ekleyin
@@ -91,7 +90,7 @@ def rezervasyon_ekrani():
         now = datetime.now()
         current_time = now.strftime("%H:%M:%S")
         current_date = now.strftime("%y-%m-%d")
-        clock_label.config(text=f"Tarih: {current_date}     Saat: {current_time}")
+        clock_label.config(text=f"Date: {current_date}     |     Time: {current_time}")
         rezervasyon_pencere.after(1000, update_clock)
 
     clock_label = tk.Label(rezervasyon_pencere, font=("Helvetica", 12))
@@ -100,9 +99,9 @@ def rezervasyon_ekrani():
 
     secilen_sehir = None  # Başlangıçta hiçbir şehir seçili değil
 
-    tk.Label(rezervasyon_pencere, text="Şehir Seçiniz:", font=("Helvetica", 14, "bold")).pack()
-    sehirler = ["Amsterdam", "Barselona", "Berlin", "Braga", "Lisbon", "Madrid", "Manchester", "Milan", "Paris",
-                "Prague", "Roma", "Venice", "Vienna", "Zurich"]
+    tk.Label(rezervasyon_pencere, text="Please Select City:", font=("Helvetica", 14, "bold")).pack()
+    sehirler = ["Amsterdam", "Barcelona", "Berlin", "Braga", "Lisbon", "Madrid", "Manchester", "Milan", "Paris",
+                "Prague", "Rome", "Venice", "Vienna", "Zurich"]
     sehirler_dropdown = ttk.Combobox(rezervasyon_pencere, values=sehirler, font=("Helvetica", 14))
     sehirler_dropdown.current(None)  # Başlangıçta seçili bir şehir yok
     sehirler_dropdown.pack(pady=10)
@@ -113,24 +112,24 @@ def rezervasyon_ekrani():
         if secilen_sehir in sehir_bilgileri:
             bilgi_metni.config(text=sehir_bilgileri[secilen_sehir])
         else:
-            bilgi_metni.config(text="Bu şehir hakkında bilgi bulunamadı.")
+            bilgi_metni.config(text="No information about this city.")
 
     # Şehir bilgileri sözlüğü
     sehir_bilgileri = {
-        "Amsterdam": "Founded in the 12th century as a fishing village on the banks of the river Amstel, Amsterdam is the largest city in the Netherlands in terms of population and the most important culturally and financially.",
-        "Barcelona": "The second largest city in the North East of Spain. It is also the capital and largest city of the autonomous community of Catalonia. Barcelona, with its rich cultural heritage, is today an important cultural center and one of the most important tourist destinations.",
+        "Amsterdam": "Founded in the 12th century as a fishing village on the banks of the river Amstel,\nAmsterdam is the largest city in the Netherlands in terms of population\nand the most important culturally and financially.",
+        "Barcelona": "The second largest city in the North East of Spain. It is also the capital\nand largest city of the autonomous community of Catalonia. Barcelona, with its rich cultural\nheritage, is today an important cultural center and one of the most important tourist destinations.",
         "Berlin": "The capital and largest city of Germany, also a state.",
-        "Braga": "It is the third largest city in Portugal and the largest city in the Minho Region. The city is considered the religious center of the country.",
-        "Lisbon": "Lisbon is the capital of Portugal. It is the largest city of this country in Europe. Built on the river formed by the Tejo River, Lisbon is located on the Atlantic Ocean coast.",
-        "Madrid": "Spain's capital and most populous city. It is also the political, economic and cultural center of the country.",
-        "Manchester": "A city in the North-West region of England in the United Kingdom. It is the sixth most populous city in the country.",
-        "Milan": "The capital of the Lombardy region in northern Italy. Milan is the fashion and financial center of Italy.",
-        "Paris": "The capital of France and the most populous city in the country. Since the 17th century, Paris has been one of Europe's most important centers of finance, diplomacy, trade, fashion, gastronomy, science and art.",
-        "Prague": "The capital and largest city of the Czech Republic, also known as the ‘Golden City’, ‘Left Bank of the Nineties’, ‘Fairytale City’, ‘Mother of Cities’ and ‘Heart of Europe’.",
-        "Rome": "Rome is the capital and largest city of Italy. It includes the Vatican City, the independent state where the Pope lives.",
-        "Venice": "Venice is a famous city in northeastern Italy. It is built on 118 islands separated by canals and connected by bridges.",
-        "Vienna": "Vienna is the capital and most populous city of Austria. It is the smallest in terms of area.",
-        "Zurich": "Zurich is the largest city in Switzerland and an important cultural center. It is the economic center of Switzerland and the cultural center of the German-speaking region. FIFA headquarters is located in Zurich."
+        "Braga": "It is the third largest city in Portugal and the largest city in the Minho Region.\nThe city is considered the religious center of the country.",
+        "Lisbon": "Lisbon is the capital of Portugal. It is the largest city of this country in Europe.\nBuilt on the river formed by the Tejo River, Lisbon is located on the Atlantic Ocean coast.",
+        "Madrid": "Spain's capital and most populous city. It is also the political,\neconomic and cultural center of the country.",
+        "Manchester": "A city in the North-West region of England in the United Kingdom.\nIt is the sixth most populous city in the country.",
+        "Milan": "The capital of the Lombardy region in northern Italy.\nMilan is the fashion and financial center of Italy.",
+        "Paris": "The capital of France and the most populous city in the country.\nSince the 17th century, Paris has been one of Europe's most important\ncenters of finance, diplomacy, trade, fashion, gastronomy, science and art.",
+        "Prague": "The capital and largest city of the Czech Republic, also\nknown as the ‘Golden City’, ‘Left Bank of the Nineties’, ‘Fairytale City’,\n‘Mother of Cities’ and ‘Heart of Europe’.",
+        "Rome": "Rome is the capital and largest city of Italy.\nIt includes the Vatican City, the independent state where the Pope lives.",
+        "Venice": "Venice is a famous city in northeastern Italy.\nIt is built on 118 islands separated by canals and connected by bridges.",
+        "Vienna": "Vienna is the capital and most populous city of Austria.\nIt is the smallest in terms of area.",
+        "Zurich": "Zurich is the largest city in Switzerland and an important cultural center.\nIt is the economic center of Switzerland and the cultural center of the\nGerman-speaking region. FIFA headquarters is located in Zurich."
     }
 
     # Şehir seçimi bileşenine işlevi bağlayın
@@ -142,16 +141,16 @@ def rezervasyon_ekrani():
 
     def bilgi():
         if not secilen_sehir:
-            messagebox.showinfo("Bilgi", "Lütfen bir şehir seçin.")
+            messagebox.showinfo("Error", "Please select a city.")
             return
         bilgi_url = f"https://en.wikipedia.org/wiki/{secilen_sehir}"
         webbrowser.open(bilgi_url)
 
-    bilgi_button = ttk.Button(rezervasyon_pencere, text="Şehir Hakkında Daha Fazla Bilgi İçin Tıklayınız", command=bilgi)
+    bilgi_button = ttk.Button(rezervasyon_pencere, text="For more information about the city click here", command=bilgi)
     bilgi_button.pack(pady=10)
 
     # Giriş Tarihi Seçimi
-    tk.Label(rezervasyon_pencere, text="Giriş Tarihi Seçiniz:", font=("Helvetica", 14, "bold")).pack()
+    tk.Label(rezervasyon_pencere, text="Select Check-in Date:", font=("Helvetica", 14, "bold")).pack()
     g_tarih = tk.StringVar()
     g_tarih_label = tk.Label(rezervasyon_pencere, textvariable=g_tarih, font=("Helvetica", 12))
     g_tarih_label.pack()
@@ -167,14 +166,14 @@ def rezervasyon_ekrani():
             g_tarih.set(giris_tarihi)
             g_tarih_win.destroy()
 
-        g_tarih_onay_button = tk.Button(g_tarih_win, text="Onayla", command=g_tarih_onay, font=("Helvetica", 12))
+        g_tarih_onay_button = tk.Button(g_tarih_win, text="Confirm", command=g_tarih_onay, font=("Helvetica", 12))
         g_tarih_onay_button.pack(pady=10)
 
-    g_tarih_sec_button = ttk.Button(rezervasyon_pencere, text='Giriş Tarihi Seç', command=g_tarih_sec, style='TButton')
+    g_tarih_sec_button = ttk.Button(rezervasyon_pencere, text='Select Check-in Date', command=g_tarih_sec, style='TButton')
     g_tarih_sec_button.pack(pady=10)
 
     # Çıkış Tarihi Seçimi
-    tk.Label(rezervasyon_pencere, text="Çıkış Tarihi Seçiniz:", font=("Helvetica", 14, "bold")).pack()
+    tk.Label(rezervasyon_pencere, text="Select Check-out Date:", font=("Helvetica", 14, "bold")).pack()
     c_tarih = tk.StringVar()
     c_tarih_label = tk.Label(rezervasyon_pencere, textvariable=c_tarih, font=("Helvetica", 12))
     c_tarih_label.pack()
@@ -190,18 +189,18 @@ def rezervasyon_ekrani():
             c_tarih.set(cikis_tarihi)
             if giris_tarihi and cikis_tarihi:
                 if cikis_tarihi <= giris_tarihi:  # Çıkış tarihi giriş tarihinden önce olmamalı
-                    messagebox.showerror("Hata", "Çıkış tarihi giriş tarihinden önce veya aynı olamaz!")
+                    messagebox.showerror("Error", "The release date cannot be before or the same as the entry date!")
                     return
             c_tarih_win.destroy()
 
-        c_tarih_onay_button = tk.Button(c_tarih_win, text="Onayla", command=c_tarih_onay, font=("Helvetica", 12))
+        c_tarih_onay_button = tk.Button(c_tarih_win, text="Confirm", command=c_tarih_onay, font=("Helvetica", 12))
         c_tarih_onay_button.pack(pady=10)
 
-    c_tarih_sec_button = ttk.Button(rezervasyon_pencere, text='Çıkış Tarihi Seç', command=c_tarih_sec, style='TButton')
+    c_tarih_sec_button = ttk.Button(rezervasyon_pencere, text='Select Check-out Date', command=c_tarih_sec, style='TButton')
     c_tarih_sec_button.pack(pady=10)
 
     # Ödeme Şekli Seçimi
-    tk.Label(rezervasyon_pencere, text="Ödeme Şekli Seçiniz*:", font=("Helvetica", 14, "bold")).pack()
+    tk.Label(rezervasyon_pencere, text="Choose Payment Method*:", font=("Helvetica", 14, "bold")).pack()
     odeme_sekli = tk.StringVar()
 
     odeme_sekli_radio1 = ttk.Radiobutton(rezervasyon_pencere, text="€ - EURO", variable=odeme_sekli, value="EUR", style='TRadiobutton')
@@ -216,16 +215,16 @@ def rezervasyon_ekrani():
     def check_inputs():
         global secilen_sehir, giris_tarihi, cikis_tarihi
         if not secilen_sehir:
-            messagebox.showerror("Hata", "Lütfen bir şehir seçiniz!")
+            messagebox.showerror("Error", "Please select a city!")
             return False
         elif not giris_tarihi or not cikis_tarihi:
-            messagebox.showerror("Hata", "Lütfen giriş ve çıkış tarihlerini seçin!")
+            messagebox.showerror("Error", "Please select the check-in and check-out dates!")
             return False
         elif not odeme_sekli.get():  # odeme_sekli'yi kontrol ederken get() fonksiyonunu kullanarak gerçek değeri alın
-            messagebox.showerror("Hata", "Lütfen ödeme şeklini seçin!")
+            messagebox.showerror("Error", "Please choose the payment method!")
             return False
         elif cikis_tarihi <= giris_tarihi:
-            messagebox.showerror("Hata", "Çıkış tarihi giriş tarihinden önce veya aynı olamaz!")
+            messagebox.showerror("Error", "The release date cannot be before or the same as the entry date!")
             return False
         else:
             return True
@@ -237,17 +236,17 @@ def rezervasyon_ekrani():
         giris_tarihi_str = giris_tarihi
         cikis_tarihi_str = cikis_tarihi
         secilen_odeme_sekli = odeme_sekli.get()
-        fiyat_mesaji = f"Fiyatlar: {'Euro' if secilen_odeme_sekli == 'Euro' else 'TL'}"  # Ödeme şekline göre fiyat mesajını belirle
-        messagebox.showinfo("Rezervasyon Bilgileri",
-                            f"Seçilen Şehir: {secilen_sehir}\n"
-                            f"Giriş Tarihi: {giris_tarihi_str}\n"
-                            f"Çıkış Tarihi: {cikis_tarihi_str}\n"
-                            f"Ödeme Şekli: {secilen_odeme_sekli}\n\n"
+        fiyat_mesaji = f"Prices: {'Euro' if secilen_odeme_sekli == 'Euro' else 'TL'}"  # Ödeme şekline göre fiyat mesajını belirle
+        messagebox.showinfo("Reservation Details",
+                            f"Selected City: {secilen_sehir}\n"
+                            f"Check-in Date: {giris_tarihi_str}\n"
+                            f"Check-out Date: {cikis_tarihi_str}\n"
+                            f"Payment Type: {secilen_odeme_sekli}\n\n"
                             )
         # Otel verilerini göster
         show_hotels()
 
-    onay_butonu = ttk.Button(rezervasyon_pencere, text="Onayla", command=onayla)
+    onay_butonu = ttk.Button(rezervasyon_pencere, text="Confirm", command=onayla)
     onay_butonu.pack(pady=10)
 
     def get_label_for_city(city):
@@ -352,7 +351,7 @@ def rezervasyon_ekrani():
             return hotels_data
 
         except requests.RequestException as e:
-            messagebox.showerror("Hata", f"İnternet bağlantısında bir sorun oluştu: {str(e)}")
+            messagebox.showerror("Error", f"There was a problem with internet connection: {str(e)}")
             return []
 
     def show_hotels():
@@ -362,30 +361,30 @@ def rezervasyon_ekrani():
 
         hotels_data = scrape_hotels(city, checkin, checkout)
         if not hotels_data:
-            messagebox.showerror("Hata", "Veri bulunamadı. Lütfen farklı bir tarih veya şehir seçin veya internet bağlantınızı kontrol edin.")
+            messagebox.showerror("Error", "No data found. Please select a different date or city or check your internet connection.")
             return
 
         # Otelleri TXT dosyasına kaydet
         with open('myhotels.txt', 'w', encoding='utf-8') as txtfile:
             for hotel in hotels_data:
-                txtfile.write(f"Otel Adı: {hotel['Hotel Title']}\n")
-                txtfile.write(f"Adres: {hotel['Hotel Address']}\n")
-                txtfile.write(f"Mesafe: {hotel['Distance to City Center']}\n")
-                txtfile.write(f"Puan: {hotel['Hotel Rating']}\n")
-                txtfile.write(f"Fiyat: {hotel['Price']}\n\n")
+                txtfile.write(f"Hotel Name : {hotel['Hotel Title']}\n")
+                txtfile.write(f"Address    : {hotel['Hotel Address']}\n")
+                txtfile.write(f"Distance   : {hotel['Distance to City Center']}\n")
+                txtfile.write(f"Points     : {hotel['Hotel Rating']}\n")
+                txtfile.write(f"Price      : {hotel['Price']}\n\n")
 
             # En iyi 5 otelleri göstermek için yeni pencere oluştur
         display_top_hotels_window(hotels_data)
 
     def display_top_hotels_window(top_hotels):
         top_hotels_window = tk.Toplevel()
-        top_hotels_window.title("En Ucuz 5 Otel:")
+        top_hotels_window.title("Top 5 Cheapest Hotels")
         top_hotels_window.geometry("800x1050")
 
         top_hotels_frame = tk.Frame(top_hotels_window)
         top_hotels_frame.pack(pady=20)
 
-        top_hotels_label = tk.Label(top_hotels_frame, text="En Ucuz 5 Otel:", font=("Helvetica", 16, "bold"))
+        top_hotels_label = tk.Label(top_hotels_frame, text="Top 5 Cheapest Hotels:", font=("Helvetica", 16, "bold"))
         top_hotels_label.pack()
 
         # Resim alanı oluştur
@@ -401,11 +400,11 @@ def rezervasyon_ekrani():
                 hotel = top_hotels[hotel_index]
 
                 top_hotels_text.insert(tk.END, f"\n\n************** {hotel_index + 1}. Otel **************\n"
-                                               f"Otel Adı: {hotel['Hotel Title']}\n"
-                                               f"Adres: {hotel['Hotel Address']}\n"
-                                               f"Mesafe: {hotel['Distance to City Center']}\n"
-                                               f"Puan: {hotel['Hotel Rating']}\n"
-                                               f"Fiyat: {hotel['Price']}\n\n")
+                                               f"Hotel Name : {hotel['Hotel Title']}\n"
+                                               f"Address    : {hotel['Hotel Address']}\n"
+                                               f"Distance   : {hotel['Distance to City Center']}\n"
+                                               f"Points     : {hotel['Hotel Rating']}\n"
+                                               f"Price      : {hotel['Price']}\n\n")
                 # Otel resimlerini yükle ve göster
                 if hotel['Image URL']:
                     response = requests.get(hotel['Image URL'])
@@ -420,47 +419,46 @@ def rezervasyon_ekrani():
 
 
         # Kapat, Çıkış ve Karanlık Mod düğmelerini ekleyin
-        cikis_butonu = ttk.Button(top_hotels_window, text="Pencereyi Kapat", command=top_hotels_window.destroy)
+        karanlik_mod_dugme = ttk.Button(top_hotels_window, text="Dark Mode",command=karanlik_mod.karanlik_modunu_degistir)
+        karanlik_mod_dugme.pack(side="bottom", pady=10)
+
+        cikis_butonu = ttk.Button(top_hotels_window, text="Close Window", command=top_hotels_window.destroy)
         cikis_butonu.pack(side="bottom", pady=10)
 
-        cikis_ana_butonu = ttk.Button(top_hotels_window, text="Çıkış", command=cikis_yap)
+        cikis_ana_butonu = ttk.Button(top_hotels_window, text="Exit", command=cikis_yap)
         cikis_ana_butonu.pack(side="bottom", pady=10)
 
-        karanlik_mod_dugme = ttk.Button(top_hotels_window, text="Karanlık Mod",
-                                        command=karanlik_mod.karanlik_modunu_degistir)
-        karanlik_mod_dugme.pack(side="bottom", pady=10)
+
 
     def geri_butonu_tiklandi():
         rezervasyon_pencere.withdraw()
         root.deiconify()
 
-    geri_butonu = ttk.Button(rezervasyon_pencere, text="Geri", command=geri_butonu_tiklandi)
-    geri_butonu.pack(side="bottom", pady=10)
-
-
-
-    cikis_butonu_rezervasyon = ttk.Button(rezervasyon_pencere, text="Çıkış",command=rezervasyon_pencere.destroy)
-    cikis_butonu_rezervasyon.pack(side="bottom", pady=10)
-
     contact_us_button = ttk.Button(rezervasyon_pencere, text="Contact Us", command=karanlik_mod.open_instagram)
-    contact_us_button.pack(side="right", padx=10, pady=10)
+    contact_us_button.pack(side="bottom", padx=10, pady=5)
+
+    cikis_butonu_rezervasyon = ttk.Button(rezervasyon_pencere, text="Exit",command=rezervasyon_pencere.destroy)
+    cikis_butonu_rezervasyon.pack(side="bottom", pady=5)
+
+    geri_butonu = ttk.Button(rezervasyon_pencere, text="Back", command=geri_butonu_tiklandi)
+    geri_butonu.pack(side="bottom", pady=5)
 
 # Hoşgeldiniz metnini oluştur
-hosgeldiniz_metni = tk.Label(root, text="Otel Bulma Programına Hoşgeldiniz", font=("Helvetica", 20, "bold"), pady=20)
+hosgeldiniz_metni = tk.Label(root, text="Welcome to the Cheapest Hotel Finder Program", font=("Helvetica", 20, "bold"), pady=20)
 hosgeldiniz_metni.pack()
 
 # Karanlık modu özelliğini ekleyin
 karanlik_mod = KaranlikMod(root)
 
 # Giriş Butonu
-giris_butonu = ttk.Button(root, text="Rezervasyon Yapmak için Tıklayınız", command=giris_tiklandi)
+giris_butonu = ttk.Button(root, text="Click Here to Make a Reservation", command=giris_tiklandi)
 giris_butonu.pack(pady=20)
 
-# Çıkış Butonu
-cikis_butonu = ttk.Button(root, text="Çıkış", command=cikis_yap)
-cikis_butonu.pack(side="bottom",pady=20)
-
 contact_us_button = ttk.Button(root, text="Contact Us", command=karanlik_mod.open_instagram)
-contact_us_button.pack(side="right", padx=10, pady=10)
+contact_us_button.pack(side="bottom", padx=10, pady=10)
+
+# Çıkış Butonu
+cikis_butonu = ttk.Button(root, text="Exit", command=cikis_yap)
+cikis_butonu.pack(side="bottom",pady=20)
 
 root.mainloop()
