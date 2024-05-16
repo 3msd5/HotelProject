@@ -190,7 +190,7 @@ def rezervasyon_ekrani():
     # Ödeme Şekli Seçimi
     tk.Label(rezervasyon_pencere, text="Ödeme Şekli Seçiniz*:", font=("Helvetica", 14, "bold")).pack()
     odeme_sekli = tk.StringVar()
-    odeme_sekli.set("Euro")
+
     odeme_sekli_radio1 = ttk.Radiobutton(rezervasyon_pencere, text="€ - EURO", variable=odeme_sekli, value="EUR", style='TRadiobutton')
     odeme_sekli_radio1.pack()
     odeme_sekli_radio2 = ttk.Radiobutton(rezervasyon_pencere, text="₺ - TL", variable=odeme_sekli, value="TRY", style='TRadiobutton')
@@ -201,11 +201,14 @@ def rezervasyon_ekrani():
     tl_bilgisi_label.pack()
 
     def check_inputs():
-        global giris_tarihi, cikis_tarihi
-        if not giris_tarihi or not cikis_tarihi:
+        global secilen_sehir, giris_tarihi, cikis_tarihi
+        if not secilen_sehir:
+            messagebox.showerror("Hata", "Lütfen bir şehir seçiniz!")
+            return False
+        elif not giris_tarihi or not cikis_tarihi:
             messagebox.showerror("Hata", "Lütfen giriş ve çıkış tarihlerini seçin!")
             return False
-        elif not odeme_sekli.get():
+        elif not odeme_sekli.get():  # odeme_sekli'yi kontrol ederken get() fonksiyonunu kullanarak gerçek değeri alın
             messagebox.showerror("Hata", "Lütfen ödeme şeklini seçin!")
             return False
         elif cikis_tarihi <= giris_tarihi:
