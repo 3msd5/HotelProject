@@ -13,7 +13,7 @@ root.title("Otel Bulma")
 root.geometry("800x600")
 # Stil oluştur
 style = ttk.Style()
-#style.theme_use('clam')  # Mevcut temayı kullanabilirsiniz
+#style.theme_use('clam')  # tkinter içindeki en modern tema
 
 # Radyo butonlarının arka plan rengini değiştir
 
@@ -32,6 +32,7 @@ class KaranlikMod:
         self.karanlik_modu_dugme = ttk.Button(root, text="Karanlık Modu", command=self.karanlik_modunu_degistir)
         self.karanlik_modu_dugme.pack(side="bottom", pady=10)
 
+
     def karanlik_modunu_degistir(self):
         if not self.karanlik_modu:
             self.karanlik_modu = True
@@ -47,14 +48,19 @@ class KaranlikMod:
     def karanlik_modunu_uygula(self, widget):
         if isinstance(widget, tk.Widget):
             widget.tk_setPalette(background='gray20', foreground='white')
+            if isinstance(widget, ttk.Radiobutton):
+                widget.tk_setPalette(background='gray20', foreground='white')
         for child in widget.winfo_children():
             self.karanlik_modunu_uygula(child)
 
     def normal_modu_uygula(self, widget):
         if isinstance(widget, tk.Widget):
             widget.tk_setPalette(background='SystemButtonFace', foreground='black')
+            if isinstance(widget, ttk.Radiobutton):
+                widget.tk_setPalette(background='SystemButtonFace', foreground='black')
         for child in widget.winfo_children():
             self.normal_modu_uygula(child)
+
 
 def giris_tiklandi():
     root.withdraw()  # Mevcut pencereyi gizle
@@ -63,7 +69,10 @@ def giris_tiklandi():
 def cikis_yap():
     root.destroy()
 
+
+
 def rezervasyon_ekrani():
+
     # Rezervasyon ekranını oluştur
     global secilen_sehir, giris_tarihi, cikis_tarihi
 
@@ -86,21 +95,47 @@ def rezervasyon_ekrani():
     clock_label.pack()
     update_clock()
 
-    # Şehir Seçimi
+    secilen_sehir = None  # Başlangıçta hiçbir şehir seçili değil
+
     tk.Label(rezervasyon_pencere, text="Şehir Seçiniz:", font=("Helvetica", 14, "bold")).pack()
     sehirler = ["Amsterdam", "Barselona", "Berlin", "Braga", "Lizbon", "Madrid", "Manchester", "Milano", "Paris",
                 "Prag", "Roma", "Venedik", "Viyana", "Zürih"]
-    secilen_sehir = sehirler[0]  # Başlangıçta ilk şehir seçili olacak
     sehirler_dropdown = ttk.Combobox(rezervasyon_pencere, values=sehirler, font=("Helvetica", 14))
-    sehirler_dropdown.set(secilen_sehir)  # Başlangıçta seçilen şehri belirtin
+    sehirler_dropdown.current(None)  # Başlangıçta seçili bir şehir yok
     sehirler_dropdown.pack(pady=10)
 
-    def on_sehir_sec(*args):      # Şehir seçimi değiştiğinde çağrılacak işlev
+    def on_sehir_sec(*args):
         global secilen_sehir
         secilen_sehir = sehirler_dropdown.get()
+        if secilen_sehir in sehir_bilgileri:
+            bilgi_metni.config(text=sehir_bilgileri[secilen_sehir])
+        else:
+            bilgi_metni.config(text="Bu şehir hakkında bilgi bulunamadı.")
+
+    # Şehir bilgileri sözlüğü
+    sehir_bilgileri = {
+        "Amsterdam": "Amsterdam, Hollanda'nın başkenti ve en büyük şehri olarak tanınır.",
+        "Barselona": "Barselona, İspanya'nın Katalonya bölgesinin başkenti ve en büyük şehri olan bir şehirdir.",
+        "Berlin": "Berlin, Almanya'nın başkenti ve en büyük şehri olan bir şehirdir.",
+        "Braga": "Braga, Portekiz'in kuzeybatısında yer alan önemli bir şehirdir.",
+        "Lizbon": "Lizbon, Portekiz'in başkenti ve en büyük şehri olan bir şehirdir.",
+        "Madrid": "Madrid, İspanya'nın başkenti ve en büyük şehri olan bir şehirdir.",
+        "Manchester": "Manchester, İngiltere'nin kuzey-batısında yer alan bir şehirdir.",
+        "Milano": "Milano, İtalya'nın moda ve finans merkezi olan bir şehirdir.",
+        "Paris": "Paris, Fransa'nın başkenti ve en büyük şehri olan bir şehirdir.",
+        "Prag": "Prag, Çek Cumhuriyeti'nin başkenti ve en büyük şehri olan bir şehirdir.",
+        "Roma": "Roma, İtalya'nın başkenti ve en büyük şehri olan bir şehirdir.",
+        "Venedik": "Venedik, İtalya'nın kuzeydoğusunda yer alan ünlü bir şehirdir.",
+        "Viyana": "Viyana, Avusturya'nın başkenti ve en büyük şehri olan bir şehirdir.",
+        "Zürih": "Zürih, İsviçre'nin en büyük şehri ve önemli bir kültür merkezidir."
+    }
 
     # Şehir seçimi bileşenine işlevi bağlayın
     sehirler_dropdown.bind("<<ComboboxSelected>>", on_sehir_sec)
+
+    # Şehir bilgisi metni
+    bilgi_metni = tk.Label(rezervasyon_pencere, text="", font=("Helvetica", 12))
+    bilgi_metni.pack(pady=10)
 
     # Giriş Tarihi Seçimi
     tk.Label(rezervasyon_pencere, text="Giriş Tarihi Seçiniz:", font=("Helvetica", 14, "bold")).pack()
@@ -156,9 +191,9 @@ def rezervasyon_ekrani():
     tk.Label(rezervasyon_pencere, text="Ödeme Şekli Seçiniz*:", font=("Helvetica", 14, "bold")).pack()
     odeme_sekli = tk.StringVar()
     odeme_sekli.set("Euro")
-    odeme_sekli_radio1 = ttk.Radiobutton(rezervasyon_pencere, text="€ - EURO", variable=odeme_sekli, value="EUR", style='TButton')
+    odeme_sekli_radio1 = ttk.Radiobutton(rezervasyon_pencere, text="€ - EURO", variable=odeme_sekli, value="EUR", style='TRadiobutton')
     odeme_sekli_radio1.pack()
-    odeme_sekli_radio2 = ttk.Radiobutton(rezervasyon_pencere, text="₺ - TL", variable=odeme_sekli, value="TRY", style='TButton')
+    odeme_sekli_radio2 = ttk.Radiobutton(rezervasyon_pencere, text="₺ - TL", variable=odeme_sekli, value="TRY", style='TRadiobutton')
     odeme_sekli_radio2.pack()
 
     # 1 Euro = 30 TL bilgisini ekleyelim
@@ -307,7 +342,7 @@ def rezervasyon_ekrani():
     def display_top_hotels_window(top_hotels):
         top_hotels_window = tk.Toplevel()
         top_hotels_window.title("En Ucuz 5 Otel:")
-        top_hotels_window.geometry("800x1000")
+        top_hotels_window.geometry("800x1050")
 
         top_hotels_frame = tk.Frame(top_hotels_window)
         top_hotels_frame.pack(pady=20)
@@ -319,7 +354,7 @@ def rezervasyon_ekrani():
         image_frame = tk.Frame(top_hotels_frame)
         image_frame.pack(side="left", fill="both", expand=True)
         # Metin alanı oluştur
-        top_hotels_text = tk.Text(top_hotels_frame, height=36, width=100, font=("Helvetica", 12))
+        top_hotels_text = tk.Text(top_hotels_frame, height=35, width=60, font=("Helvetica", 12))
         top_hotels_text.pack(side="left", fill="both", expand=True)
 
 
@@ -327,18 +362,18 @@ def rezervasyon_ekrani():
             if hotel_index < len(top_hotels):
                 hotel = top_hotels[hotel_index]
 
-                top_hotels_text.insert(tk.END, f"\n\n\n\n************** {hotel_index + 1}. Otel **************\n"
+                top_hotels_text.insert(tk.END, f"\n\n************** {hotel_index + 1}. Otel **************\n"
                                                f"Otel Adı: {hotel['Hotel Title']}\n"
                                                f"Adres: {hotel['Hotel Address']}\n"
                                                f"Mesafe: {hotel['Distance to City Center']}\n"
                                                f"Puan: {hotel['Hotel Rating']}\n"
-                                               f"Fiyat: {hotel['Price']}\n\n\n")
+                                               f"Fiyat: {hotel['Price']}\n\n")
                 # Otel resimlerini yükle ve göster
                 if hotel['Image URL']:
                     response = requests.get(hotel['Image URL'])
                     image_data = response.content
                     image = Image.open(io.BytesIO(image_data))
-                    image = image.resize((200, 200),Image.Resampling.LANCZOS)  # ANTIALIAS yerine Image.Resampling.LANCZOS kullan
+                    image = image.resize((141, 141),Image.Resampling.LANCZOS)  # ANTIALIAS yerine Image.Resampling.LANCZOS kullan
                     photo = ImageTk.PhotoImage(image)
 
                     image_label = tk.Label(image_frame, image=photo)
