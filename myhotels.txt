@@ -1,150 +1,150 @@
-Otel Adı: Hôtel des Andelys
-Adres: 11th arr., Paris
-Mesafe: 2 km from centre
-Puan: 4.0Scored 4.0 Review score 992 reviews
-Fiyat: 1103.00 Euro
+Otel Adı: Hostal Bcn 46
+Adres: Eixample, Barcelona
+Mesafe: 0.6 km from downtown
+Puan: 7.1Scored 7.1 Good 1,814 reviews
+Fiyat: 1039.00 Euro
 
-Otel Adı: Studio Cosy au cœur du 20e arrondissement
-Adres: 20th arr., Paris
-Mesafe: 4.1 km from centre
-Puan: 5.4Scored 5.4 Review score 8 reviews
-Fiyat: 1121.00 Euro
+Otel Adı: Pensión Villanueva
+Adres: Ciutat Vella, Barcelona
+Mesafe: 0.9 km from downtown
+Puan: 7.2Scored 7.2 Good 2,057 reviews
+Fiyat: 1400.00 Euro
 
-Otel Adı: Hotel de France 18
-Adres: 18th arr., Paris
-Mesafe: 3.6 km from centre
-Puan: 6.0Scored 6.0 Review score 2,081 reviews
-Fiyat: 1130.00 Euro
+Otel Adı: Barcelona Apartment Gran de Gràcia
+Adres: Gràcia, Barcelona
+Mesafe: 2.4 km from downtown
+Puan: 7.8Scored 7.8 Good 301 reviews
+Fiyat: 1556.00 Euro
 
-Otel Adı: Nets Inn Apartments - Buttes Chaumont D
-Adres: 19th arr., Paris
-Mesafe: 4.1 km from centre
-Puan: 6.8Scored 6.8 Review score 346 reviews
-Fiyat: 1225.00 Euro
+Otel Adı: Acevi Villarroel
+Adres: Eixample, Barcelona
+Mesafe: 1.1 km from downtown
+Puan: 7.7Scored 7.7 Good 4,303 reviews
+Fiyat: 1560.00 Euro
 
-Otel Adı: Hôtel de l'Europe
-Adres: 17th arr., Paris
-Mesafe: 4.4 km from centre
-Puan: 5.6Scored 5.6 Review score 606 reviews
-Fiyat: 1365.00 Euro
-
-Otel Adı: Hôtel du Centre
-Adres: 11th arr., Paris
-Mesafe: 2 km from centre
-Puan: 2.2Scored 2.2 Review score 263 reviews
-Fiyat: 1454.00 Euro
-
-Otel Adı: STYLE HOTEL
-Adres: 18th arr., Paris
-Mesafe: 3.7 km from centre
-Puan: 6.1Scored 6.1 Review score 752 reviews
-Fiyat: 1481.00 Euro
-
-Otel Adı: Hôtel Des Fontaines
-Adres: 3rd arr., Paris
-Mesafe: 1.2 km from centre
-Puan: 6.0Scored 6.0 Review score 573 reviews
-Fiyat: 1485.00 Euro
-
-Otel Adı: Cosy duplex 1BR St Fargeau
-Adres: 20th arr., Paris
-Mesafe: 4.1 km from centre
-Puan: 6.0Scored 6.0 Review score 1 review
-Fiyat: 1557.00 Euro
-
-Otel Adı: Hipotel Paris Gambetta République
-Adres: 20th arr., Paris
-Mesafe: 3.5 km from centre
-Puan: 6.4Scored 6.4 Review score 1,876 reviews
+Otel Adı: Vincci Bit
+Adres: Sant Martí, Barcelona
+Mesafe: 4.4 km from downtown
+Puan: 8.4Scored 8.4 Very Good 6,633 reviews
 Fiyat: 1567.00 Euro
 
-Otel Adı: appartement parc des expositions/tour eiffel
-Adres: 15th arr., Paris
-Mesafe: 5.2 km from centre
-Puan: 3.2Scored 3.2 Review score 6 reviews
-Fiyat: 1569.00 Euro
+Otel Adı: Ilunion Les Corts Spa
+Adres: Les Corts, Barcelona
+Mesafe: 4.8 km from downtown
+Puan: 8.0Scored 8.0 Very Good 5,475 reviews
+Fiyat: 1574.00 Euro
 
-Otel Adı: Résidence des Poissonniers
-Adres: 18th arr., Paris
-Mesafe: 4.3 km from centre
-Puan: 7.4Scored 7.4 Good 51 reviews
-Fiyat: 1570.00 Euro
+Otel Adı: Leonardo Boutique Hotel Barcelona Sagrada Familia
+Adres: Sant Martí, Barcelona
+Mesafe: 3 km from downtown
+Puan: 8.7Scored 8.7 Excellent 3,350 reviews
+Fiyat: 1612.00 Euro
 
-Otel Adı: Parfait studio central
-Adres: 20th arr., Paris
-Mesafe: 3.6 km from centre
-Puan: NOT GIVEN
-Fiyat: 1620.00 Euro
+Otel Adı: Ilunion Auditori
+Adres: Eixample, Barcelona
+Mesafe: 1.3 km from downtown
+Puan: 8.2Scored 8.2 Very Good 6,309 reviews
+Fiyat: 1666.00 Euro
 
-Otel Adı: Royal Wagram
-Adres: 17th arr., Paris
-Mesafe: 4.6 km from centre
-Puan: 6.5Scored 6.5 Review score 1,683 reviews
-Fiyat: 1623.00 Euro
+Otel Adı: Vincci Maritimo
+Adres: Sant Martí, Barcelona
+Mesafe: 4.2 km from downtown
+Puan: 8.2Scored 8.2 Very Good 5,288 reviews
+Fiyat: 1677.00 Euro
 
-Otel Adı: Color Design Hotel
-Adres: 12th arr., Paris
-Mesafe: 2.3 km from centre
-Puan: 7.1Scored 7.1 Good 1,420 reviews
-Fiyat: 2200.00 Euro
+Otel Adı: Axel TWO Barcelona 4 Sup - Adults Only
+Adres: Eixample, Barcelona
+Mesafe: 1.5 km from downtown
+Puan: 8.3Scored 8.3 Very Good 2,774 reviews
+Fiyat: 1682.00 Euro
 
-Otel Adı: Adagio Paris 19ème Cité de la Musique
-Adres: 19th arr., Paris
-Mesafe: 4.6 km from centre
-Puan: 7.4Scored 7.4 Good 1,766 reviews
-Fiyat: 2216.00 Euro
+Otel Adı: The Social Hub Barcelona Poblenou
+Adres: Sant Martí, Barcelona
+Mesafe: 3.8 km from downtown
+Puan: 8.8Scored 8.8 Excellent 2,151 reviews
+Fiyat: 1835.00 Euro
 
-Otel Adı: Hôtel Beauquartier Montmartre
-Adres: 9th arr., Paris
-Mesafe: 3.4 km from centre
-Puan: 8.1Scored 8.1 Very good 848 reviews
-Fiyat: 2459.00 Euro
+Otel Adı: Hostal Boqueria
+Adres: Ciutat Vella, Barcelona
+Mesafe: 0.6 km from downtown
+Puan: 8.4Scored 8.4 Very Good 980 reviews
+Fiyat: 1859.00 Euro
 
-Otel Adı: Le Glam's Hotel
-Adres: 14th arr., Paris
-Mesafe: 4 km from centre
-Puan: 8.9Scored 8.9 Fabulous 20 reviews
-Fiyat: 2509.00 Euro
+Otel Adı: RAMBLAS HOTEL powered by Vincci Hoteles
+Adres: Ciutat Vella, Barcelona
+Mesafe: 0.7 km from downtown
+Puan: 8.3Scored 8.3 Very Good 3,383 reviews
+Fiyat: 1892.00 Euro
 
-Otel Adı: Austin's Arts Et Metiers Hotel
-Adres: 3rd arr., Paris
-Mesafe: 1.1 km from centre
-Puan: 8.2Scored 8.2 Very good 2,316 reviews
-Fiyat: 2692.00 Euro
+Otel Adı: NH Collection Barcelona Constanza
+Adres: Les Corts, Barcelona
+Mesafe: 2.8 km from downtown
+Puan: 8.6Scored 8.6 Excellent 4,995 reviews
+Fiyat: 1911.00 Euro
 
-Otel Adı: Austin's Saint Lazare Hotel
-Adres: 9th arr., Paris
-Mesafe: 2.9 km from centre
-Puan: 8.1Scored 8.1 Very good 2,887 reviews
-Fiyat: 2867.00 Euro
+Otel Adı: Leonardo Royal Hotel Barcelona Fira
+Adres: Sants-Montjuïc, Barcelona
+Mesafe: 4.3 km from downtown
+Puan: 8.8Scored 8.8 Excellent 5,269 reviews
+Fiyat: 1932.00 Euro
 
-Otel Adı: citizenM Paris Gare de Lyon
-Adres: 12th arr., Paris
-Mesafe: 2.1 km from centre
-Puan: 8.3Scored 8.3 Very good 10,401 reviews
-Fiyat: 2903.00 Euro
+Otel Adı: Vincci Mae
+Adres: Sarrià-St. Gervasi, Barcelona
+Mesafe: 2.1 km from downtown
+Puan: 8.5Scored 8.5 Very Good 3,006 reviews
+Fiyat: 1948.00 Euro
 
-Otel Adı: Appart'City Collection Paris Gare de Lyon
-Adres: 12th arr., Paris
-Mesafe: 2.9 km from centre
-Puan: 9.0Scored 9.0 Superb 788 reviews
-Fiyat: 3172.00 Euro
+Otel Adı: BYPILLOW Mothern
+Adres: Eixample, Barcelona
+Mesafe: 250 m from downtown
+Puan: 8.1Scored 8.1 Very Good 4,340 reviews
+Fiyat: 1955.00 Euro
 
-Otel Adı: CARD Hôtel
-Adres: 17th arr., Paris
-Mesafe: 4.3 km from centre
-Puan: 8.9Scored 8.9 Fabulous 332 reviews
-Fiyat: 3802.00 Euro
+Otel Adı: Room Mate Gerard
+Adres: Eixample, Barcelona
+Mesafe: 0.7 km from downtown
+Puan: 8.8Scored 8.8 Excellent 3,074 reviews
+Fiyat: 2074.00 Euro
 
-Otel Adı: le Panthéon paris JO 2024.
-Adres: 5th arr., Paris
-Mesafe: 1.7 km from centre
-Puan: NOT GIVEN
-Fiyat: 4463.00 Euro
+Otel Adı: Sonder Casa Luz
+Adres: Eixample, Barcelona
+Mesafe: 450 m from downtown
+Puan: 8.4Scored 8.4 Very Good 2,788 reviews
+Fiyat: 2207.00 Euro
 
-Otel Adı: Appartement Louvre Palais Royal Paris
-Adres: 1st arr., Paris
-Mesafe: 1.5 km from centre
-Puan: NOT GIVEN
-Fiyat: 20115.00 Euro
+Otel Adı: Vincci Gala
+Adres: Eixample, Barcelona
+Mesafe: 500 m from downtown
+Puan: 8.6Scored 8.6 Excellent 3,822 reviews
+Fiyat: 2299.00 Euro
+
+Otel Adı: Room Mate Anna
+Adres: Eixample, Barcelona
+Mesafe: 0.7 km from downtown
+Puan: 8.7Scored 8.7 Excellent 4,254 reviews
+Fiyat: 2415.00 Euro
+
+Otel Adı: Claris Hotel & Spa GL, a Small Luxury Hotel of the World
+Adres: Eixample, Barcelona
+Mesafe: 0.9 km from downtown
+Puan: 8.4Scored 8.4 Very Good 1,292 reviews
+Fiyat: 2580.00 Euro
+
+Otel Adı: Radisson Blu 1882 Hotel, Barcelona Sagrada Familia
+Adres: Gràcia, Barcelona
+Mesafe: 1.9 km from downtown
+Puan: 8.9Scored 8.9 Excellent 4,981 reviews
+Fiyat: 3125.00 Euro
+
+Otel Adı: Torre Melina, a Gran Meliá Hotel
+Adres: Les Corts, Barcelona
+Mesafe: 5.1 km from downtown
+Puan: 9.2Scored 9.2 Wonderful 151 reviews
+Fiyat: 3300.00 Euro
+
+Otel Adı: ME Barcelona
+Adres: Eixample, Barcelona
+Mesafe: 200 m from downtown
+Puan: 9.2Scored 9.2 Wonderful 1,706 reviews
+Fiyat: 5641.00 Euro
 

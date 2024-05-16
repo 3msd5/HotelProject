@@ -62,6 +62,8 @@ class KaranlikMod:
         for child in widget.winfo_children():
             self.normal_modu_uygula(child)
 
+    def open_instagram(self):
+        webbrowser.open("https://www.instagram.com/3msd5")
 
 def giris_tiklandi():
     root.withdraw()  # Mevcut pencereyi gizle
@@ -297,8 +299,9 @@ def rezervasyon_ekrani():
             }
             url2 = f"{base_url}?{'&'.join([f'{k}={v}' for k, v in query_params.items()])}"
 
-            url = f"https://www.booking.com/searchresults.en-gb.html?ss={selected_city}&ssne={selected_city}&ssne_untouched={selected_city}&label={selected_label}&sid=75e30209011abe1aa1c492edf1647de4&aid=304142&lang=en-gb&sb=1&src_elem=sb&src=searchresults&dest_id=-1456928&dest_type=city&checkin={checkin}&checkout={checkout}&group_adults=2&no_rooms=1&group_children=0&selected_currency=EUR"
-
+            #url = f"https://www.booking.com/searchresults.en-gb.html?ss={selected_city}&ssne={selected_city}&ssne_untouched={selected_city}&label={selected_label}&sid=75e30209011abe1aa1c492edf1647de4&aid=304142&lang=en-gb&sb=1&src_elem=sb&src=searchresults&dest_id=-1456928&dest_type=city&checkin={checkin}&checkout={checkout}&group_adults=2&no_rooms=1&group_children=0&selected_currency=EUR"
+            url = (f"https://www.booking.com/searchresults.html"
+                   f"?ss={selected_city}&checkin={checkin}&checkout={checkout}&group_adults=2&no_rooms=1&group_children=0&selected_currency=EUR")
             print(checkout)
             print(checkin)
             print(url)
@@ -415,6 +418,7 @@ def rezervasyon_ekrani():
                     image_label.image = photo  # Referansı saklayın
                     image_label.pack(pady=10)
 
+
         # Kapat, Çıkış ve Karanlık Mod düğmelerini ekleyin
         cikis_butonu = ttk.Button(top_hotels_window, text="Pencereyi Kapat", command=top_hotels_window.destroy)
         cikis_butonu.pack(side="bottom", pady=10)
@@ -431,11 +435,15 @@ def rezervasyon_ekrani():
         root.deiconify()
 
     geri_butonu = ttk.Button(rezervasyon_pencere, text="Geri", command=geri_butonu_tiklandi)
-
     geri_butonu.pack(side="bottom", pady=10)
+
+
 
     cikis_butonu_rezervasyon = ttk.Button(rezervasyon_pencere, text="Çıkış",command=rezervasyon_pencere.destroy)
     cikis_butonu_rezervasyon.pack(side="bottom", pady=10)
+
+    contact_us_button = ttk.Button(rezervasyon_pencere, text="Contact Us", command=karanlik_mod.open_instagram)
+    contact_us_button.pack(side="right", padx=10, pady=10)
 
 # Hoşgeldiniz metnini oluştur
 hosgeldiniz_metni = tk.Label(root, text="Otel Bulma Programına Hoşgeldiniz", font=("Helvetica", 20, "bold"), pady=20)
@@ -452,5 +460,7 @@ giris_butonu.pack(pady=20)
 cikis_butonu = ttk.Button(root, text="Çıkış", command=cikis_yap)
 cikis_butonu.pack(side="bottom",pady=20)
 
-root.mainloop()
+contact_us_button = ttk.Button(root, text="Contact Us", command=karanlik_mod.open_instagram)
+contact_us_button.pack(side="right", padx=10, pady=10)
 
+root.mainloop()
