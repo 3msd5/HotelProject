@@ -6,6 +6,7 @@ import requests
 from datetime import datetime
 from PIL import Image, ImageTk  # resimler için
 import io
+import webbrowser # şehir bilgileri url si için
 
 # Ana uygulama penceresini oluştur
 root = tk.Tk()
@@ -98,8 +99,8 @@ def rezervasyon_ekrani():
     secilen_sehir = None  # Başlangıçta hiçbir şehir seçili değil
 
     tk.Label(rezervasyon_pencere, text="Şehir Seçiniz:", font=("Helvetica", 14, "bold")).pack()
-    sehirler = ["Amsterdam", "Barselona", "Berlin", "Braga", "Lizbon", "Madrid", "Manchester", "Milano", "Paris",
-                "Prag", "Roma", "Venedik", "Viyana", "Zürih"]
+    sehirler = ["Amsterdam", "Barselona", "Berlin", "Braga", "Lisbon", "Madrid", "Manchester", "Milan", "Paris",
+                "Prague", "Roma", "Venice", "Vienna", "Zurich"]
     sehirler_dropdown = ttk.Combobox(rezervasyon_pencere, values=sehirler, font=("Helvetica", 14))
     sehirler_dropdown.current(None)  # Başlangıçta seçili bir şehir yok
     sehirler_dropdown.pack(pady=10)
@@ -114,20 +115,20 @@ def rezervasyon_ekrani():
 
     # Şehir bilgileri sözlüğü
     sehir_bilgileri = {
-        "Amsterdam": "Amsterdam, Hollanda'nın başkenti ve en büyük şehri olarak tanınır.",
-        "Barselona": "Barselona, İspanya'nın Katalonya bölgesinin başkenti ve en büyük şehri olan bir şehirdir.",
-        "Berlin": "Berlin, Almanya'nın başkenti ve en büyük şehri olan bir şehirdir.",
-        "Braga": "Braga, Portekiz'in kuzeybatısında yer alan önemli bir şehirdir.",
-        "Lizbon": "Lizbon, Portekiz'in başkenti ve en büyük şehri olan bir şehirdir.",
-        "Madrid": "Madrid, İspanya'nın başkenti ve en büyük şehri olan bir şehirdir.",
-        "Manchester": "Manchester, İngiltere'nin kuzey-batısında yer alan bir şehirdir.",
-        "Milano": "Milano, İtalya'nın moda ve finans merkezi olan bir şehirdir.",
-        "Paris": "Paris, Fransa'nın başkenti ve en büyük şehri olan bir şehirdir.",
-        "Prag": "Prag, Çek Cumhuriyeti'nin başkenti ve en büyük şehri olan bir şehirdir.",
-        "Roma": "Roma, İtalya'nın başkenti ve en büyük şehri olan bir şehirdir.",
-        "Venedik": "Venedik, İtalya'nın kuzeydoğusunda yer alan ünlü bir şehirdir.",
-        "Viyana": "Viyana, Avusturya'nın başkenti ve en büyük şehri olan bir şehirdir.",
-        "Zürih": "Zürih, İsviçre'nin en büyük şehri ve önemli bir kültür merkezidir."
+        "Amsterdam": "Founded in the 12th century as a fishing village on the banks of the river Amstel, Amsterdam is the largest city in the Netherlands in terms of population and the most important culturally and financially.",
+        "Barcelona": "The second largest city in the North East of Spain. It is also the capital and largest city of the autonomous community of Catalonia. Barcelona, with its rich cultural heritage, is today an important cultural center and one of the most important tourist destinations.",
+        "Berlin": "The capital and largest city of Germany, also a state.",
+        "Braga": "It is the third largest city in Portugal and the largest city in the Minho Region. The city is considered the religious center of the country.",
+        "Lisbon": "Lisbon is the capital of Portugal. It is the largest city of this country in Europe. Built on the river formed by the Tejo River, Lisbon is located on the Atlantic Ocean coast.",
+        "Madrid": "Spain's capital and most populous city. It is also the political, economic and cultural center of the country.",
+        "Manchester": "A city in the North-West region of England in the United Kingdom. It is the sixth most populous city in the country.",
+        "Milan": "The capital of the Lombardy region in northern Italy. Milan is the fashion and financial center of Italy.",
+        "Paris": "The capital of France and the most populous city in the country. Since the 17th century, Paris has been one of Europe's most important centers of finance, diplomacy, trade, fashion, gastronomy, science and art.",
+        "Prague": "The capital and largest city of the Czech Republic, also known as the ‘Golden City’, ‘Left Bank of the Nineties’, ‘Fairytale City’, ‘Mother of Cities’ and ‘Heart of Europe’.",
+        "Rome": "Rome is the capital and largest city of Italy. It includes the Vatican City, the independent state where the Pope lives.",
+        "Venice": "Venice is a famous city in northeastern Italy. It is built on 118 islands separated by canals and connected by bridges.",
+        "Vienna": "Vienna is the capital and most populous city of Austria. It is the smallest in terms of area.",
+        "Zurich": "Zurich is the largest city in Switzerland and an important cultural center. It is the economic center of Switzerland and the cultural center of the German-speaking region. FIFA headquarters is located in Zurich."
     }
 
     # Şehir seçimi bileşenine işlevi bağlayın
@@ -136,6 +137,16 @@ def rezervasyon_ekrani():
     # Şehir bilgisi metni
     bilgi_metni = tk.Label(rezervasyon_pencere, text="", font=("Helvetica", 12))
     bilgi_metni.pack(pady=10)
+
+    def bilgi():
+        if not secilen_sehir:
+            messagebox.showinfo("Bilgi", "Lütfen bir şehir seçin.")
+            return
+        bilgi_url = f"https://en.wikipedia.org/wiki/{secilen_sehir}"
+        webbrowser.open(bilgi_url)
+
+    bilgi_button = ttk.Button(rezervasyon_pencere, text="Şehir Hakkında Daha Fazla Bilgi İçin Tıklayınız", command=bilgi)
+    bilgi_button.pack(pady=10)
 
     # Giriş Tarihi Seçimi
     tk.Label(rezervasyon_pencere, text="Giriş Tarihi Seçiniz:", font=("Helvetica", 14, "bold")).pack()
@@ -237,36 +248,57 @@ def rezervasyon_ekrani():
     onay_butonu = ttk.Button(rezervasyon_pencere, text="Onayla", command=onayla)
     onay_butonu.pack(pady=10)
 
-    def scrape_hotels(city, checkin, checkout):
+    def get_label_for_city(city):
+        url = f"https://www.booking.com/searchresults.en-gb.html?ss={city}"
+        response = requests.get(url)
+
+        if response.status_code == 200:
+            soup = BeautifulSoup(response.text, 'html.parser')
+            label_element = soup.find('input', {'name': 'label'})
+            if label_element:
+                label_value = label_element['value']
+                return label_value
+            else:
+                print(f"Label for {city} not found.")
+        else:
+            print(f"Request for {city} failed.")
+
+    def scrape_hotels(selected_city, checkin, checkout):  # selected_city parametresi eklendi
         try:
+            selected_label = get_label_for_city(selected_city)  # Seçilen şehir için label'ı al
+
+            print("City: ", selected_city)  # secilen_sehir yerine selected_city kullanıldı
             print("Checkin:", checkin)
             print("Checkout:", checkout)
             print("Payment Type:", odeme_sekli.get())
             # Function to scrape hotel data from Booking.com
+
             base_url = "https://www.booking.com/searchresults.en-gb.html"
+            selected_label = get_label_for_city(selected_city)  # Seçilen şehir için label'ı al
+
             query_params = {
-            'label': 'gen173nr-1FCAEoggI46AdIM1gEaOQBiAEBmAEouAEHyAEM2AEB6AEB-AELiAIBqAIDuAKmksuxBsACAdICJDkwMzNiODdlLTdmYjYtNGMxMy1hYWZjLWI5NDM5NGI3MzdhN9gCBuACAQ',
-            'sid': '75e30209011abe1aa1c492edf1647de4',
-            'sb': '1',
-            'sb_lp': '1',
-            'src': 'index',
-            'src_elem': 'sb',
-            'error_url': 'https://www.booking.com/index.en-gb.html',
-            'ss': city,
-            'checkin_monthday': checkin.split('-')[2],
-            'checkin_month': checkin.split('-')[1],
-            'checkin_year': checkin.split('-')[0],
-            'checkout_monthday': checkout.split('-')[2],
-            'checkout_month': checkout.split('-')[1],
-            'checkout_year': checkout.split('-')[0],
-            'group_adults': '2',
-            'group_children': '0',
-            'no_rooms': '1'
+                'label': selected_label,
+                'sid': '75e30209011abe1aa1c492edf1647de4',
+                'sb': '1',
+                'sb_lp': '1',
+                'src': 'index',
+                'src_elem': 'sb',
+                'error_url': 'https://www.booking.com/index.en-gb.html',
+                'ss': selected_city,  # secilen_sehir yerine selected_city kullanıldı
+                'checkin_monthday': checkin.split('-')[2],
+                'checkin_month': checkin.split('-')[1],
+                'checkin_year': checkin.split('-')[0],
+                'checkout_monthday': checkout.split('-')[2],
+                'checkout_month': checkout.split('-')[1],
+                'checkout_year': checkout.split('-')[0],
+                'group_adults': '2',
+                'group_children': '0',
+                'no_rooms': '1'
             }
             url2 = f"{base_url}?{'&'.join([f'{k}={v}' for k, v in query_params.items()])}"
-            url4 = f"https://www.booking.com/searchresults.en-gb.html?ss={city}&ssne={city}&ssne_untouched={city}&efdco=1&label=gen173nr-1FCAEoggI46AdIM1gEaOQBiAEBmAEouAEHyAEM2AEB6AEB-AELiAIBqAIDuAKmksuxBsACAdICJDkwMzNiODdlLTdmYjYtNGMxMy1hYWZjLWI5NDM5NGI3MzdhN9gCBuACAQ&sid=75e30209011abe1aa1c492edf1647de4&aid=304142&lang=en-gb&sb=1&src_elem=sb&src=searchresults&dest_id=-2140479&dest_type=city&checkin={checkin}&checkout={checkout}&group_adults=2&no_rooms=1&group_children=0"
-            url3 = f"https://www.booking.com/searchresults.en-gb.html?ss=Amsterdam&ssne=Amsterdam&ssne_untouched=Amsterdam&efdco=1&label=gen173nr-1FCAEoggI46AdIM1gEaOQBiAEBmAEouAEHyAEM2AEB6AEB-AELiAIBqAIDuAKmksuxBsACAdICJDkwMzNiODdlLTdmYjYtNGMxMy1hYWZjLWI5NDM5NGI3MzdhN9gCBuACAQ&sid=75e30209011abe1aa1c492edf1647de4&aid=304142&lang=en-gb&sb=1&src_elem=sb&src=searchresults&dest_id=-2140479&dest_type=city&checkin=2024-05-14&checkout=2024-05-16&group_adults=2&no_rooms=1&group_children=0"
-            url = f"https://www.booking.com/searchresults.en-gb.html?ss=Amsterdam&ssne=Amsterdam&ssne_untouched=Amsterdam&efdco=1&label=gen173nr-1FCAEoggI46AdIM1gEaOQBiAEBmAEouAEHyAEM2AEB6AEB-AELiAIBqAIDuAKmksuxBsACAdICJDkwMzNiODdlLTdmYjYtNGMxMy1hYWZjLWI5NDM5NGI3MzdhN9gCBuACAQ&sid=75e30209011abe1aa1c492edf1647de4&aid=304142&lang=en-gb&sb=1&src_elem=sb&src=searchresults&dest_id=-2140479&dest_type=city&checkin={checkin}&checkout={checkout}&group_adults=2&no_rooms=1&group_children=0&selected_currency=EUR"
+
+            url = f"https://www.booking.com/searchresults.en-gb.html?ss={selected_city}&ssne={selected_city}&ssne_untouched={selected_city}&label={selected_label}&sid=75e30209011abe1aa1c492edf1647de4&aid=304142&lang=en-gb&sb=1&src_elem=sb&src=searchresults&dest_id=-1456928&dest_type=city&checkin={checkin}&checkout={checkout}&group_adults=2&no_rooms=1&group_children=0&selected_currency=EUR"
+
             print(checkout)
             print(checkin)
             print(url)

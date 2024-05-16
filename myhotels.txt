@@ -1,150 +1,150 @@
-Otel Adı: Hotel Flipper Amsterdam
-Adres: Zuideramstel, Amsterdam
-Mesafe: 2.9 km from centre
-Puan: 6.3Scored 6.3 Review score 1,061 reviews
-Fiyat: 638.00 Euro
+Otel Adı: Hôtel des Andelys
+Adres: 11th arr., Paris
+Mesafe: 2 km from centre
+Puan: 4.0Scored 4.0 Review score 992 reviews
+Fiyat: 1103.00 Euro
 
-Otel Adı: De Bedstee Boutique Capsules
-Adres: Oud Zuid, Amsterdam
-Mesafe: 2.2 km from centre
-Puan: 8.0Scored 8.0 Very good 2,051 reviews
-Fiyat: 703.00 Euro
+Otel Adı: Studio Cosy au cœur du 20e arrondissement
+Adres: 20th arr., Paris
+Mesafe: 4.1 km from centre
+Puan: 5.4Scored 5.4 Review score 8 reviews
+Fiyat: 1121.00 Euro
 
-Otel Adı: Hotel Fogo Amsterdam
-Adres: Osdorp, Amsterdam
-Mesafe: 8.4 km from centre
-Puan: 7.2Scored 7.2 Good 912 reviews
-Fiyat: 734.00 Euro
-
-Otel Adı: Hotel Levell
-Adres: Zuidoost, Amsterdam
-Mesafe: 8.6 km from centre
-Puan: 8.2Scored 8.2 Very good 14,828 reviews
-Fiyat: 829.00 Euro
-
-Otel Adı: Poppies
-Adres: Amsterdam Noord, Amsterdam
-Mesafe: 2.8 km from centre
-Puan: 7.9Scored 7.9 Good 10 reviews
-Fiyat: 859.00 Euro
-
-Otel Adı: Volkshotel
-Adres: Oost, Amsterdam
-Mesafe: 2.5 km from centre
-Puan: 8.6Scored 8.6 Fabulous 4,835 reviews
-Fiyat: 862.00 Euro
-
-Otel Adı: Bastion Hotel Amsterdam Zuidwest
-Adres: Slotervaart, Amsterdam
-Mesafe: 3.8 km from centre
-Puan: 6.7Scored 6.7 Review score 1,417 reviews
-Fiyat: 867.00 Euro
-
-Otel Adı: Bastion Hotel Amsterdam Amstel
-Adres: Amsterdam
-Mesafe: 5 km from centre
-Puan: 7.0Scored 7.0 Good 2,618 reviews
-Fiyat: 877.00 Euro
-
-Otel Adı: Bastion Hotel Amsterdam Noord
-Adres: Amsterdam Noord, Amsterdam
-Mesafe: 3.5 km from centre
-Puan: 6.7Scored 6.7 Review score 800 reviews
-Fiyat: 937.00 Euro
-
-Otel Adı: The Social Hub Amsterdam West
-Adres: Slotervaart, Amsterdam
-Mesafe: 3.9 km from centre
-Puan: 8.0Scored 8.0 Very good 2,942 reviews
-Fiyat: 942.00 Euro
-
-Otel Adı: Aadam Hotel Wilhelmina
-Adres: Oud Zuid, Amsterdam
-Mesafe: 3.1 km from centre
-Puan: 7.1Scored 7.1 Good 1,425 reviews
-Fiyat: 948.00 Euro
-
-Otel Adı: Four Elements Hotel
-Adres: IJburg, Amsterdam
-Mesafe: 7.9 km from centre
-Puan: 8.2Scored 8.2 Very good 5,839 reviews
-Fiyat: 963.00 Euro
-
-Otel Adı: Joy Hotel
-Adres: Zuidoost, Amsterdam
-Mesafe: 8.5 km from centre
-Puan: 7.4Scored 7.4 Good 7,733 reviews
-Fiyat: 972.00 Euro
-
-Otel Adı: Best Western Amsterdam
-Adres: Slotervaart, Amsterdam
-Mesafe: 4.3 km from centre
-Puan: 7.7Scored 7.7 Good 9,292 reviews
-Fiyat: 973.00 Euro
-
-Otel Adı: Leonardo Royal Hotel Amsterdam
-Adres: Oost, Amsterdam
-Mesafe: 4.8 km from centre
-Puan: 8.2Scored 8.2 Very good 7,657 reviews
-Fiyat: 1162.00 Euro
-
-Otel Adı: citizenM Amsterdam South
-Adres: Zuideramstel, Amsterdam
+Otel Adı: Hotel de France 18
+Adres: 18th arr., Paris
 Mesafe: 3.6 km from centre
-Puan: 8.6Scored 8.6 Fabulous 4,322 reviews
-Fiyat: 1175.00 Euro
+Puan: 6.0Scored 6.0 Review score 2,081 reviews
+Fiyat: 1130.00 Euro
 
-Otel Adı: YOTEL Amsterdam
-Adres: Amsterdam Noord, Amsterdam
-Mesafe: 2.2 km from centre
-Puan: 8.1Scored 8.1 Very good 8,720 reviews
-Fiyat: 1182.00 Euro
+Otel Adı: Nets Inn Apartments - Buttes Chaumont D
+Adres: 19th arr., Paris
+Mesafe: 4.1 km from centre
+Puan: 6.8Scored 6.8 Review score 346 reviews
+Fiyat: 1225.00 Euro
 
-Otel Adı: Holiday Inn Express Amsterdam - South, an IHG Hotel
-Adres: Zuideramstel, Amsterdam
-Mesafe: 5.5 km from centre
-Puan: 8.0Scored 8.0 Very good 2,927 reviews
-Fiyat: 1183.00 Euro
+Otel Adı: Hôtel de l'Europe
+Adres: 17th arr., Paris
+Mesafe: 4.4 km from centre
+Puan: 5.6Scored 5.6 Review score 606 reviews
+Fiyat: 1365.00 Euro
 
-Otel Adı: Holiday Inn Express Amsterdam Arena Towers, an IHG Hotel
-Adres: Zuidoost, Amsterdam
-Mesafe: 7.8 km from centre
-Puan: 7.8Scored 7.8 Good 16,267 reviews
-Fiyat: 1206.00 Euro
+Otel Adı: Hôtel du Centre
+Adres: 11th arr., Paris
+Mesafe: 2 km from centre
+Puan: 2.2Scored 2.2 Review score 263 reviews
+Fiyat: 1454.00 Euro
 
-Otel Adı: Greenstay
-Adres: Osdorp, Amsterdam
-Mesafe: 7.2 km from centre
-Puan: 8.4Scored 8.4 Very good 331 reviews
-Fiyat: 1230.00 Euro
+Otel Adı: STYLE HOTEL
+Adres: 18th arr., Paris
+Mesafe: 3.7 km from centre
+Puan: 6.1Scored 6.1 Review score 752 reviews
+Fiyat: 1481.00 Euro
 
-Otel Adı: Tribe Amsterdam City
-Adres: Amsterdam Noord, Amsterdam
-Mesafe: 4.2 km from centre
-Puan: 9.0Scored 9.0 Superb 6,361 reviews
-Fiyat: 1272.00 Euro
+Otel Adı: Hôtel Des Fontaines
+Adres: 3rd arr., Paris
+Mesafe: 1.2 km from centre
+Puan: 6.0Scored 6.0 Review score 573 reviews
+Fiyat: 1485.00 Euro
 
-Otel Adı: Hampton By Hilton Amsterdam Arena Boulevard
-Adres: Zuidoost, Amsterdam
-Mesafe: 7.6 km from centre
-Puan: 8.1Scored 8.1 Very good 12,233 reviews
-Fiyat: 1277.00 Euro
+Otel Adı: Cosy duplex 1BR St Fargeau
+Adres: 20th arr., Paris
+Mesafe: 4.1 km from centre
+Puan: 6.0Scored 6.0 Review score 1 review
+Fiyat: 1557.00 Euro
 
-Otel Adı: Ruby Emma Hotel Amsterdam
-Adres: Oost, Amsterdam
-Mesafe: 4.3 km from centre
-Puan: 8.6Scored 8.6 Fabulous 6,284 reviews
-Fiyat: 1308.00 Euro
+Otel Adı: Hipotel Paris Gambetta République
+Adres: 20th arr., Paris
+Mesafe: 3.5 km from centre
+Puan: 6.4Scored 6.4 Review score 1,876 reviews
+Fiyat: 1567.00 Euro
 
-Otel Adı: NH Amsterdam Zuid
-Adres: Zuideramstel, Amsterdam
+Otel Adı: appartement parc des expositions/tour eiffel
+Adres: 15th arr., Paris
 Mesafe: 5.2 km from centre
-Puan: 8.1Scored 8.1 Very good 1,775 reviews
-Fiyat: 1330.00 Euro
+Puan: 3.2Scored 3.2 Review score 6 reviews
+Fiyat: 1569.00 Euro
 
-Otel Adı: Pillows Grand Boutique Hotel Maurits at the Park - Small Luxury Hotels
-Adres: Oost, Amsterdam
-Mesafe: 2.2 km from centre
-Puan: 9.3Scored 9.3 Superb 337 reviews
-Fiyat: 2745.00 Euro
+Otel Adı: Résidence des Poissonniers
+Adres: 18th arr., Paris
+Mesafe: 4.3 km from centre
+Puan: 7.4Scored 7.4 Good 51 reviews
+Fiyat: 1570.00 Euro
+
+Otel Adı: Parfait studio central
+Adres: 20th arr., Paris
+Mesafe: 3.6 km from centre
+Puan: NOT GIVEN
+Fiyat: 1620.00 Euro
+
+Otel Adı: Royal Wagram
+Adres: 17th arr., Paris
+Mesafe: 4.6 km from centre
+Puan: 6.5Scored 6.5 Review score 1,683 reviews
+Fiyat: 1623.00 Euro
+
+Otel Adı: Color Design Hotel
+Adres: 12th arr., Paris
+Mesafe: 2.3 km from centre
+Puan: 7.1Scored 7.1 Good 1,420 reviews
+Fiyat: 2200.00 Euro
+
+Otel Adı: Adagio Paris 19ème Cité de la Musique
+Adres: 19th arr., Paris
+Mesafe: 4.6 km from centre
+Puan: 7.4Scored 7.4 Good 1,766 reviews
+Fiyat: 2216.00 Euro
+
+Otel Adı: Hôtel Beauquartier Montmartre
+Adres: 9th arr., Paris
+Mesafe: 3.4 km from centre
+Puan: 8.1Scored 8.1 Very good 848 reviews
+Fiyat: 2459.00 Euro
+
+Otel Adı: Le Glam's Hotel
+Adres: 14th arr., Paris
+Mesafe: 4 km from centre
+Puan: 8.9Scored 8.9 Fabulous 20 reviews
+Fiyat: 2509.00 Euro
+
+Otel Adı: Austin's Arts Et Metiers Hotel
+Adres: 3rd arr., Paris
+Mesafe: 1.1 km from centre
+Puan: 8.2Scored 8.2 Very good 2,316 reviews
+Fiyat: 2692.00 Euro
+
+Otel Adı: Austin's Saint Lazare Hotel
+Adres: 9th arr., Paris
+Mesafe: 2.9 km from centre
+Puan: 8.1Scored 8.1 Very good 2,887 reviews
+Fiyat: 2867.00 Euro
+
+Otel Adı: citizenM Paris Gare de Lyon
+Adres: 12th arr., Paris
+Mesafe: 2.1 km from centre
+Puan: 8.3Scored 8.3 Very good 10,401 reviews
+Fiyat: 2903.00 Euro
+
+Otel Adı: Appart'City Collection Paris Gare de Lyon
+Adres: 12th arr., Paris
+Mesafe: 2.9 km from centre
+Puan: 9.0Scored 9.0 Superb 788 reviews
+Fiyat: 3172.00 Euro
+
+Otel Adı: CARD Hôtel
+Adres: 17th arr., Paris
+Mesafe: 4.3 km from centre
+Puan: 8.9Scored 8.9 Fabulous 332 reviews
+Fiyat: 3802.00 Euro
+
+Otel Adı: le Panthéon paris JO 2024.
+Adres: 5th arr., Paris
+Mesafe: 1.7 km from centre
+Puan: NOT GIVEN
+Fiyat: 4463.00 Euro
+
+Otel Adı: Appartement Louvre Palais Royal Paris
+Adres: 1st arr., Paris
+Mesafe: 1.5 km from centre
+Puan: NOT GIVEN
+Fiyat: 20115.00 Euro
 
