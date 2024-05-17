@@ -1,150 +1,60 @@
-Hotel Name : 298 Suite Olive - Superb apartment in Paris
-Address    : 18th arr., Paris
-Distance   : 3.8 km from center
-Points     : 6.8Scored 6.8 Review score 5 reviews
-Price      : 527.00 Euro
+Hotel Name : TITANIC Comfort Kurfürstendamm
+Address    : Tempelhof-Schöneberg, Berlin
+Distance   : 2.6 km from downtown
+Points     : 8.1Scored 8.1 Very Good 5,410 reviews
+Price      : 106.00 Euro
 
-Hotel Name : Nets Inn Apartments - Buttes Chaumont D
-Address    : 19th arr., Paris
-Distance   : 4.1 km from center
-Points     : 6.8Scored 6.8 Review score 349 reviews
-Price      : 547.00 Euro
+Hotel Name : Apartments elPilar Friedrichshain
+Address    : Friedrichshain-Kreuzberg, Berlin
+Distance   : 6.2 km from downtown
+Points     : 7.8Scored 7.8 Good 592 reviews
+Price      : 132.00 Euro
 
-Hotel Name : Studio Pernety - Sabliere
-Address    : 14th arr., Paris
-Distance   : 3.4 km from center
-Points     : NOT GIVEN
-Price      : 600.00 Euro
+Hotel Name : Motel One Berlin-Bellevue
+Address    : Mitte, Berlin
+Distance   : 1.5 km from downtown
+Points     : 8.2Scored 8.2 Very Good 4,164 reviews
+Price      : 135.00 Euro
 
-Hotel Name : Hôtel de l'Europe
-Address    : 17th arr., Paris
-Distance   : 4.4 km from center
-Points     : 5.6Scored 5.6 Review score 607 reviews
-Price      : 603.00 Euro
+Hotel Name : Scandic Berlin Potsdamer Platz
+Address    : Mitte, Berlin
+Distance   : 1.3 km from downtown
+Points     : 8.2Scored 8.2 Very Good 14,441 reviews
+Price      : 138.00 Euro
 
-Hotel Name : Hôtel de Lorraine
-Address    : 10th arr., Paris
-Distance   : 2.3 km from center
-Points     : 3.9Scored 3.9 Review score 699 reviews
-Price      : 610.00 Euro
+Hotel Name : Leonardo Hotel Berlin Mitte
+Address    : Mitte, Berlin
+Distance   : 0.9 km from downtown
+Points     : 8.2Scored 8.2 Very Good 14,728 reviews
+Price      : 139.00 Euro
 
-Hotel Name : Enjoy Hostel
-Address    : 14th arr., Paris
-Distance   : 3.4 km from center
-Points     : 6.9Scored 6.9 Review score 6,016 reviews
-Price      : 780.00 Euro
+Hotel Name : Crowne Plaza Berlin City Centre Ku'damm, an IHG Hotel
+Address    : Charlottenburg, Berlin
+Distance   : 2.8 km from downtown
+Points     : 8.3Scored 8.3 Very Good 5,752 reviews
+Price      : 160.00 Euro
 
-Hotel Name : Metropol
-Address    : 10th arr., Paris
-Distance   : 2.6 km from center
-Points     : 6.4Scored 6.4 Review score 2,791 reviews
-Price      : 829.00 Euro
+Hotel Name : Courtyard by Marriott Berlin City Center
+Address    : Mitte, Berlin
+Distance   : 1.7 km from downtown
+Points     : 8.7Scored 8.7 Excellent 1,488 reviews
+Price      : 164.00 Euro
 
-Hotel Name : Popy
-Address    : 11th arr., Paris
-Distance   : 1.4 km from center
-Points     : 7.8Scored 7.8 Good 23 reviews
-Price      : 866.00 Euro
+Hotel Name : HighPark Berlin am Potsdamer Platz
+Address    : Mitte, Berlin
+Distance   : 1.4 km from downtown
+Points     : 8.8Scored 8.8 Excellent 4,673 reviews
+Price      : 179.00 Euro
 
-Hotel Name : Adagio Paris 19ème Cité de la Musique
-Address    : 19th arr., Paris
-Distance   : 4.6 km from center
-Points     : 7.4Scored 7.4 Good 1,767 reviews
-Price      : 952.00 Euro
+Hotel Name : NH Collection Berlin Mitte am Checkpoint Charlie
+Address    : Mitte, Berlin
+Distance   : 1 km from downtown
+Points     : 8.4Scored 8.4 Very Good 9,083 reviews
+Price      : 185.00 Euro
 
-Hotel Name : Aparthotel Adagio Access Paris La Villette
-Address    : 19th arr., Paris
-Distance   : 5.1 km from center
-Points     : 7.3Scored 7.3 Good 1,385 reviews
-Price      : 956.00 Euro
-
-Hotel Name : Sejours & Affaires Paris-Davout
-Address    : 20th arr., Paris
-Distance   : 4.2 km from center
-Points     : 8.1Scored 8.1 Very Good 1,686 reviews
-Price      : 986.00 Euro
-
-Hotel Name : Hôtel LUX PICPUS
-Address    : 12th arr., Paris
-Distance   : 3.9 km from center
-Points     : 8.2Scored 8.2 Very Good 1,318 reviews
-Price      : 1101.00 Euro
-
-Hotel Name : Porte de Versailles Hotel
-Address    : 15th arr., Paris
-Distance   : 5.6 km from center
-Points     : 7.9Scored 7.9 Good 1,152 reviews
-Price      : 1159.00 Euro
-
-Hotel Name : Grand Hotel Francais
-Address    : 11th arr., Paris
-Distance   : 2.9 km from center
-Points     : 8.5Scored 8.5 Very Good 793 reviews
-Price      : 1215.00 Euro
-
-Hotel Name : Hotel Eden Montmartre
-Address    : 18th arr., Paris
-Distance   : 4.1 km from center
-Points     : 7.9Scored 7.9 Good 1,767 reviews
-Price      : 1242.00 Euro
-
-Hotel Name : Kopster Hotel Paris Porte de Versailles
-Address    : 15th arr., Paris
-Distance   : 5.8 km from center
-Points     : 8.2Scored 8.2 Very Good 156 reviews
-Price      : 1288.00 Euro
-
-Hotel Name : Hôtel Des Batignolles
-Address    : 17th arr., Paris
-Distance   : 3.8 km from center
-Points     : 8.3Scored 8.3 Very Good 3,227 reviews
-Price      : 1323.00 Euro
-
-Hotel Name : Hotel Pilime
-Address    : 9th arr., Paris
-Distance   : 3.4 km from center
-Points     : 8.5Scored 8.5 Very Good 1,685 reviews
-Price      : 1345.00 Euro
-
-Hotel Name : La Belle Ville
-Address    : 19th arr., Paris
-Distance   : 4.6 km from center
-Points     : 8.7Scored 8.7 Excellent 3,081 reviews
-Price      : 1366.00 Euro
-
-Hotel Name : citizenM Paris Gare de Lyon
-Address    : 12th arr., Paris
-Distance   : 2.1 km from center
-Points     : 8.3Scored 8.3 Very Good 10,411 reviews
-Price      : 1413.00 Euro
-
-Hotel Name : Hôtel Beauquartier Montmartre
-Address    : 9th arr., Paris
-Distance   : 3.4 km from center
-Points     : 8.1Scored 8.1 Very Good 847 reviews
-Price      : 1476.00 Euro
-
-Hotel Name : Chouette Hotel
-Address    : 15th arr., Paris
-Distance   : 4.3 km from center
-Points     : 8.4Scored 8.4 Very Good 1,794 reviews
-Price      : 1485.00 Euro
-
-Hotel Name : Hôtel Moderniste
-Address    : 15th arr., Paris
-Distance   : 4.9 km from center
-Points     : 9.1Scored 9.1 Wonderful 1,648 reviews
-Price      : 1606.00 Euro
-
-Hotel Name : Hotel Trianon Rive Gauche
-Address    : 6th arr., Paris
-Distance   : 1.2 km from center
-Points     : 8.0Scored 8.0 Very Good 4,486 reviews
-Price      : 1689.00 Euro
-
-Hotel Name : Hôtel Vendome Saint-Germain
-Address    : 5th arr., Paris
-Distance   : 1 km from center
-Points     : 8.6Scored 8.6 Excellent 2,032 reviews
-Price      : 1710.00 Euro
+Hotel Name : Hilton Berlin
+Address    : Mitte, Berlin
+Distance   : 1.2 km from downtown
+Points     : 7.6Scored 7.6 Good 3,077 reviews
+Price      : 189.00 Euro
 

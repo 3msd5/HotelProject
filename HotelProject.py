@@ -264,7 +264,7 @@ def rezervasyon_ekrani():
         else:
             print(f"Request for {city} failed.")
 
-    def scrape_hotels(selected_city, checkin, checkout):  # selected_city parametresi eklendi
+    def scrape_hotels(selected_city, checkin, checkout):
         try:
             selected_label = get_label_for_city(selected_city)  # Seçilen şehir için label'ı al
 
@@ -298,7 +298,7 @@ def rezervasyon_ekrani():
             }
             url2 = f"{base_url}?{'&'.join([f'{k}={v}' for k, v in query_params.items()])}"
 
-            #url = f"https://www.booking.com/searchresults.en-gb.html?ss={selected_city}&ssne={selected_city}&ssne_untouched={selected_city}&label={selected_label}&sid=75e30209011abe1aa1c492edf1647de4&aid=304142&lang=en-gb&sb=1&src_elem=sb&src=searchresults&dest_id=-1456928&dest_type=city&checkin={checkin}&checkout={checkout}&group_adults=2&no_rooms=1&group_children=0&selected_currency=EUR"
+            # url = f"https://www.booking.com/searchresults.en-gb.html?ss={selected_city}&ssne={selected_city}&ssne_untouched={selected_city}&label={selected_label}&sid=75e30209011abe1aa1c492edf1647de4&aid=304142&lang=en-gb&sb=1&src_elem=sb&src=searchresults&dest_id=-1456928&dest_type=city&checkin={checkin}&checkout={checkout}&group_adults=2&no_rooms=1&group_children=0&selected_currency=EUR"
             url = (f"https://www.booking.com/searchresults.html"
                    f"?ss={selected_city}&checkin={checkin}&checkout={checkout}&group_adults=2&no_rooms=1&group_children=0&selected_currency=EUR")
             print(checkout)
@@ -314,7 +314,11 @@ def rezervasyon_ekrani():
             soup = BeautifulSoup(response.text, 'html.parser')
             hotels_data = []
 
+            count = 0  # İlk 10 otel için sayacı başlat
+
             for hotel in soup.findAll('div', {'data-testid': 'property-card'}):
+                if count >= 10:  # Eğer ilk 10 otel alındıysa döngüyü sonlandır
+                    break
                 title_element = hotel.find('div', {'data-testid': 'title'})
                 address_element = hotel.find('span', {'data-testid': 'address'})
                 distance_element = hotel.find('span', {'data-testid': 'distance'})
@@ -333,7 +337,9 @@ def rezervasyon_ekrani():
                 print(hotel_data)
                 hotels_data.append(hotel_data)
 
-                # Para birimi seçimine göre fiyatları dönüştürme
+                count += 1  # Sayacı artır
+
+            # Para birimi seçimine göre fiyatları dönüştürme
             for hotel_data in hotels_data:
                 if odeme_sekli.get() == "TRY" and '€' in hotel_data['Price']:
                     euro_price = float(hotel_data['Price'].replace('€', '').replace(',', '').strip())
