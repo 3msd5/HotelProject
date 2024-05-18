@@ -1,60 +1,60 @@
-Hotel Name : TITANIC Comfort Kurfürstendamm
-Address    : Tempelhof-Schöneberg, Berlin
-Distance   : 2.6 km from downtown
-Points     : 8.1Scored 8.1 Very Good 5,410 reviews
-Price      : 106.00 Euro
+Hotel Name : Autocaravana Sally
+Address    : Belem, Lisbon
+Distance   : 5.5 km from center
+Points     : 1.0Scored 1.0 Review score 1 review
+Price      : 925.00 Euro
 
-Hotel Name : Apartments elPilar Friedrichshain
-Address    : Friedrichshain-Kreuzberg, Berlin
-Distance   : 6.2 km from downtown
-Points     : 7.8Scored 7.8 Good 592 reviews
-Price      : 132.00 Euro
+Hotel Name : Autocaravana Dory
+Address    : Belem, Lisbon
+Distance   : 5.5 km from center
+Points     : 5.3Scored 5.3 Review score 3 reviews
+Price      : 979.00 Euro
 
-Hotel Name : Motel One Berlin-Bellevue
-Address    : Mitte, Berlin
-Distance   : 1.5 km from downtown
-Points     : 8.2Scored 8.2 Very Good 4,164 reviews
-Price      : 135.00 Euro
+Hotel Name : PARAISO Da PENHA
+Address    : Penha de Franca, Lisbon
+Distance   : 1.9 km from center
+Points     : 5.1Scored 5.1 Review score 1,297 reviews
+Price      : 1523.00 Euro
 
-Hotel Name : Scandic Berlin Potsdamer Platz
-Address    : Mitte, Berlin
-Distance   : 1.3 km from downtown
-Points     : 8.2Scored 8.2 Very Good 14,441 reviews
-Price      : 138.00 Euro
+Hotel Name : Hotel DAH - Dom Afonso Henriques
+Address    : Penha de Franca, Lisbon
+Distance   : 2.8 km from center
+Points     : 7.8Scored 7.8 Good 2,158 reviews
+Price      : 2038.00 Euro
 
-Hotel Name : Leonardo Hotel Berlin Mitte
-Address    : Mitte, Berlin
-Distance   : 0.9 km from downtown
-Points     : 8.2Scored 8.2 Very Good 14,728 reviews
-Price      : 139.00 Euro
+Hotel Name : City Inn
+Address    : Santa Maria Maior, Lisbon
+Distance   : 500 m from center
+Points     : 7.7Scored 7.7 Good 280 reviews
+Price      : 2060.00 Euro
 
-Hotel Name : Crowne Plaza Berlin City Centre Ku'damm, an IHG Hotel
-Address    : Charlottenburg, Berlin
-Distance   : 2.8 km from downtown
-Points     : 8.3Scored 8.3 Very Good 5,752 reviews
-Price      : 160.00 Euro
+Hotel Name : 4SLEEP Guest house
+Address    : Penha de Franca, Lisbon
+Distance   : 1.9 km from center
+Points     : 5.5Scored 5.5 Review score 136 reviews
+Price      : 2988.00 Euro
 
-Hotel Name : Courtyard by Marriott Berlin City Center
-Address    : Mitte, Berlin
-Distance   : 1.7 km from downtown
-Points     : 8.7Scored 8.7 Excellent 1,488 reviews
-Price      : 164.00 Euro
+Hotel Name : The Av. Roma Apartment
+Address    : Alvalade, Lisbon
+Distance   : 3.7 km from center
+Points     : 7.6Scored 7.6 Good 19 reviews
+Price      : 3690.00 Euro
 
-Hotel Name : HighPark Berlin am Potsdamer Platz
-Address    : Mitte, Berlin
-Distance   : 1.4 km from downtown
-Points     : 8.8Scored 8.8 Excellent 4,673 reviews
-Price      : 179.00 Euro
+Hotel Name : Lux Lisboa Park
+Address    : Avenidas Novas, Lisbon
+Distance   : 2.3 km from center
+Points     : 8.8Scored 8.8 Excellent 6,086 reviews
+Price      : 4303.00 Euro
 
-Hotel Name : NH Collection Berlin Mitte am Checkpoint Charlie
-Address    : Mitte, Berlin
-Distance   : 1 km from downtown
-Points     : 8.4Scored 8.4 Very Good 9,083 reviews
-Price      : 185.00 Euro
+Hotel Name : TURIM Terreiro do Paço Hotel
+Address    : Santa Maria Maior, Lisbon
+Distance   : 0.6 km from center
+Points     : 7.9Scored 7.9 Good 5,471 reviews
+Price      : 5747.00 Euro
 
-Hotel Name : Hilton Berlin
-Address    : Mitte, Berlin
-Distance   : 1.2 km from downtown
-Points     : 7.6Scored 7.6 Good 3,077 reviews
-Price      : 189.00 Euro
+Hotel Name : TURIM Boulevard Hotel
+Address    : Santo Antonio, Lisbon
+Distance   : 0.9 km from center
+Points     : 8.5Scored 8.5 Very Good 5,336 reviews
+Price      : 9483.00 Euro
 

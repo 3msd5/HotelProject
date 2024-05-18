@@ -11,7 +11,7 @@ import webbrowser # şehir bilgileri url si için
 # Ana uygulama penceresini oluştur
 root = tk.Tk()
 root.title("Finding Cheapest Hotel")
-root.geometry("800x600")
+root.geometry("800x900")
 # Stil oluştur
 style = ttk.Style()
 #style.theme_use('clam')  # tkinter içindeki en modern tema
@@ -301,9 +301,8 @@ def rezervasyon_ekrani():
             # url = f"https://www.booking.com/searchresults.en-gb.html?ss={selected_city}&ssne={selected_city}&ssne_untouched={selected_city}&label={selected_label}&sid=75e30209011abe1aa1c492edf1647de4&aid=304142&lang=en-gb&sb=1&src_elem=sb&src=searchresults&dest_id=-1456928&dest_type=city&checkin={checkin}&checkout={checkout}&group_adults=2&no_rooms=1&group_children=0&selected_currency=EUR"
             url = (f"https://www.booking.com/searchresults.html"
                    f"?ss={selected_city}&checkin={checkin}&checkout={checkout}&group_adults=2&no_rooms=1&group_children=0&selected_currency=EUR")
-            print(checkout)
-            print(checkin)
-            print(url)
+
+            print("Check Url:",url)
             headers = {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
                 'Accept-Language': 'en-US, en;q=0.9'
@@ -397,7 +396,7 @@ def rezervasyon_ekrani():
         image_frame = tk.Frame(top_hotels_frame)
         image_frame.pack(side="left", fill="both", expand=True)
         # Metin alanı oluştur
-        top_hotels_text = tk.Text(top_hotels_frame, height=35, width=60, font=("Helvetica", 12))
+        top_hotels_text = tk.Text(top_hotels_frame, height=30, width=60, font=("Helvetica", 12))
         top_hotels_text.pack(side="left", fill="both", expand=True)
 
 
