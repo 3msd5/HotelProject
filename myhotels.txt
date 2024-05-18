@@ -1,60 +1,60 @@
-Hotel Name : Autocaravana Sally
-Address    : Belem, Lisbon
-Distance   : 5.5 km from center
-Points     : 1.0Scored 1.0 Review score 1 review
-Price      : 925.00 Euro
+Hotel Name : Dans L'Atelier Hostel
+Address    : Braga
+Distance   : 0.7 km from center
+Points     : 5.9Scored 5.9 Review score 918 reviews
+Price      : 26.00 Euro
 
-Hotel Name : Autocaravana Dory
-Address    : Belem, Lisbon
-Distance   : 5.5 km from center
-Points     : 5.3Scored 5.3 Review score 3 reviews
-Price      : 979.00 Euro
+Hotel Name : Dans L'Atelier Hostel Unidade Porta Nova
+Address    : Old Town , Braga
+Distance   : 50 m from center
+Points     : 6.3Scored 6.3 Review score 652 reviews
+Price      : 27.00 Euro
 
-Hotel Name : PARAISO Da PENHA
-Address    : Penha de Franca, Lisbon
-Distance   : 1.9 km from center
-Points     : 5.1Scored 5.1 Review score 1,297 reviews
-Price      : 1523.00 Euro
+Hotel Name : Sasimi Nice Hostel
+Address    : Old Town , Braga
+Distance   : 200 m from center
+Points     : 7.0Scored 7.0 Good 382 reviews
+Price      : 42.00 Euro
 
-Hotel Name : Hotel DAH - Dom Afonso Henriques
-Address    : Penha de Franca, Lisbon
-Distance   : 2.8 km from center
-Points     : 7.8Scored 7.8 Good 2,158 reviews
-Price      : 2038.00 Euro
+Hotel Name : inBraga Hostel
+Address    : Braga
+Distance   : 200 m from center
+Points     : 8.2Scored 8.2 Very Good 579 reviews
+Price      : 44.00 Euro
 
-Hotel Name : City Inn
-Address    : Santa Maria Maior, Lisbon
-Distance   : 500 m from center
-Points     : 7.7Scored 7.7 Good 280 reviews
-Price      : 2060.00 Euro
+Hotel Name : Quintinha d´Avó
+Address    : Vila de Prado
+Distance   : 7.4 km from Braga
+Points     : 8.8Scored 8.8 Excellent 26 reviews
+Price      : 90.00 Euro
 
-Hotel Name : 4SLEEP Guest house
-Address    : Penha de Franca, Lisbon
-Distance   : 1.9 km from center
-Points     : 5.5Scored 5.5 Review score 136 reviews
-Price      : 2988.00 Euro
+Hotel Name : Convento de Tibaes
+Address    : Braga
+Distance   : 4.2 km from center
+Points     : 8.4Scored 8.4 Very Good 220 reviews
+Price      : 132.00 Euro
 
-Hotel Name : The Av. Roma Apartment
-Address    : Alvalade, Lisbon
-Distance   : 3.7 km from center
-Points     : 7.6Scored 7.6 Good 19 reviews
-Price      : 3690.00 Euro
+Hotel Name : Quinta das Areias - Solar da Pena
+Address    : Braga
+Distance   : 9.2 km from center
+Points     : 9.1Scored 9.1 Wonderful 134 reviews
+Price      : 151.00 Euro
 
-Hotel Name : Lux Lisboa Park
-Address    : Avenidas Novas, Lisbon
-Distance   : 2.3 km from center
-Points     : 8.8Scored 8.8 Excellent 6,086 reviews
-Price      : 4303.00 Euro
+Hotel Name : Hotel Rural Alves - Casa Alves Torneiros
+Address    : Penso
+Distance   : 7.2 km from Braga
+Points     : 8.6Scored 8.6 Excellent 221 reviews
+Price      : 159.00 Euro
 
-Hotel Name : TURIM Terreiro do Paço Hotel
-Address    : Santa Maria Maior, Lisbon
-Distance   : 0.6 km from center
-Points     : 7.9Scored 7.9 Good 5,471 reviews
-Price      : 5747.00 Euro
+Hotel Name : Sé Apartamentos *Casa do Terraço*
+Address    : Braga
+Distance   : 400 m from center
+Points     : 7.7Scored 7.7 Good 4 reviews
+Price      : 183.00 Euro
 
-Hotel Name : TURIM Boulevard Hotel
-Address    : Santo Antonio, Lisbon
-Distance   : 0.9 km from center
-Points     : 8.5Scored 8.5 Very Good 5,336 reviews
-Price      : 9483.00 Euro
+Hotel Name : Torre de Gomariz Wine & Spa Hotel
+Address    : Cervães
+Distance   : 9.9 km from Braga
+Points     : 9.3Scored 9.3 Wonderful 466 reviews
+Price      : 342.00 Euro
 

@@ -244,7 +244,8 @@ def rezervasyon_ekrani():
                             f"Payment Type: {secilen_odeme_sekli}\n\n"
                             )
         # Otel verilerini göster
-        show_hotels()
+        hotels_data = scrape_hotels(secilen_sehir, giris_tarihi_str, cikis_tarihi_str)
+
 
     onay_butonu = ttk.Button(rezervasyon_pencere, text="Confirm", command=onayla)
     onay_butonu.pack(pady=10)
@@ -353,33 +354,27 @@ def rezervasyon_ekrani():
                 x['Price'].split()[0].replace('TL', '').replace('Euro', '').replace(',', '')) if 'TL' in x[
                 'Price'] or 'Euro' in x['Price'] else float('inf'))
 
+            # Otelleri TXT dosyasına kaydet
+            with open('myhotels.txt', 'w', encoding='utf-8') as txtfile:
+                for hotel in hotels_data:
+                    txtfile.write(f"Hotel Name : {hotel['Hotel Title']}\n")
+                    txtfile.write(f"Address    : {hotel['Hotel Address']}\n")
+                    txtfile.write(f"Distance   : {hotel['Distance to City Center']}\n")
+                    txtfile.write(f"Points     : {hotel['Hotel Rating']}\n")
+                    txtfile.write(f"Price      : {hotel['Price']}\n\n")
+
+                # En iyi 5 otelleri göstermek için yeni pencere oluştur
+            display_top_hotels_window(hotels_data[:5])
+
             return hotels_data
 
         except requests.RequestException as e:
             messagebox.showerror("Error", f"There was a problem with internet connection: {str(e)}")
             return []
 
-    def show_hotels():
-        city = secilen_sehir
-        checkin = giris_tarihi
-        checkout = cikis_tarihi
 
-        hotels_data = scrape_hotels(city, checkin, checkout)
-        if not hotels_data:
-            messagebox.showerror("Error", "No data found. Please select a different date or city or check your internet connection.")
-            return
 
-        # Otelleri TXT dosyasına kaydet
-        with open('myhotels.txt', 'w', encoding='utf-8') as txtfile:
-            for hotel in hotels_data:
-                txtfile.write(f"Hotel Name : {hotel['Hotel Title']}\n")
-                txtfile.write(f"Address    : {hotel['Hotel Address']}\n")
-                txtfile.write(f"Distance   : {hotel['Distance to City Center']}\n")
-                txtfile.write(f"Points     : {hotel['Hotel Rating']}\n")
-                txtfile.write(f"Price      : {hotel['Price']}\n\n")
 
-            # En iyi 5 otelleri göstermek için yeni pencere oluştur
-        display_top_hotels_window(hotels_data)
 
     def display_top_hotels_window(top_hotels):
         top_hotels_window = tk.Toplevel()
