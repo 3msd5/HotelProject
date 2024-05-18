@@ -6,7 +6,7 @@ import requests
 from datetime import datetime
 from PIL import Image, ImageTk  # resimler için
 import io
-import webbrowser # şehir bilgileri url si için
+import webbrowser # şehir bilgileri ve instagram url si için
 
 # Ana uygulama penceresini oluştur
 root = tk.Tk()
@@ -71,8 +71,6 @@ def giris_tiklandi():
 def cikis_yap():
     root.destroy()
 
-
-
 def rezervasyon_ekrani():
 
     # Rezervasyon ekranını oluştur
@@ -132,7 +130,7 @@ def rezervasyon_ekrani():
         "Zurich": "Zurich is the largest city in Switzerland and an important cultural center.\nIt is the economic center of Switzerland and the cultural center of the\nGerman-speaking region. FIFA headquarters is located in Zurich."
     }
 
-    # Şehir seçimi bileşenine işlevi bağlayın
+    # Şehir seçimi ile sehir_bilgisini eşleştrime
     sehirler_dropdown.bind("<<ComboboxSelected>>", on_sehir_sec)
 
     # Şehir bilgisi metni
@@ -189,7 +187,7 @@ def rezervasyon_ekrani():
             c_tarih.set(cikis_tarihi)
             if giris_tarihi and cikis_tarihi:
                 if cikis_tarihi <= giris_tarihi:  # Çıkış tarihi giriş tarihinden önce olmamalı
-                    messagebox.showerror("Error", "The release date cannot be before or the same as the entry date!")
+                    messagebox.showerror("Error", "The selected date cannot be before or the same as the entry date!")
                     return
             c_tarih_win.destroy()
 
@@ -222,9 +220,6 @@ def rezervasyon_ekrani():
             return False
         elif not odeme_sekli.get():  # odeme_sekli'yi kontrol ederken get() fonksiyonunu kullanarak gerçek değeri alın
             messagebox.showerror("Error", "Please choose the payment method!")
-            return False
-        elif cikis_tarihi <= giris_tarihi:
-            messagebox.showerror("Error", "The release date cannot be before or the same as the entry date!")
             return False
         else:
             return True
@@ -267,13 +262,12 @@ def rezervasyon_ekrani():
 
     def scrape_hotels(selected_city, checkin, checkout):
         try:
-            selected_label = get_label_for_city(selected_city)  # Seçilen şehir için label'ı al
-
-            print("City: ", selected_city)  # secilen_sehir yerine selected_city kullanıldı
+            #test için yazdırma
+            print("City: ", selected_city)
             print("Checkin:", checkin)
             print("Checkout:", checkout)
             print("Payment Type:", odeme_sekli.get())
-            # Function to scrape hotel data from Booking.com
+
 
             base_url = "https://www.booking.com/searchresults.en-gb.html"
             selected_label = get_label_for_city(selected_city)  # Seçilen şehir için label'ı al
@@ -297,20 +291,20 @@ def rezervasyon_ekrani():
                 'group_children': '0',
                 'no_rooms': '1'
             }
-            url2 = f"{base_url}?{'&'.join([f'{k}={v}' for k, v in query_params.items()])}"
 
             # url = f"https://www.booking.com/searchresults.en-gb.html?ss={selected_city}&ssne={selected_city}&ssne_untouched={selected_city}&label={selected_label}&sid=75e30209011abe1aa1c492edf1647de4&aid=304142&lang=en-gb&sb=1&src_elem=sb&src=searchresults&dest_id=-1456928&dest_type=city&checkin={checkin}&checkout={checkout}&group_adults=2&no_rooms=1&group_children=0&selected_currency=EUR"
+
             url = (f"https://www.booking.com/searchresults.html"
                    f"?ss={selected_city}&checkin={checkin}&checkout={checkout}&group_adults=2&no_rooms=1&group_children=0&selected_currency=EUR")
 
-            print("Check Url:",url)
+            print("Check Url:",url) #test için url yi yazdırma
             headers = {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
                 'Accept-Language': 'en-US, en;q=0.9'
             }
             response = requests.get(url, headers=headers)
 
-            response.raise_for_status()  # Raises an exception for 4XX or 5XX status codes
+            response.raise_for_status()  # artırılmış 4xx istemci / 5xx sunucu hataları için. ayırt etmesi çok zor yalnızca bilgi amaçlı.
             soup = BeautifulSoup(response.text, 'html.parser')
             hotels_data = []
 
@@ -334,7 +328,7 @@ def rezervasyon_ekrani():
                     'Price': price_element.text.strip() if price_element else 'NOT GIVEN',
                     'Image URL': image_element['src'] if image_element else 'NOT GIVEN'
                 }
-                print(hotel_data)
+                print(hotel_data) #test için bilgileri her otel sırasında yazdırma
                 hotels_data.append(hotel_data)
 
                 count += 1  # Sayacı artır
@@ -372,10 +366,6 @@ def rezervasyon_ekrani():
             messagebox.showerror("Error", f"There was a problem with internet connection: {str(e)}")
             return []
 
-
-
-
-
     def display_top_hotels_window(top_hotels):
         top_hotels_window = tk.Toplevel()
         top_hotels_window.title("Top 5 Cheapest Hotels")
@@ -410,8 +400,8 @@ def rezervasyon_ekrani():
                     response = requests.get(hotel['Image URL'])
                     image_data = response.content
                     image = Image.open(io.BytesIO(image_data))
-                    image = image.resize((141, 141),Image.Resampling.LANCZOS)  # ANTIALIAS yerine Image.Resampling.LANCZOS kullan
-                    photo = ImageTk.PhotoImage(image)
+                    image = image.resize((141, 141),Image.Resampling.LANCZOS)  # antialias yerine lanczos kullandım
+                    photo = ImageTk.PhotoImage(image)                  #diğeri hep hata verdi boyutlandırma hatası verdi
 
                     image_label = tk.Label(image_frame, image=photo)
                     image_label.image = photo  # Referansı saklayın

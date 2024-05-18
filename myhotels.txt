@@ -1,60 +1,60 @@
-Hotel Name : Dans L'Atelier Hostel
-Address    : Braga
-Distance   : 0.7 km from center
-Points     : 5.9Scored 5.9 Review score 918 reviews
-Price      : 26.00 Euro
+Hotel Name : Post 120 Suites
+Address    : Prague 5, Prague
+Distance   : 3.7 km from downtown
+Points     : 8.6Scored 8.6 Excellent 1,932 reviews
+Price      : 17250.00 TL
 
-Hotel Name : Dans L'Atelier Hostel Unidade Porta Nova
-Address    : Old Town , Braga
-Distance   : 50 m from center
-Points     : 6.3Scored 6.3 Review score 652 reviews
-Price      : 27.00 Euro
+Hotel Name : Hotel Uno Prague
+Address    : Prague
+Distance   : 5.9 km from downtown
+Points     : 8.6Scored 8.6 Excellent 1,410 reviews
+Price      : 17400.00 TL
 
-Hotel Name : Sasimi Nice Hostel
-Address    : Old Town , Braga
-Distance   : 200 m from center
-Points     : 7.0Scored 7.0 Good 382 reviews
-Price      : 42.00 Euro
+Hotel Name : Prague City Residence
+Address    : Prague 8, Prague
+Distance   : 3.2 km from downtown
+Points     : 8.1Scored 8.1 Very Good 1,297 reviews
+Price      : 21150.00 TL
 
-Hotel Name : inBraga Hostel
-Address    : Braga
-Distance   : 200 m from center
-Points     : 8.2Scored 8.2 Very Good 579 reviews
-Price      : 44.00 Euro
+Hotel Name : Hotel Malá Strana
+Address    : Prague 5, Prague
+Distance   : 1.4 km from downtown
+Points     : 8.4Scored 8.4 Very Good 4,615 reviews
+Price      : 22380.00 TL
 
-Hotel Name : Quintinha d´Avó
-Address    : Vila de Prado
-Distance   : 7.4 km from Braga
-Points     : 8.8Scored 8.8 Excellent 26 reviews
-Price      : 90.00 Euro
+Hotel Name : Grand Hotel Prague Towers
+Address    : Prague 4, Prague
+Distance   : 2.8 km from downtown
+Points     : 8.6Scored 8.6 Excellent 894 reviews
+Price      : 24150.00 TL
 
-Hotel Name : Convento de Tibaes
-Address    : Braga
-Distance   : 4.2 km from center
-Points     : 8.4Scored 8.4 Very Good 220 reviews
-Price      : 132.00 Euro
+Hotel Name : Theatre 9 Apartments by Adrez
+Address    : Prague 1, Prague
+Distance   : 0.8 km from downtown
+Points     : 8.9Scored 8.9 Excellent 580 reviews
+Price      : 25020.00 TL
 
-Hotel Name : Quinta das Areias - Solar da Pena
-Address    : Braga
-Distance   : 9.2 km from center
-Points     : 9.1Scored 9.1 Wonderful 134 reviews
-Price      : 151.00 Euro
+Hotel Name : Little King U Malvaze
+Address    : Prague 1, Prague
+Distance   : 450 m from downtown
+Points     : 8.6Scored 8.6 Excellent 3,943 reviews
+Price      : 31440.00 TL
 
-Hotel Name : Hotel Rural Alves - Casa Alves Torneiros
-Address    : Penso
-Distance   : 7.2 km from Braga
-Points     : 8.6Scored 8.6 Excellent 221 reviews
-Price      : 159.00 Euro
+Hotel Name : Hotel General Old Town Prague
+Address    : Prague 5, Prague
+Distance   : 2.1 km from downtown
+Points     : 9.4Scored 9.4 Wonderful 201 reviews
+Price      : 31650.00 TL
 
-Hotel Name : Sé Apartamentos *Casa do Terraço*
-Address    : Braga
-Distance   : 400 m from center
-Points     : 7.7Scored 7.7 Good 4 reviews
-Price      : 183.00 Euro
+Hotel Name : Hotel Adler - Czech Leading Hotels
+Address    : Prague 1, Prague
+Distance   : 0.8 km from downtown
+Points     : 9.3Scored 9.3 Wonderful 3,062 reviews
+Price      : 40020.00 TL
 
-Hotel Name : Torre de Gomariz Wine & Spa Hotel
-Address    : Cervães
-Distance   : 9.9 km from Braga
-Points     : 9.3Scored 9.3 Wonderful 466 reviews
-Price      : 342.00 Euro
+Hotel Name : Almanac X Alcron Prague
+Address    : Prague 1, Prague
+Distance   : 0.9 km from downtown
+Points     : 9.2Scored 9.2 Wonderful 1,215 reviews
+Price      : 51000.00 TL
 
